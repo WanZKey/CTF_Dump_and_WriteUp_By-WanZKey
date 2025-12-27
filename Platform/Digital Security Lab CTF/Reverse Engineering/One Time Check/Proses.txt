@@ -1,0 +1,10 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Digital Security Lab CTF/Reverse Engineering/One Time Check]
+└─$ python3 solver.py
+[*] '/home/wanzkey/Digital Security Lab CTF/Reverse Engineering/One Time Check/chall'
+    Arch:       amd64-64-little
+    RELRO:      Partial RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+    Stripped:   No
+Flag found: flag{x0r_is_inv3rt1ble_y0u_kn0w?}

