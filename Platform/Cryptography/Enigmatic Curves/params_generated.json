@@ -1,0 +1,22 @@
+{
+  "note": "Stage 1 rotor stream encrypted; header contains 8 bytes key derived from clue+secret.",
+  "files": [
+    "enigma_curves.bin"
+  ],
+  "G": [
+    2,
+    1048572
+  ],
+  "Q": [
+    827951,
+    220406
+  ],
+  "p": 1048573,
+  "a": 217,
+  "b": 475,
+  "rotor_signatures": [
+    "0b390f40f554",
+    "bafa7190bc27",
+    "e413aad61430"
+  ]
+}
