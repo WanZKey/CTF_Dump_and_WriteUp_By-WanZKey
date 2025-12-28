@@ -1,0 +1,225 @@
+Bantu saya mengerjakan CTF Forensic berikut:
+No Flags, Inc.
+150
+Our company, No Flags, Inc., just sent this monthly report out informing us of our continued intentional lack of flags. Unfortunately, we think someone intercepted it and figured out how to add a flag in there. Please find the flag that was hidden in the report so we can get our company back to being completely flag free!
+Author: Jacob R.
+
+dan ini informasi file yang diberikan:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/No Flags, Inc.]
+└─$ file no_flags.docm
+no_flags.docm: Microsoft Word 2007+
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/No Flags, Inc.]
+└─$ exiftool no_flags.docm
+ExifTool Version Number         : 13.36
+File Name                       : no_flags.docm
+Directory                       : .
+File Size                       : 435 kB
+File Modification Date/Time     : 2025:12:02 14:57:10+07:00
+File Access Date/Time           : 2025:12:24 22:05:34+07:00
+File Inode Change Date/Time     : 2025:12:23 20:15:08+07:00
+File Permissions                : -rw-r--r--
+File Type                       : DOCM
+File Type Extension             : docm
+MIME Type                       : application/vnd.ms-word.document.macroEnabled.12
+Zip Required Version            : 20
+Zip Bit Flag                    : 0x0006
+Zip Compression                 : Deflated
+Zip Modify Date                 : 1980:01:01 00:00:00
+Zip CRC                         : 0x77bda41e
+Zip Compressed Size             : 394
+Zip Uncompressed Size           : 1542
+Zip File Name                   : [Content_Types].xml
+Title                           :
+Subject                         :
+Creator                         : Radford, Jacob - DSU Student
+Keywords                        :
+Description                     :
+Last Modified By                : Radford, Jacob - DSU Student
+Revision Number                 : 6
+Create Date                     : 2025:12:02 07:28:00Z
+Modify Date                     : 2025:12:02 07:49:00Z
+Template                        : Normal.dotm
+Total Edit Time                 : 12 minutes
+Pages                           : 1
+Words                           : 144
+Characters                      : 833
+Application                     : Microsoft Office Word
+Doc Security                    : None
+Lines                           : 17
+Paragraphs                      : 9
+Scale Crop                      : No
+Heading Pairs                   : Title, 1
+Titles Of Parts                 :
+Company                         :
+Links Up To Date                : No
+Characters With Spaces          : 968
+Shared Doc                      : No
+Hyperlinks Changed              : No
+App Version                     : 16.0000
+
+Ternyata adalah file word, tetapi karna ekstensinya .docm, aku curiga ada steganography jadi aku coba menggunakan tools olevba untuk mengeceknya:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/No Flags, Inc.]
+└─$ olevba no_flags.docm
+olevba 0.60.2 on Python 3.13.11 - http://decalage.info/python/oletools
+===============================================================================
+FILE: no_flags.docm
+Type: OpenXML
+No VBA or XLM macros found.
+
+Setelah saya cek ternyata kosong tidak ada apapun.
+
+Setelah saya cek dan saya unzip file .docm ini:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/No Flags, Inc.]
+└─$ unzip -l no_flags.docm
+Archive:  no_flags.docm
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     1542  1980-01-01 00:00   [Content_Types].xml
+      590  1980-01-01 00:00   _rels/.rels
+    25540  1980-01-01 00:00   word/document.xml
+     1479  1980-01-01 00:00   word/_rels/document.xml.rels
+     1174  1980-01-01 00:00   word/ink/ink1.xml
+     3630  1980-01-01 00:00   word/ink/ink2.xml
+    32087  1980-01-01 00:00   word/media/image1.jpeg
+     8397  1980-01-01 00:00   word/theme/theme1.xml
+     3980  1980-01-01 00:00   word/settings.xml
+    42745  1980-01-01 00:00   word/styles.xml
+     1069  1980-01-01 00:00   word/webSettings.xml
+     1749  1980-01-01 00:00   word/fontTable.xml
+      783  1980-01-01 00:00   docProps/core.xml
+      990  1980-01-01 00:00   docProps/app.xml
+      971  1980-01-01 00:00   word/media/image1.png
+     7890  1980-01-01 00:00   word/media/image2.png
+   369712  2025-12-02 00:51   word/media/flagenc.png
+---------                     -------
+   504328                     17 files
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/No Flags, Inc.]
+└─$ unzip no_flags.docm
+Archive:  no_flags.docm
+  inflating: [Content_Types].xml
+  inflating: _rels/.rels
+  inflating: word/document.xml
+  inflating: word/_rels/document.xml.rels
+  inflating: word/ink/ink1.xml
+  inflating: word/ink/ink2.xml
+ extracting: word/media/image1.jpeg
+  inflating: word/theme/theme1.xml
+  inflating: word/settings.xml
+  inflating: word/styles.xml
+  inflating: word/webSettings.xml
+  inflating: word/fontTable.xml
+  inflating: docProps/core.xml
+  inflating: docProps/app.xml
+ extracting: word/media/image1.png
+ extracting: word/media/image2.png
+  inflating: word/media/flagenc.png
+
+Pada bagian ini sangat menarik sekali "  inflating: word/media/flagenc.png"! mirip dengan judul soalnya nama file tersebut "No Flags, Inc." dan nama file tersebut adalah "flagenc.png".
+
+Berikut informasi file tersebut:
+1. Jenis File
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ file flagenc.png
+flagenc.png: data
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ exiftool flagenc.png
+ExifTool Version Number         : 13.36
+File Name                       : flagenc.png
+Directory                       : .
+File Size                       : 370 kB
+File Modification Date/Time     : 2025:12:02 00:51:58+07:00
+File Access Date/Time           : 2025:12:25 17:58:57+07:00
+File Inode Change Date/Time     : 2025:12:25 17:57:23+07:00
+File Permissions                : -rw-r--r--
+Error                           : File format error
+
+Karena tidak mengetahui jenis file ini! lalu saya cek menggunakan pngcheck karna ekstensi nya .png dan berikut informasinya:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ pngcheck flagenc.png
+flagenc.png  this is neither a PNG or JNG image nor a MNG stream
+ERROR: flagenc.png
+
+karena eror filenya! saya langsung cek signature file tersebut dengan XXD
+1. header signature file
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ xxd flagenc.png | head -n 5
+00000000: e013 3dc6 405b 55c4 d513 722f 399e fa57  ..=.@[U...r/9..W
+00000010: d48d 9b02 a68c 43c7 4682 f168 c73b acaa  ......C.F..h.;..
+00000020: 52a2 c1ce 16b1 6cf5 b356 f612 8845 1745  R.....l..V...E.E
+00000030: 4f2b 0c1b add1 304a f24b a1fc a729 e251  O+....0J.K...).Q
+00000040: 791c fa49 5d79 8e94 6371 9f3b 92b1 dcf4  y..I]y..cq.;....
+
+
+2. footer/tail signature file
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ xxd flagenc.png | tail -n 5
+0005a3e0: 55cd 5433 eda1 0230 38f5 7f57 00fa 1db6  U.T3...08..W....
+0005a3f0: 5ee5 b49a 81ca 1239 dcc8 913d 9cc3 266b  ^......9...=..&k
+0005a400: 484e 21a7 bdbb da83 cb02 5e68 1532 d763  HN!.......^h.2.c
+0005a410: bdb6 ec37 d611 5bda 53c2 cb58 befd 2403  ...7..[.S..X..$.
+0005a420: cb33 317f f768 5845 29d9 05c4 581a 3456  .31..hXE)...X.4V
+
+Jika dilihat dari informasi file ini tidak memiliki header dan standar file .png! sekarang bantu saya memperbaiki file ini dan menyelesaikan tantangannya!.
+
+
+Lalu saya mengecek apakah file ini terenkripsi atau tidak:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/…/Forensics/No Flags, Inc./word/media]
+└─$ ent flagenc.png
+Entropy = 7.999460 bits per byte.
+
+Optimum compression would reduce the size
+of this 369712 byte file by 0 percent.
+
+Chi square distribution for 369712 samples is 277.04, and randomly
+would exceed this value 16.39 percent of the times.
+
+Arithmetic mean value of data bytes is 127.8088 (127.5 = random).
+Monte Carlo value for Pi is 3.132720958 (error 0.28 percent).
+Serial correlation coefficient is -0.000526 (totally uncorrelated = 0.0).
+
+
+dan ini informasi tambahan dari Adminnya:
+Yes, the flagenc.png is encrypted. There is decryption information hidden in the word document in a different place, did you find that?
+
+If you did find that and it still doesn't work, then I'll look into it soon when I have the time. I used the web application at https://gchq.github.io/CyberChef/ for the encryption/decryption portion testing, which should work. But if something like openssl doesn't work with the same information then I'll have to look into that and fix it.
+CyberChef
+The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
+
+The decryption should just involve AES, there shouldn't be any xor involved if I remember correctly
+
+btw karna ini file .docm jadi ketika saya buka ini isi wordnya:
+
+An Epic Document with no flags once again 
+
+!!!
+Monthly Status Report — No Flags, Inc.
+We are happy to report that this month, as always, the company remains 
+completely 
+flag-free
+. All macros and images have been reviewed and are standard, though we 
+have noticed a few oddities—some macros may have been modified and one or more 
+images could be hidden in unusual places. Rest assured, no flags have been officially 
+observed, though, and the organization continues to maintain peak flag-free status.
+
+Signed,
+T. Boldsworth
+Chief Executive of No Flags, Inc.
+
+FLAG FREE ZONE
+ 
+These are cool flags but there 
+are no
+ flags here !!!
+
+[2025-12-02 09:12:44] Routine check: No flags located.  
+
+[2025-12-02 11:48:10] Macro subsystem stable.  
+
+[2025-12-02 14:22:59] Hidden-object scan: [redacted] image identified in 
+[redacted]. 
+
+[2025-12-02 14:23:05] Anomaly detected – please investigate document further.
+[2025-12-02 15:13:46] Alert overridden by admin. Document ready for distribution.
