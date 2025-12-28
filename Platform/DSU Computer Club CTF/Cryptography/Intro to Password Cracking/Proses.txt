@@ -1,0 +1,25 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Cryptography/Intro to Password Cracking]
+└─$ pdfcrack -f final_secret.pdf -n 8 -m 8 -c 0123456789
+PDF version 1.7
+Security Handler: Standard
+V: 2
+R: 3
+P: -4
+Length: 128
+Encrypted Metadata: True
+FileID: 876960bbf9b3114cb1fa1a2a4fdd0e88
+U: ff4986cfdcfa69ef803cf64931e8a7300122456a91bae5134273a6db134c87c4
+O: 0ff28d2cdfc8acc781fdb6632df7409f11eb9e574228625f58957683dce00f50
+Average Speed: 34629.7 w/s. Current Word: '39529600'
+Average Speed: 35030.9 w/s. Current Word: '11239310'
+Average Speed: 26223.8 w/s. Current Word: '78671910'
+Average Speed: 26467.4 w/s. Current Word: '53074420'
+Average Speed: 28093.2 w/s. Current Word: '89880030'
+Average Speed: 27914.1 w/s. Current Word: '08176530'
+Average Speed: 28426.2 w/s. Current Word: '50753140'
+Average Speed: 23890.2 w/s. Current Word: '01531640'
+Average Speed: 16956.4 w/s. Current Word: '59596940'
+Average Speed: 27269.8 w/s. Current Word: '09941550'
+Average Speed: 19889.8 w/s. Current Word: '58721950'
+Average Speed: 26375.6 w/s. Current Word: '79204460'
+found user-password: '93827460'
