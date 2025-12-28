@@ -1,6 +1,0 @@
-┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Digital Security Lab CTF/Cryptography/Crypto 1]
-└─$ python3 solver.py
-[+] Keystream recovered (172 bytes)
-
-[+] Hasil Dekripsi:
-{"user": "a", "flag": "TRT{a1ed095ec5ea3e37}"}
