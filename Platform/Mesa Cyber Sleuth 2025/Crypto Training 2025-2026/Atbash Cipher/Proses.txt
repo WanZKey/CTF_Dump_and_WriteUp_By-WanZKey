@@ -1,0 +1,7 @@
+Source		: https://cryptii.com/pipes/atbash-cipher
+Ciphertext	: zixzmvxgu{ivu1vxg}
+Plaintext	: arcanectf{ref1ect}
+
+Setting
+Plaintext  Alphabet	: abcdefghijklmnopqrstuvwxyz
+Ciphertext Alphabet	: zyxwvutsrqponmlkjihgfedcba

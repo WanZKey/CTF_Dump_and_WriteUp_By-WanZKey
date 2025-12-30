@@ -1,0 +1,12 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Mesa Cyber Sleuth 2025/Crypto Training 2025-2026/Double Decode]
+└─$ dcode YXJjYW5lY3RmJTdCZDB1YmwzX3Q0cCU3RA==
+
+              __                         __
+            |/  |                   | / /
+            |   | ___  ___  ___  ___|  (
+            |   )|___)|    |   )|   )| |___ \   )
+            |__/ |__  |__  |__/ |__/ | |     \_/
+                                              /
+            https://github.com/s0md3v/Decodify
+[+] Decoded from Base64: arcanectf%7Bd0ubl3_t4p%7D
+[+] Decoded from URL encoding: arcanectf{d0ubl3_t4p}

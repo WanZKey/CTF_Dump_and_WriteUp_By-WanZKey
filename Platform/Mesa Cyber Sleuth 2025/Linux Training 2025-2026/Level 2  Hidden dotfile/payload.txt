@@ -1,0 +1,11 @@
+# Step 1
+ls -la
+
+# Step 2
+cd level-2
+
+# Step 3
+ls -la
+
+# Step 4
+cat .flag

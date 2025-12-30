@@ -1,0 +1,17 @@
+# 1. Masuk Direktori 
+cd level-4
+
+# 2. Cek isi direktori
+ls -la
+
+ternyata ada file bernama "flag.b64"
+
+# 3. Baca isi file 
+cat flag.64
+
+ternyata strings base64, tinggal decode saja.
+
+# 4. Decode
+cat flag.64 | base64 -d
+
+voila! dapet flagnya.

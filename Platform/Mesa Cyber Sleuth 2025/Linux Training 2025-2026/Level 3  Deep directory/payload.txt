@@ -1,0 +1,7 @@
+# Step 1 - Cek Seluruh Direktori
+ls -R
+
+flag berada file /a/b/c/d/e/flag.txt
+
+# Step 2 - Baca flag
+cat ./b/c/d/e/flag.txt

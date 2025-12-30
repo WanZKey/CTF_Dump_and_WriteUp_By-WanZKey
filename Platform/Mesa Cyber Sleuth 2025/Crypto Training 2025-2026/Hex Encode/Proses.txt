@@ -1,0 +1,12 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Mesa Cyber Sleuth 2025/Crypto Training 2025-2026/Hex Encode]
+└─$ dcode 617263616e656374667b74756373306e5f313333377d
+
+              __                         __
+            |/  |                   | / /
+            |   | ___  ___  ___  ___|  (
+            |   )|___)|    |   )|   )| |___ \   )
+            |__/ |__  |__  |__/ |__/ | |     \_/
+                                              /
+            https://github.com/s0md3v/Decodify
+[+] Decoded from Hex: 36459187207732152184601712745535647037277918935070589
+[+] Decoded from Base16: arcanectf{tucs0n_1337}

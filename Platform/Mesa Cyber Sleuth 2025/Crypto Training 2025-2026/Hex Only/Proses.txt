@@ -1,0 +1,13 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Mesa Cyber Sleuth 2025/Crypto Training 2025-2026/Hex Only]
+└─$ dcode 617263616e656374667b6231305f327d
+
+              __                         __
+            |/  |                   | / /
+            |   | ___  ___  ___  ___|  (
+            |   )|___)|    |   )|   )| |___ \   )
+            |__/ |__  |__  |__/ |__/ | |     \_/
+                                              /
+            https://github.com/s0md3v/Decodify
+[-] Its a MD5 Hash but I failed to crack it.
+[+] Decoded from Hex: 129529053110858257669952234509328921213
+[+] Decoded from Base16: arcanectf{b10_2}

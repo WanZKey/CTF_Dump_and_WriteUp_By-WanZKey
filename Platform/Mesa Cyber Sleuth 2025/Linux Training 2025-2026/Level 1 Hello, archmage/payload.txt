@@ -1,0 +1,11 @@
+# Step 1 - Cek Direktori
+ls -la
+
+# Step 2 - Masuk Direktori
+cd level-1/
+
+# Step 3 - Cek isi direktori level-1
+ls
+
+ada file flag.txt, tinggal baca dengan payload:
+cat flag.txt

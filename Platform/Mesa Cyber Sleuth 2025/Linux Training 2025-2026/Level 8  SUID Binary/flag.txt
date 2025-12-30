@@ -1,0 +1,1 @@
+arcaneCTF{L8_SUID_BINARY}

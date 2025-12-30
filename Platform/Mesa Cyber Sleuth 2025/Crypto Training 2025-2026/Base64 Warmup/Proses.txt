@@ -1,0 +1,11 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/Mesa Cyber Sleuth 2025/Crypto Training 2025-2026/Base64 Warmup]
+└─$ dcode YXJjYW5lY3Rme2IxMHNwaGVyZTJ9
+
+              __                         __
+            |/  |                   | / /
+            |   | ___  ___  ___  ___|  (
+            |   )|___)|    |   )|   )| |___ \   )
+            |__/ |__  |__  |__/ |__/ | |     \_/
+                                              /
+            https://github.com/s0md3v/Decodify
+[+] Decoded from Base64: arcanectf{b10sphere2}

@@ -1,0 +1,10 @@
+# 1. Masuk Direktori
+cd level-5
+
+# 2. Cek Direktori
+ls -la
+
+ada file bernama "runme.py".
+
+# 3. Menjalankan file
+output ketika dijalankan adalah "arcaneCTF{L5_RUN_ME}".

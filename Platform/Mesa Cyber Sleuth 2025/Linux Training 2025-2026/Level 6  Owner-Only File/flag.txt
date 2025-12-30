@@ -1,0 +1,1 @@
+arcaneCTF{L6_OWNER_ONLY}

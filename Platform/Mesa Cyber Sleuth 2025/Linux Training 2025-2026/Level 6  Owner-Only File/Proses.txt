@@ -1,0 +1,7 @@
+# Jadi Admin
+su - archmage
+masukkin password "password123".
+
+# Masuk direktori dan Baca flag
+cd level-6
+cat flag.txt
