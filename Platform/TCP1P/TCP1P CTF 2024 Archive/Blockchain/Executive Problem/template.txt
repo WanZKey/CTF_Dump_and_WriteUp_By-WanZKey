@@ -1,0 +1,182 @@
+sekarang bantu saya mengerjakan CTF Blockchain ini:
+Executive Problem
+1000 pts
+Author: kiinzu
+If only we managed to climb high enough, maybe we can dethrone someone?
+Start challenge from: https://gzcli.1pc.tf/tcp1p-ctf-2024-archive-blockchain-executive-problem
+Download Attachment
+
+Informasi url:
+Executive Problem
+📁 Blockchain
+🎯 TCP1P CTF 2024 Archive
+👥 1 user
+Ports:
+56245:8080
+Connection: Connected
+Status: running
+Challenge started successfully
+
+berikut informasi file dan yang diberikan:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ file executiveproblem_executiveproblem-dist.zip
+executiveproblem_executiveproblem-dist.zip: Zip archive data, at least v2.0 to extract, compression method=deflate
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ unzip executiveproblem_executiveproblem-dist.zip
+Archive:  executiveproblem_executiveproblem-dist.zip
+  inflating: CrainExecutive.sol
+  inflating: Crain.sol
+  inflating: Setup.sol
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ tree
+.
+├── CrainExecutive.sol
+├── Crain.sol
+├── executiveproblem_executiveproblem-dist.zip
+└── Setup.sol
+
+1 directory, 4 files
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ cat Setup.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+import "./Crain.sol";
+import "./CrainExecutive.sol";
+
+contract Setup{
+    CrainExecutive public cexe;
+    Crain public crain;
+
+    constructor() payable{
+        cexe = new CrainExecutive{value: 50 ether}();
+        crain = new Crain(payable(address(cexe)));
+    }
+
+    function isSolved() public view returns(bool){
+        return crain.crain() != address(this);
+    }
+
+}                                                                                                                       
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ cat Crain.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+import "./CrainExecutive.sol";
+
+contract Crain{
+    CrainExecutive public ce;
+    address public crain;
+
+    modifier _onlyExecutives(){
+        require(msg.sender == address(ce), "Only Executives can replace");
+        _;
+    }
+
+    constructor(address payable _ce) {
+        ce = CrainExecutive(_ce);
+        crain = msg.sender;
+    }
+
+
+    function ascendToCrain(address _successor) public _onlyExecutives{
+        crain = _successor;
+    }
+
+    receive() external payable { }
+
+}                                                                                                                       
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2024 Archive/Blockchain/Executive Problem]
+└─$ cat CrainExecutive.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract CrainExecutive{
+
+    address public owner;
+    uint256 public totalSupply;
+
+    address[] public Executives;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => bool) public permissionToExchange;
+    mapping(address => bool) public hasTakeBonus;
+    mapping(address => bool) public isEmployee;
+    mapping(address => bool) public isManager;
+    mapping(address => bool) public isExecutive;
+
+    modifier _onlyOnePerEmployee(){
+        require(hasTakeBonus[msg.sender] == false, "Bonus can only be taken once!");
+        _;
+    }
+
+    modifier _onlyExecutive(){
+        require(isExecutive[msg.sender] == true, "Only Higher Ups can access!");
+        _;
+    }
+
+    modifier _onlyManager(){
+        require(isManager[msg.sender] == true, "Only Higher Ups can access!");
+        _;
+    }
+
+    modifier _onlyEmployee(){
+        require(isEmployee[msg.sender] == true, "Only Employee can exchange!");
+        _;
+    }
+
+    constructor() payable{
+        owner = msg.sender;
+        totalSupply = 50 ether;
+        balanceOf[msg.sender] = 25 ether;
+    }
+
+    function claimStartingBonus() public _onlyOnePerEmployee{
+        balanceOf[owner] -= 1e18;
+        balanceOf[msg.sender] += 1e18;
+    }
+
+    function becomeEmployee() public {
+        isEmployee[msg.sender] = true;
+    }
+
+    function becomeManager() public _onlyEmployee{
+        require(balanceOf[msg.sender] >= 1 ether, "Must have at least 1 ether");
+        require(isEmployee[msg.sender] == true, "Only Employee can be promoted");
+        isManager[msg.sender] = true;
+    }
+
+    function becomeExecutive() public {
+        require(isEmployee[msg.sender] == true && isManager[msg.sender] == true);
+        require(balanceOf[msg.sender] >= 5 ether, "Must be that Rich to become an Executive");
+        isExecutive[msg.sender] = true;
+    }
+
+    function buyCredit() public payable _onlyEmployee{
+        require(msg.value >= 1 ether, "Minimum is 1 Ether");
+        uint256 totalBought = msg.value;
+        balanceOf[msg.sender] += totalBought;
+        totalSupply += totalBought;
+    }
+
+    function sellCredit(uint256 _amount) public _onlyEmployee{
+        require(balanceOf[msg.sender] - _amount >= 0, "Not Enough Credit");
+        uint256 totalSold = _amount;
+        balanceOf[msg.sender] -= totalSold;
+        totalSupply -= totalSold;
+    }
+
+    function transfer(address to, uint256 _amount, bytes memory _message) public _onlyExecutive{
+        require(to != address(0), "Invalid Recipient");
+        require(balanceOf[msg.sender] - _amount >= 0, "Not enough Credit");
+        uint256 totalSent = _amount;
+        balanceOf[msg.sender] -= totalSent;
+        balanceOf[to] += totalSent;
+        (bool transfered, ) = payable(to).call{value: _amount}(abi.encodePacked(_message));
+        require(transfered, "Failed to Transfer Credit!");
+    }
+
+} 
