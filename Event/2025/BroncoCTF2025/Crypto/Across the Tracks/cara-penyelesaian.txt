@@ -1,0 +1,2 @@
+tinggal decode menggunakan cryptii
+ubah key nya menjadi "10" dapet deh

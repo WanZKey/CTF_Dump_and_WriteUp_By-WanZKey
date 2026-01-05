@@ -1,0 +1,108 @@
+https://chatgpt.com/canvas/shared/67b16b3c951c81919edd8026445ec2c5
+
+Solusi Lengkap Tantangan CTF: Rahhh-SA
+
+Deskripsi Tantangan
+
+Kita diberi informasi sebagai berikut:
+
+$e = 65537$
+
+$n = 3429719$
+
+Ciphertext dalam bentuk list bilangan negatif $c = [-53102, -3390264, ...]$
+
+Sebuah petunjuk: $p = -811$
+
+Tugas kita adalah mendapatkan plaintext berupa flag dengan format bronco{flag}.
+
+1. Memahami Petunjuk
+
+Petunjuk menyebutkan $p = -811$. Bilangan prima biasanya positif, jadi kita coba mengabaikan tanda negatif dan menganggap $p = 811$.
+
+2. Faktorisasi $n$
+
+Diberikan $n = 3429719$, jika $p = 811$, maka $q$ bisa dicari dengan rumus:
+
+
+
+Ternyata $q = 4229$ juga merupakan bilangan prima. Ini indikasi kuat bahwa faktor yang benar adalah $p = 811$ dan $q = 4229$.
+
+3. Menghitung $\varphi(n)$
+
+Dalam RSA, kita butuh nilai $\varphi(n)$ untuk menghitung kunci privat:
+
+
+
+Substitusi $p = 811$ dan $q = 4229$:
+
+
+
+4. Menghitung Kunci Privat $d$
+
+Karena $e = 65537$, $d$ bisa dihitung sebagai invers modulo:
+
+
+
+Menggunakan fungsi bawaan Python:
+
+from Crypto.Util.number import inverse
+
+d = inverse(65537, 3424680)
+
+Hasilnya: $d = 2247457$
+
+5. Dekripsi Ciphertext
+
+Setiap elemen dalam $c$ adalah bilangan negatif. Karena dalam RSA ciphertext seharusnya positif, kita gunakan modulus $n$ untuk memastikan semua ciphertext positif.
+
+Untuk setiap elemen $c_i$ dalam $c$, lakukan dekripsi:
+
+
+
+Dalam Python:
+
+plaintext_numbers = [pow(c_i % n, d, n) for c_i in c]
+
+Hasilnya adalah daftar bilangan desimal yang merepresentasikan karakter ASCII atau byte. Kita konversi ke byte dengan:
+
+plaintext_bytes = b''.join(num.to_bytes((num.bit_length() + 7) // 8, 'big') for num in plaintext_numbers)
+
+6. Mendapatkan Flag
+
+Setelah dijalankan, hasilnya adalah:
+
+bronco{m4th3m4t1c5_r34l1y_1s_qu1t3_m4g1c4l_raAhH!}
+
+PoC Lengkap (Proof of Concept) dalam Python:
+
+from Crypto.Util.number import inverse
+
+# Diberikan
+e = 65537
+n = 3429719
+p = 811
+q = 4229
+c = [-53102, -3390264, -2864697, -3111409, -2002688, -2864697, -1695722, -1957072, -1821648, -1268305, -3362005, -712024, -1957072, -1821648, -1268305, -732380, -2002688, -967579, -271768, -3390264, -712024, -1821648, -3069724, -732380, -892709, -271768, -732380, -2062187, -271768, -292609, -1599740, -732380, -1268305, -712024, -271768, -1957072, -1821648, -3418677, -732380, -2002688, -1821648, -3069724, -271768, -3390264, -1847282, -2267004, -3362005, -1764589, -293906, -1607693]
+
+# Hitung phi
+phi = (p - 1) * (q - 1)
+
+# Hitung d
+d = inverse(e, phi)
+
+# Dekripsi
+plaintext_numbers = [pow(c_i % n, d, n) for c_i in c]
+plaintext_bytes = b"".join(num.to_bytes((num.bit_length() + 7) // 8, 'big') for num in plaintext_numbers)
+
+print(plaintext_bytes.decode())
+
+7. Kesimpulan
+
+Tanda negatif di $p = -811$ hanyalah pengalih perhatian. Kita asumsikan $p = 811$ positif.
+
+Setelah faktorisasi $n$, didapatkan $q = 4229$.
+
+Dengan perhitungan kunci privat RSA, kita berhasil mendekripsi ciphertext dan mendapatkan flag.
+
+Flag: bronco{m4th3m4t1c5_r34l1y_1s_qu1t3_m4g1c4l_raAhH!}

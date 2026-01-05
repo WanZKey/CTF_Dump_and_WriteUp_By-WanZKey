@@ -1,0 +1,3 @@
+┌──(wanzkey㉿Hengker-Bwang)-[~/BroncoCTF2025/Crypto/Mid PRNG]
+└─$ nc bad-prng.nc.broncoctf.xyz 8000
+3f652aa10e28ae4f1628545bfef89befe988e2fd9e336142
