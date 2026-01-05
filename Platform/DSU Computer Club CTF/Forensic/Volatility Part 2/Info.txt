@@ -1,0 +1,5 @@
+Type		: RGB
+Offset		: 11321847
+Width		: 615
+Height		: 437
+Palette Type	: B, G , R, X (BMP Syle)

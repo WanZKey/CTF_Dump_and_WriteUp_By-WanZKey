@@ -1,0 +1,6 @@
+# Dump File Pain
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/DSU CTF/Forensics/Volatility Part 1]
+└─$ vol2 -f WORKSTATION-20251203-221315.raw --profile=Win7SP1x64 memdump -p 4092 --dump-dir .
+Volatility Foundation Volatility Framework 2.6
+************************************************************************
+Writing mspaint.exe [  4092] to 4092.dmp
