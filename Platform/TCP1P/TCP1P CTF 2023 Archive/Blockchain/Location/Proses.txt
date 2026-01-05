@@ -1,0 +1,171 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/TCP1P/TCP1P CTF 2023 Archive/Blockchain/Location]
+└─$ nc gzcli.1pc.tf 52206
+====Going to The Party====
+
+To Find the party location
+You need to solve a simple riddle regarding a SLOT
+Answer everything correctly, and find the exact location!
+
+Question: In which Slot is Password Stored?
+
+You'll answer with and ONLY WITH [numbers]
+ex:
+0,1,2,3,4.....99
+
+Note:
+    -   Slot start from 0
+    -   If it doesn't stored on SLOT, answer 0
+
+Identification Required for Guest
+
+Question:
+
+contract StorageChallenge8 {
+    bytes32 private key;
+    bytes4 private key_1;
+    bytes16 private key_2;
+    address private owner;
+    uint256 private Token;
+    address private immutable Investor;
+    address private Courier;
+    uint256 private lump_sum;
+    bytes32 private password;
+}
+
+Answer: 6
+===================================
+Question:
+
+contract StorageChallenge10 {
+    bool private string_true;
+    bool private number_false;
+    bool private user_true;
+    bytes32 private username;
+    bytes32 private password;
+    bool public status_creds;
+}
+
+Answer: 2
+===================================
+Question:
+
+contract StorageChallenge3 {
+    address private owner;
+    uint64 private password;
+    bytes32 private user;
+    address[2] private investor;
+}
+
+Answer: 0
+===================================
+Question:
+
+contract StorageChallenge5 {
+    address[2] private investor;
+    bytes32 private user;
+    address private owner;
+    uint64 private password;
+}
+
+Answer: 3
+===================================
+Question:
+
+contract StorageChallenge1 {
+    bytes32 private user;
+    address[2] private investor;
+    uint64 private password;
+    address private owner;
+}
+
+Answer: 3
+===================================
+Question:
+
+contract StorageChallenge2 {
+    address[2] private investor;
+    uint64 private password;
+    bytes32 private user;
+    address private owner;
+}
+
+Answer: 2
+===================================
+Question:
+
+contract StorageChallenge9 {
+    bytes32 private unique_code;
+    bytes32 private key_12;
+    address private owner;
+    address[20] public player;
+    bool private valid;
+    bytes32 private password;
+    address private enemy;
+    bool private answered;
+}
+
+Answer: 24
+===================================
+Question:
+
+contract StorageChallenge4 {
+    uint64 private password;
+    bytes32 private user;
+    address[2] private investor;
+    bytes32 immutable  passphrase;
+    address private owner;
+}
+
+Answer: 0
+===================================
+Question:
+
+contract StorageChallenge6 {
+    bytes32 immutable passphrase;
+    uint64 private password;
+    bytes32 private user;
+    address[2] private investor;
+    address private owner;
+}
+
+Answer: 0
+===================================
+Question:
+
+contract StorageChallenge7 {
+    bytes32 private key;
+    bytes4 private key_1;
+    bytes16 private key_2;
+    address private owner;
+    uint256 private Token;
+    address private immutable Investor;
+    address private Courier;
+    bytes32 private immutable password;
+}
+
+Answer: 0
+===================================
+Final Question:
+
+contract Hell_0 {
+    uint256 private avail_money;
+    uint256 private saved_money;
+    bool private not_minus;
+    address private owner;
+    uint256[2] private geo_loc;
+    bool private is_there;
+    bool private there;
+    address private wallet;
+    address private receiver;
+    address[20] private transaction_list;
+    bytes32 private user_creds;
+    uint256 private immutable user_in_uint;
+    bytes32 private password;
+    uint256 private password_uint;
+    bool private correct_password;
+    bool private is_user;
+}
+
+Answer: 28
+Go to Camelleion Street 78
+TCP1P{c279f9799280442b8c50dd380ae9ef52}
