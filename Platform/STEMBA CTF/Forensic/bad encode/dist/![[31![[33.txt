@@ -1,0 +1,5 @@
+Windows![[20Update![[20logs![[20are![[20now![[20generated![[20using![[20ETW![[20![[28Event![[20Tracing![[20for![[20Windows![[29![[2E
+Please![[20run![[20the![[20Get![[2DWindowsUpdateLog![[20PowerShell![[20command![[20to![[20convert![[20ETW![[20traces![[20into![[20a![[20readable![[20WindowsUpdate![[2Elog![[2E
+
+
+For![[20more![[20information![[2C![[20please![[20visit![[20https![[3A![[2F![[2Fgo![[2Emicrosoft![[2Ecom![[2Ffwlink![[2F![[3FLinkId![[3D![[35![[31![[38![[33![[34![[35

@@ -1,0 +1,7 @@
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/bad encode/dist]
+└─$ python3 solver.py > debug.txt
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/bad encode/dist]
+└─$ strings debug.txt | grep "Fl4g"
+                        </xs:sequence>FULL P4rt Fl4g: SIJAWARA{f1l3_b4d_45c11_3nc0d3}

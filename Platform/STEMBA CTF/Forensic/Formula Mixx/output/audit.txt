@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Mon Jul 21 22:12:50 2025
+Invocation: foremost -i hangker.png -o output 
+Output directory: /home/wanzkey/STEMBA-CTF/Forensic/Formula Mixx/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: hangker.png
+Start: Mon Jul 21 22:12:50 2025
+Length: 1 MB (2003551 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.jpg 	       1 MB 	          0 	 
+Finish: Mon Jul 21 22:12:50 2025
+
+1 FILES EXTRACTED
+	
+jpg:= 1
+------------------------------------------------------------------
+
+Foremost finished at Mon Jul 21 22:12:50 2025

@@ -1,0 +1,37 @@
+
+┌──(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/Stringgle-Minion]
+└─$ strings Triplemini.jpg
+JFIF
+;CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 80
+ , #&')*)
+-0-(0%()(
+((((((((((((((((((((((((((((((((((((((((((((((((((
+$3br
+%&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+        #3R
+&'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+CJ:QE
+@       J(
+@sKE
+"i`"7
+d;%_F
+kPhp
+x&      d
+E1\7Ni
+.))i
+        KE&h
+(4Q@
+*Jc}
+ZC@
+DSJ"]
+bendera(65.164.162.61.156.71.65.137.64.154.141.137.64.154.64.137.142.60.171.137.142.60.171)
+@9B:
+XdYcY#`
+
+
+65 164 162 61 156 71 65 137 64 154 141 137 64 154 64 137 142 60 171 137 142 60 171
+
+kode ini merupakan kode OCTAl, decode saja code tersebut menggunakna cyberchef
+
+ini hasilnya: 5tr1n95_4la_4l4_b0y_b0y
+Jadi Flagnya : STEMBACTF{5tr1n95_4la_4l4_b0y_b0y}

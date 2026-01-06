@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF TnT Binary Analyzer</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+            color: #00ff41;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #00ff41;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 2.5em;
+            color: #ff6b35;
+            text-shadow: 0 0 10px #ff6b35;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #00ff41;
+        }
+        
+        .upload-area {
+            border: 2px dashed #00ff41;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            background: rgba(0, 255, 65, 0.1);
+        }
+        
+        .upload-area.dragover {
+            background: rgba(0, 255, 65, 0.2);
+            border-color: #ff6b35;
+        }
+        
+        .analysis-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 255, 65, 0.05);
+            border-radius: 5px;
+            border-left: 4px solid #00ff41;
+        }
+        
+        .result {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid #ff6b35;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .binary-display {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+        
+        .flag {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+        
+        button {
+            background: #00ff41;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #ff6b35;
+            color: white;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">🧨 TnT CTF Analyzer 🧨</div>
+            <div class="subtitle">Gajah terbang detector - Binary Pattern Analysis</div>
+        </div>
+        
+        <div class="upload-area" id="uploadArea">
+            <p>📁 Drop your chall.txt file here or click to select</p>
+            <input type="file" id="fileInput" style="display: none;" accept=".txt">
+        </div>
+        
+        <div id="analysisResults" class="hidden">
+            <div class="analysis-section">
+                <h3>🔍 File Information</h3>
+                <div id="fileInfo"></div>
+            </div>
+            
+            <div class="analysis-section">
+                <h3>📊 Binary Analysis</h3>
+                <div id="binaryAnalysis"></div>
+            </div>
+            
+            <div class="analysis-section">
+                <h3>🔓 Decoding Attempts</h3>
+                <div id="decodingResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const analysisResults = document.getElementById('analysisResults');
+        
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                analyzeFile(files[0]);
+            }
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                analyzeFile(e.target.files[0]);
+            }
+        });
+        
+        function analyzeFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const arrayBuffer = e.target.result;
+                const uint8Array = new Uint8Array(arrayBuffer);
+                performAnalysis(uint8Array, file);
+            };
+            reader.readAsArrayBuffer(file);
+        }
+        
+        function performAnalysis(data, file) {
+            // Show analysis section
+            analysisResults.classList.remove('hidden');
+            
+            // File info
+            document.getElementById('fileInfo').innerHTML = `
+                <p><strong>Filename:</strong> ${file.name}</p>
+                <p><strong>Size:</strong> ${file.size} bytes</p>
+                <p><strong>Type:</strong> ${file.type || 'unknown'}</p>
+            `;
+            
+            // Convert to hex and binary representation
+            const hexString = Array.from(data).map(b => b.toString(16).padStart(2, '0')).join(' ');
+            const binaryString = Array.from(data).map(b => b.toString(2).padStart(8, '0')).join(' ');
+            
+            // Check if it's all 0s and 1s
+            const isAllBinary = data.every(b => b === 0 || b === 1);
+            
+            document.getElementById('binaryAnalysis').innerHTML = `
+                <p><strong>All bytes are 0 or 1:</strong> ${isAllBinary ? '✅ YES' : '❌ NO'}</p>
+                <p><strong>Hex representation:</strong></p>
+                <div class="binary-display">${hexString}</div>
+                <p><strong>Binary representation:</strong></p>
+                <div class="binary-display">${binaryString}</div>
+            `;
+            
+            // Decoding attempts
+            let decodingHTML = '';
+            
+            if (isAllBinary) {
+                // Method 1: Treat each byte as a binary digit
+                const binaryStr = Array.from(data).join('');
+                decodingHTML += `<div class="result">
+                    <h4>Method 1: Direct binary string</h4>
+                    <div class="binary-display">${binaryStr}</div>
+                    ${tryBinaryDecoding(binaryStr)}
+                </div>`;
+                
+                // Method 2: Group by 8 bits
+                const grouped8 = [];
+                for (let i = 0; i < data.length; i += 8) {
+                    const chunk = Array.from(data.slice(i, i + 8)).join('');
+                    if (chunk.length === 8) {
+                        grouped8.push(chunk);
+                    }
+                }
+                
+                if (grouped8.length > 0) {
+                    const ascii8 = grouped8.map(chunk => {
+                        const charCode = parseInt(chunk, 2);
+                        return charCode >= 32 && charCode <= 126 ? String.fromCharCode(charCode) : `[${charCode}]`;
+                    }).join('');
+                    
+                    decodingHTML += `<div class="result">
+                        <h4>Method 2: 8-bit ASCII decoding</h4>
+                        <div class="binary-display">${grouped8.join(' ')}</div>
+                        <p><strong>Result:</strong> ${ascii8}</p>
+                    </div>`;
+                }
+                
+                // Method 3: Group by 7 bits
+                const binaryString7 = Array.from(data).join('');
+                const grouped7 = [];
+                for (let i = 0; i < binaryString7.length; i += 7) {
+                    const chunk = binaryString7.slice(i, i + 7);
+                    if (chunk.length === 7) {
+                        grouped7.push(chunk);
+                    }
+                }
+                
+                if (grouped7.length > 0) {
+                    const ascii7 = grouped7.map(chunk => {
+                        const charCode = parseInt(chunk, 2);
+                        return charCode >= 32 && charCode <= 126 ? String.fromCharCode(charCode) : `[${charCode}]`;
+                    }).join('');
+                    
+                    decodingHTML += `<div class="result">
+                        <h4>Method 3: 7-bit ASCII decoding</h4>
+                        <div class="binary-display">${grouped7.join(' ')}</div>
+                        <p><strong>Result:</strong> ${ascii7}</p>
+                        ${checkForFlag(ascii7)}
+                    </div>`;
+                }
+                
+                // Method 4: Group by 6 bits (Base64-like)
+                const grouped6 = [];
+                for (let i = 0; i < binaryString7.length; i += 6) {
+                    const chunk = binaryString7.slice(i, i + 6);
+                    if (chunk.length === 6) {
+                        grouped6.push(chunk);
+                    }
+                }
+                
+                if (grouped6.length > 0) {
+                    const ascii6 = grouped6.map(chunk => {
+                        const charCode = parseInt(chunk, 2);
+                        return charCode >= 32 && charCode <= 126 ? String.fromCharCode(charCode) : `[${charCode}]`;
+                    }).join('');
+                    
+                    decodingHTML += `<div class="result">
+                        <h4>Method 4: 6-bit decoding</h4>
+                        <div class="binary-display">${grouped6.join(' ')}</div>
+                        <p><strong>Result:</strong> ${ascii6}</p>
+                        ${checkForFlag(ascii6)}
+                    </div>`;
+                }
+            }
+            
+            document.getElementById('decodingResults').innerHTML = decodingHTML;
+        }
+        
+        function tryBinaryDecoding(binaryStr) {
+            let results = '';
+            
+            // Try different chunk sizes
+            for (let chunkSize = 5; chunkSize <= 8; chunkSize++) {
+                const chunks = [];
+                for (let i = 0; i < binaryStr.length; i += chunkSize) {
+                    const chunk = binaryStr.slice(i, i + chunkSize);
+                    if (chunk.length === chunkSize) {
+                        chunks.push(chunk);
+                    }
+                }
+                
+                if (chunks.length > 0) {
+                    const decoded = chunks.map(chunk => {
+                        const charCode = parseInt(chunk, 2);
+                        return charCode >= 32 && charCode <= 126 ? String.fromCharCode(charCode) : `[${charCode}]`;
+                    }).join('');
+                    
+                    results += `<p><strong>${chunkSize}-bit chunks:</strong> ${decoded} ${checkForFlag(decoded)}</p>`;
+                }
+            }
+            
+            return results;
+        }
+        
+        function checkForFlag(text) {
+            const flagPattern = /[A-Za-z0-9_{}]+/g;
+            const matches = text.match(flagPattern);
+            
+            if (matches) {
+                const potentialFlags = matches.filter(match => match.length > 3);
+                if (potentialFlags.length > 0) {
+                    const flagFormatted = potentialFlags.map(flag => `STEMBACTF{${flag}}`);
+                    return `<div class="flag">🚩 POTENTIAL FLAG: ${flagFormatted.join(' or ')}</div>`;
+                }
+            }
+            
+            // Check if already contains readable text that might be a flag
+            if (text.includes('flag') || text.includes('FLAG') || text.match(/[A-Za-z]{4,}/)) {
+                return `<div class="flag">🚩 READABLE TEXT FOUND: STEMBACTF{${text.replace(/[^A-Za-z0-9_]/g, '')}}</div>`;
+            }
+            
+            return '';
+        }
+        
+        // Auto-analyze if file is provided via window.fs
+        if (typeof window !== 'undefined' && window.fs && window.fs.readFile) {
+            try {
+                window.fs.readFile('chall.txt').then(data => {
+                    const file = { name: 'chall.txt', size: data.length, type: 'text/plain' };
+                    performAnalysis(data, file);
+                }).catch(err => {
+                    console.log('File not found via window.fs, please upload manually');
+                });
+            } catch (e) {
+                console.log('window.fs not available, please upload manually');
+            }
+        }
+    </script>
+</body>
+</html>

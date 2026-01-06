@@ -1,0 +1,153 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/Net]
+└─$ tshark -r suspicious.pcap
+    1   0.000000  192.168.1.1 → 192.168.2.1  TCP 55 12345 → 80 [SYN] Seq=0 Win=8192 Len=1
+    2   0.000000  192.168.1.2 → 192.168.2.2  UDP 43 54322 → 1235 Len=1
+    3   0.000000  192.168.1.3 → 192.168.2.3  ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+    4   0.000000  192.168.1.4 → 192.168.2.4  DNS 73 Standard query 0x0000 A example4.com
+    5   0.000000  192.168.1.5 → 192.168.2.5  TCP 55 12349 → 84 [SYN] Seq=0 Win=8192 Len=1
+    6   0.000000  192.168.1.6 → 192.168.2.6  UDP 43 54326 → 1239 Len=1
+    7   0.000000  192.168.1.7 → 192.168.2.7  ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+    8   0.000000  192.168.1.8 → 192.168.2.8  DNS 73 Standard query 0x0000 A example8.com
+    9   0.000000  192.168.1.9 → 192.168.2.9  KRB5 55
+   10   0.000000 192.168.1.10 → 192.168.2.10 UDP 43 54330 → 1243 Len=1
+   11   0.000000 192.168.1.11 → 192.168.2.11 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   12   0.000000 192.168.1.12 → 192.168.2.12 DNS 74 Standard query 0x0000 A example12.com
+   13   0.000000 192.168.1.13 → 192.168.2.13 TCP 55 12357 → 92 [SYN] Seq=0 Win=8192 Len=1
+   14   0.000000 192.168.1.14 → 192.168.2.14 UDP 43 54334 → 1247 Len=1
+   15   0.000000 192.168.1.15 → 192.168.2.15 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   16   0.000000 192.168.1.16 → 192.168.2.16 DNS 74 Standard query 0x0000 A example16.com
+   17   0.000000 192.168.1.17 → 192.168.2.17 TCP 55 12361 → 96 [SYN] Seq=0 Win=8192 Len=1
+   18   0.000000 192.168.1.18 → 192.168.2.18 UDP 43 54338 → 1251 Len=1
+   19   0.000000 192.168.1.19 → 192.168.2.19 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   20   0.000000 192.168.1.20 → 192.168.2.20 DNS 74 Standard query 0x0000 A example20.com
+   21   0.000000 192.168.1.21 → 192.168.2.21 TCP 55 12365 → 100 [SYN] Seq=0 Win=8192 Len=1
+   22   0.000000 192.168.1.22 → 192.168.2.22 UDP 43 54342 → 1255 Len=1
+   23   0.000000 192.168.1.23 → 192.168.2.23 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   24   0.000000 192.168.1.24 → 192.168.2.24 DNS 74 Standard query 0x0000 A example24.com
+   25   0.000000 192.168.1.25 → 192.168.2.25 TCP 55 12369 → 104 [SYN] Seq=0 Win=8192 Len=1
+   26   0.000000 192.168.1.26 → 192.168.2.26 UDP 43 54346 → 1259 Len=1
+   27   0.000000 192.168.1.27 → 192.168.2.27 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   28   0.000000 192.168.1.28 → 192.168.2.28 DNS 74 Standard query 0x0000 A example28.com
+   29   0.000000 192.168.1.29 → 192.168.2.29 TCP 55 12373 → 108 [SYN] Seq=0 Win=8192 Len=1
+   30   0.000000 192.168.1.30 → 192.168.2.30 UDP 43 54350 → 1263 Len=1
+   31   0.000000 192.168.1.31 → 192.168.2.31 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   32   0.000000 192.168.1.32 → 192.168.2.32 DNS 74 Standard query 0x0000 A example32.com
+   33   0.000000 192.168.1.33 → 192.168.2.33 TCP 55 12377 → 112 [SYN] Seq=0 Win=8192 Len=1
+   34   0.000000 192.168.1.34 → 192.168.2.34 UDP 43 54354 → 1267 Len=1
+   35   0.000000 192.168.1.35 → 192.168.2.35 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   36   0.000000 192.168.1.36 → 192.168.2.36 DNS 74 Standard query 0x0000 A example36.com
+   37   0.000000 192.168.1.37 → 192.168.2.37 TCP 55 12381 → 116 [SYN] Seq=0 Win=8192 Len=1
+   38   0.000000 192.168.1.38 → 192.168.2.38 UDP 43 54358 → 1271 Len=1
+   39   0.000000 192.168.1.39 → 192.168.2.39 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   40   0.000000 192.168.1.40 → 192.168.2.40 DNS 74 Standard query 0x0000 A example40.com
+   41   0.000000 192.168.1.41 → 192.168.2.41 TCP 55 12385 → 120 [SYN] Seq=0 Win=8192 Len=1
+   42   0.000000 192.168.1.42 → 192.168.2.42 UDP 43 54362 → 1275 Len=1
+   43   0.000000 192.168.1.43 → 192.168.2.43 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   44   0.000000 192.168.1.44 → 192.168.2.44 DNS 74 Standard query 0x0000 A example44.com
+   45   0.000000 192.168.1.45 → 192.168.2.45 TCP 55 12389 → 124 [SYN] Seq=0 Win=8192 Len=1
+   46   0.000000 192.168.1.46 → 192.168.2.46 UDP 43 54366 → 1279 Len=1
+   47   0.000000 192.168.1.47 → 192.168.2.47 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   48   0.000000 192.168.1.48 → 192.168.2.48 DNS 74 Standard query 0x0000 A example48.com
+   49   0.000000 192.168.1.49 → 192.168.2.49 TCP 55 12393 → 128 [SYN] Seq=0 Win=8192 Len=1
+   50   0.000000 192.168.1.50 → 192.168.2.50 UDP 43 54370 → 1283 Len=1
+   51   0.000000 192.168.1.51 → 192.168.2.51 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   52   0.000000 192.168.1.52 → 192.168.2.52 DNS 74 Standard query 0x0000 A example52.com
+   53   0.000000 192.168.1.53 → 192.168.2.53 TCP 55 12397 → 132 [SYN] Seq=0 Win=8192 Len=1
+   54   0.000000 192.168.1.54 → 192.168.2.54 UDP 43 54374 → 1287 Len=1
+   55   0.000000 192.168.1.55 → 192.168.2.55 ICMP 43 Echo (ping) request  id=0x0000, seq=0/0, ttl=64
+   56   0.000000 192.168.1.56 → 192.168.2.56 DNS 74 Standard query 0x0000 A example56.com
+   57   0.000000 192.168.1.57 → 192.168.2.57 TCP 55 12401 → 136 [SYN] Seq=0 Win=8192 Len=1
+   58   0.000000 192.168.1.58 → 192.168.2.58 UDP 43 54378 → 1291 Len=1
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/Net]
+└─$ tshark -r suspicious.pcap -T fields -e frame.number -e ip.src -e ip.dst -e frame.protocols
+1       192.168.1.1     192.168.2.1     eth:ethertype:ip:tcp
+2       192.168.1.2     192.168.2.2     eth:ethertype:ip:udp:data
+3       192.168.1.3     192.168.2.3     eth:ethertype:ip:icmp:data
+4       192.168.1.4     192.168.2.4     eth:ethertype:ip:udp:dns
+5       192.168.1.5     192.168.2.5     eth:ethertype:ip:tcp:data
+6       192.168.1.6     192.168.2.6     eth:ethertype:ip:udp:data
+7       192.168.1.7     192.168.2.7     eth:ethertype:ip:icmp:data
+8       192.168.1.8     192.168.2.8     eth:ethertype:ip:udp:dns
+9       192.168.1.9     192.168.2.9     eth:ethertype:ip:tcp
+10      192.168.1.10    192.168.2.10    eth:ethertype:ip:udp:data
+11      192.168.1.11    192.168.2.11    eth:ethertype:ip:icmp:data
+12      192.168.1.12    192.168.2.12    eth:ethertype:ip:udp:dns
+13      192.168.1.13    192.168.2.13    eth:ethertype:ip:tcp:data
+14      192.168.1.14    192.168.2.14    eth:ethertype:ip:udp:data
+15      192.168.1.15    192.168.2.15    eth:ethertype:ip:icmp:data
+16      192.168.1.16    192.168.2.16    eth:ethertype:ip:udp:dns
+17      192.168.1.17    192.168.2.17    eth:ethertype:ip:tcp:data
+18      192.168.1.18    192.168.2.18    eth:ethertype:ip:udp:data
+19      192.168.1.19    192.168.2.19    eth:ethertype:ip:icmp:data
+20      192.168.1.20    192.168.2.20    eth:ethertype:ip:udp:dns
+21      192.168.1.21    192.168.2.21    eth:ethertype:ip:tcp:data
+22      192.168.1.22    192.168.2.22    eth:ethertype:ip:udp:data
+23      192.168.1.23    192.168.2.23    eth:ethertype:ip:icmp:data
+24      192.168.1.24    192.168.2.24    eth:ethertype:ip:udp:dns
+25      192.168.1.25    192.168.2.25    eth:ethertype:ip:tcp:data
+26      192.168.1.26    192.168.2.26    eth:ethertype:ip:udp:data
+27      192.168.1.27    192.168.2.27    eth:ethertype:ip:icmp:data
+28      192.168.1.28    192.168.2.28    eth:ethertype:ip:udp:dns
+29      192.168.1.29    192.168.2.29    eth:ethertype:ip:tcp:data
+30      192.168.1.30    192.168.2.30    eth:ethertype:ip:udp:data
+31      192.168.1.31    192.168.2.31    eth:ethertype:ip:icmp:data
+32      192.168.1.32    192.168.2.32    eth:ethertype:ip:udp:dns
+33      192.168.1.33    192.168.2.33    eth:ethertype:ip:tcp:data
+34      192.168.1.34    192.168.2.34    eth:ethertype:ip:udp:data
+35      192.168.1.35    192.168.2.35    eth:ethertype:ip:icmp:data
+36      192.168.1.36    192.168.2.36    eth:ethertype:ip:udp:dns
+37      192.168.1.37    192.168.2.37    eth:ethertype:ip:tcp:data
+38      192.168.1.38    192.168.2.38    eth:ethertype:ip:udp:data
+39      192.168.1.39    192.168.2.39    eth:ethertype:ip:icmp:data
+40      192.168.1.40    192.168.2.40    eth:ethertype:ip:udp:dns
+41      192.168.1.41    192.168.2.41    eth:ethertype:ip:tcp:data
+42      192.168.1.42    192.168.2.42    eth:ethertype:ip:udp:data
+43      192.168.1.43    192.168.2.43    eth:ethertype:ip:icmp:data
+44      192.168.1.44    192.168.2.44    eth:ethertype:ip:udp:dns
+45      192.168.1.45    192.168.2.45    eth:ethertype:ip:tcp:data
+46      192.168.1.46    192.168.2.46    eth:ethertype:ip:udp:data
+47      192.168.1.47    192.168.2.47    eth:ethertype:ip:icmp:data
+48      192.168.1.48    192.168.2.48    eth:ethertype:ip:udp:dns
+49      192.168.1.49    192.168.2.49    eth:ethertype:ip:tcp:data
+50      192.168.1.50    192.168.2.50    eth:ethertype:ip:udp:data
+51      192.168.1.51    192.168.2.51    eth:ethertype:ip:icmp:data
+52      192.168.1.52    192.168.2.52    eth:ethertype:ip:udp:dns
+53      192.168.1.53    192.168.2.53    eth:ethertype:ip:tcp:data
+54      192.168.1.54    192.168.2.54    eth:ethertype:ip:udp:data
+55      192.168.1.55    192.168.2.55    eth:ethertype:ip:icmp:data
+56      192.168.1.56    192.168.2.56    eth:ethertype:ip:udp:dns
+57      192.168.1.57    192.168.2.57    eth:ethertype:ip:tcp:data
+58      192.168.1.58    192.168.2.58    eth:ethertype:ip:udp:data
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/STEMBA-CTF/Forensic/Net]
+└─$ tshark -r suspicious.pcap -Y "udp" -T fields -e data
+31
+
+55
+
+31
+
+30
+
+33
+
+57
+
+48
+
+31
+
+44
+
+31
+
+47
+
+57
+
+47
+
+53
+
+3d

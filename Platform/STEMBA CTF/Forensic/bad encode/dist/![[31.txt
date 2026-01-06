@@ -1,0 +1,7 @@
+[![[2EShellClassInfo]
+LocalizedResourceName![[3D![[40![[25SystemRoot![[25\system![[33![[32\shell![[33![[32![[2Edll![[2C![[2D![[32![[31![[38![[31![[30
+IconResource![[3D![[25SystemRoot![[25\system![[33![[32\imageres![[2Edll![[2C![[2D![[31![[38![[35
+DefaultDropEffect![[3D![[34
+[LocalizedFileNames]
+Desktop![[2Elnk![[3D![[40shell![[33![[32![[2Edll![[2C![[2D![[32![[31![[37![[36![[39
+Downloads![[2Elnk![[3D![[40shell![[33![[32![[2Edll![[2C![[2D![[32![[31![[37![[39![[38

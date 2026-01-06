@@ -1,0 +1,13 @@
+![[3B![[20for![[20![[31![[36![[2Dbit![[20app![[20support
+[![[33![[38![[36Enh]
+woafont![[3Ddosapp![[2Efon
+EGA![[38![[30WOA![[2EFON![[3DEGA![[38![[30WOA![[2EFON
+EGA![[34![[30WOA![[2EFON![[3DEGA![[34![[30WOA![[2EFON
+CGA![[38![[30WOA![[2EFON![[3DCGA![[38![[30WOA![[2EFON
+CGA![[34![[30WOA![[2EFON![[3DCGA![[34![[30WOA![[2EFON
+
+[drivers]
+wave![[3Dmmdrv![[2Edll
+timer![[3Dtimer![[2Edrv
+
+[mci]
