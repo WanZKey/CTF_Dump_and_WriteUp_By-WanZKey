@@ -1,0 +1,23 @@
+# Cek Field Yang Ada
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ITB CTF Community/Forensic/Asepss Secret]
+└─$ tshark -r chall.pcap -T fields -e frame.number -e _ws.col.Info -e usb.transfer_type -e usb.endpoint_address -e usb.data_len -c 20
+1       GET DESCRIPTOR Request DEVICE   0x02    0x80    8
+2       GET DESCRIPTOR Response DEVICE  0x02    0x80    18
+3       GET DESCRIPTOR Request CONFIGURATION    0x02    0x80    8
+4       GET DESCRIPTOR Response CONFIGURATION   0x02    0x80    59
+5       SET CONFIGURATION Request       0x02    0x00    8
+6       SET CONFIGURATION Response      0x02    0x00    0
+7       GET DESCRIPTOR Request DEVICE   0x02    0x80    8
+8       GET DESCRIPTOR Response DEVICE  0x02    0x80    18
+9       GET DESCRIPTOR Request CONFIGURATION    0x02    0x80    8
+10      GET DESCRIPTOR Response CONFIGURATION   0x02    0x80    32
+11      SET CONFIGURATION Request       0x02    0x00    8
+12      SET CONFIGURATION Response      0x02    0x00    0
+13      GET DESCRIPTOR Request DEVICE   0x02    0x80    8
+14      GET DESCRIPTOR Response DEVICE  0x02    0x80    18
+15      GET DESCRIPTOR Request CONFIGURATION    0x02    0x80    8
+16      GET DESCRIPTOR Response CONFIGURATION   0x02    0x80    759
+17      SET CONFIGURATION Request       0x02    0x00    8
+18      SET CONFIGURATION Response      0x02    0x00    0
+19      GET DESCRIPTOR Request DEVICE   0x02    0x80    8
+20      GET DESCRIPTOR Response DEVICE  0x02    0x80    18
