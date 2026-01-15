@@ -1,0 +1,7 @@
+services:
+  oto4-web:
+    image: ghcr.io/hengkerrusia/oto4:latest
+    ports:
+      - "1340:80"
+    environment:
+      - PWN=${PWN}

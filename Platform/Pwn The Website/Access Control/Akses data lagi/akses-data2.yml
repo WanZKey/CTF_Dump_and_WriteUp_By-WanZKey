@@ -1,0 +1,11 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/oto2:latest
+    ports:
+      - "1340:80"
+    environment:
+      - PWN=${PWN:-defaultuser}
+    volumes:
+      - app_data:/var/www/html/data
+volumes:
+  app_data:

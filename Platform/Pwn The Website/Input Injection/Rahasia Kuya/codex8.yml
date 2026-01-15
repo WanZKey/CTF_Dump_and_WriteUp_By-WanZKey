@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/codex8:latest
+    ports:
+      - "1337:1337"
+    environment:
+      - PWN=${PWN:-testuser}

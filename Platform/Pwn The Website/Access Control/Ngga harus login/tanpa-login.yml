@@ -1,0 +1,9 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/auth3:latest
+    ports:
+      - "1337:80"
+    environment:
+      - USERNAME=${USERNAME:-testuser}
+    
+ 

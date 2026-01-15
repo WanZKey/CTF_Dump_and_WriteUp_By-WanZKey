@@ -1,0 +1,8 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/auth1:latest
+    ports:
+      - "1338:3000"
+    environment:
+      - PWN=${PWN:-testuser}
+

@@ -1,0 +1,11 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/oto1:latest
+    ports:
+      - "1337:80"
+    environment:
+      - PWN=WanZKey
+    volumes:
+      - app_data:/var/www/html/data
+volumes:
+  app_data:
