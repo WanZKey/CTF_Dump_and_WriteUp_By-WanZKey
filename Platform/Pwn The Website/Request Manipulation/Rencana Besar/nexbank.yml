@@ -1,0 +1,9 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/nexbank:latest
+    ports:
+      - "1337:3000"
+    environment:
+      - PWN=${PWN:-testuser}
+    command: sh /app/entrypoint.sh
+    restart: unless-stopped
