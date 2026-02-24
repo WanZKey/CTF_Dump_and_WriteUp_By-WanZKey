@@ -1,0 +1,10 @@
+<% if @claims['role'] == 'admin' %>
+    <h1>Admin Console</h1>
+    <p>Welcome, Administrator.</p>
+    <p>The flag is in the environment variables. You need RCE to get it.</p>
+<% else %>
+    <h1>User Dashboard</h1>
+    <p>Welcome, <%= h @claims['username'] %>.</p>
+    <div class="message error">Access Restricted: You can perform standard user operations only.</div>
+<% end %>
+<a href="/logout" class="logout">Terminate Session</a>

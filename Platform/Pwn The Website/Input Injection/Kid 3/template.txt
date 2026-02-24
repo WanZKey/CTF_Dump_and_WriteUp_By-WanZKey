@@ -1,0 +1,397 @@
+Next chall, katagorinya masih sama "Input Injection" kelanjutan Kid 2:
+Kid 3
+Challenge
+0 Solver
+Input InjectionMedium
+🪙 25
+🎯
+Mission Objective
+
+Bongkar rahasia admin.
+Kredensial:
+[username_lu]:anyaunyu
+🐳
+Docker
+kid-iii.yml
+:1337
+
+Start
+PWN=WanZKey docker compose -f kid-iii.yml up -d --build
+
+Stop
+PWN=WanZKey docker compose -f kid-iii.yml stop
+
+Clean
+PWN=WanZKey docker compose -f kid-iii.yml down -v
+
+
+Resources
+Copy wget
+kid-iii.yml
+file
+
+
+info attachment:
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.27
+ 󰋑  ▶  PWN=WanZKey docker compose -f kid-iii.yml up -d --build
+[+] Running 7/7
+ ✔ web Pulled                                                                                       7.3s
+   ✔ 589002ba0eae Already exists                                                                    0.0s
+   ✔ e0d55006b523 Already exists                                                                    0.0s
+   ✔ d922b3555a94 Pull complete                                                                     1.7s
+   ✔ 80b852b942b4 Pull complete                                                                     4.0s
+   ✔ def4b021dc48 Pull complete                                                                     4.1s
+   ✔ dfa81175dda9 Pull complete                                                                     4.2s
+[+] Running 2/2
+ ✔ Network kid3_default  Created                                                                    0.3s
+ ✔ Container kid3-web-1  Started                                                                    2.0s
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 11s 󱑎 20.27
+ 󰋑  ▶  docker exec kid3-web-1 ls -la
+total 14384
+drwxr-xr-x    1 root     root          4096 Feb  4 13:27 .
+drwxr-xr-x    1 root     root          4096 Feb  4 13:27 ..
+-rwxr-xr-x    1 root     root      14707288 Feb  4 09:22 main
+-rw-r--r--    1 root     root         12288 Feb  4 13:27 test.db
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.27
+ 󰋑  ▶  docker exec kid3-web-1 ls -la main
+-rwxr-xr-x    1 root     root      14707288 Feb  4 09:22 main
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.27
+ 󰋑  ▶  docker exec kid3-web-1 pwd
+/app
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.27
+ 󰋑  ▶  docker cp kid3-web-1:app/main ./main
+Successfully copied 14.7MB to /home/wanzkey/Pwn The Website/Input Injection/Kid 3/main
+
+
+Informasi File main:
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.28
+ 󰋑  ▶  file main
+main: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-x86_64.so.1, BuildID[sha1]=ea8bbfb98e08d37c96c5d3f5339cbbdbd6f25fd2, with debug_info, not stripped
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.28
+ 󰋑  ▶  checksec --file=main
+[*] '/home/wanzkey/Pwn The Website/Input Injection/Kid 3/main'
+    Arch:       amd64-64-little
+    RELRO:      Full RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        No PIE (0x400000)
+    Stripped:   No
+    Debuginfo:  Yes
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 2s 󱑎 20.28
+ 󰋑  ▶  nm main | grep "main"
+00000000007930a0 T _cgo_49be48e6dc6e_Cfunc_sqlite3_backup_remaining
+0000000000689680 t crypto/x509.domainToReverseLabels
+0000000000689d80 t crypto/x509.matchDomainConstraint
+0000000000779140 t github.com/mattn/go-sqlite3._Cfunc_sqlite3_backup_remaining.abi0
+0000000000c73170 d github.com/mattn/go-sqlite3._cgo_49be48e6dc6e_Cfunc_sqlite3_backup_remaining
+000000000077c2a0 t github.com/mattn/go-sqlite3.(*SQLiteBackup).Remaining
+000000000077c2e0 t github.com/mattn/go-sqlite3.(*SQLiteBackup).Remaining.func1
+00000000009e8888 r go:itab.*main.Claims,github.com/golang-jwt/jwt/v5.Claims
+00000000009e4e80 r go:itab.vendor/golang.org/x/net/http/httpproxy.domainMatch,vendor/golang.org/x/net/http/httpproxy.matcher
+0000000000c93f00 d go:main.inittasks
+                 U __libc_start_main
+0000000000476fc0 T main
+00000000007926c0 t main.(*Claims).GetAudience
+0000000000792660 t main.Claims.GetAudience
+0000000000792780 t main.(*Claims).GetExpirationTime
+0000000000792720 t main.Claims.GetExpirationTime
+0000000000792840 t main.(*Claims).GetIssuedAt
+00000000007927e0 t main.Claims.GetIssuedAt
+0000000000792900 t main.(*Claims).GetIssuer
+00000000007928a0 t main.Claims.GetIssuer
+00000000007929c0 t main.(*Claims).GetNotBefore
+0000000000792960 t main.Claims.GetNotBefore
+0000000000792a80 t main.(*Claims).GetSubject
+0000000000792a20 t main.Claims.GetSubject
+0000000000cbdea0 b main.db
+00000000007920a0 t main.handleDashboard
+0000000000792480 t main.handleDashboard.func1
+0000000000791800 t main.handleLogin
+0000000000791f80 t main.handleLogout
+00000000007917a0 t main.handleRoot
+00000000007912a0 t main.initDB
+00000000007914a0 t main.initDB.Printf.func1
+0000000000791500 t main.main
+00000000009e1970 r main..stmp_0
+00000000009e1980 r main..stmp_1
+00000000009e1990 r main..stmp_2
+0000000000cbdea8 b main.templates
+0000000000c755d0 d main..typeAssert.0
+0000000000c755f0 d main..typeAssert.1
+0000000000c75610 d main..typeAssert.2
+0000000000760ba0 t net/http.(*body).bodyRemains
+0000000000760c80 t net/http.(*body).bodyRemains.deferwrap1
+0000000000724d80 t net/http.isCookieDomainName
+0000000000756360 t net/http.requestBodyRemains
+0000000000724cc0 t net/http.validCookieDomain
+000000000066eea0 t net.isDomainName
+000000000043d280 t runtime.main
+00000000004693a0 t runtime.main.func1
+000000000043d6a0 t runtime.main.func2
+0000000000cbe158 b runtime.main_init_done
+00000000009e1790 r runtime.mainPC
+0000000000ce01e0 b runtime.mainStarted
+0000000000796970 T sqlite3_backup_remaining
+000000000071f980 t type:.eq.vendor/golang.org/x/net/http/httpproxy.domainMatch
+000000000071fcc0 t vendor/golang.org/x/net/http/httpproxy.(*domainMatch).match
+000000000071f7a0 t vendor/golang.org/x/net/http/httpproxy.domainMatch.match
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.29
+ 󰋑  ▶  gdb -nx -batch -ex "file main" -ex "set disassembly-flavor intel" -ex "disassemble 'main.main'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Input Injection/Kid 3/main.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.main:
+   0x0000000000791500 <+0>:     cmp    rsp,QWORD PTR [r14+0x10]
+   0x0000000000791504 <+4>:     jbe    0x791776 <main.main+630>
+   0x000000000079150a <+10>:    push   rbp
+   0x000000000079150b <+11>:    mov    rbp,rsp
+   0x000000000079150e <+14>:    sub    rsp,0x68
+   0x0000000000791512 <+18>:    call   0x7912a0 <main.initDB>
+   0x0000000000791517 <+23>:    lea    rax,[rip+0x1a5fe2]        # 0x937500
+   0x000000000079151e <+30>:    mov    ebx,0x5
+   0x0000000000791523 <+35>:    call   0x5a6be0 <html/template.New>
+   0x0000000000791528 <+40>:    lea    rbx,[rip+0x1c71a7]        # 0x9586d6
+   0x000000000079152f <+47>:    mov    ecx,0xb0c
+   0x0000000000791534 <+52>:    call   0x5a68c0 <html/template.(*Template).Parse>
+   0x0000000000791539 <+57>:    cmp    DWORD PTR [rip+0x54f360],0x0        # 0xce08a0 <runtime.writeBarrier>
+   0x0000000000791540 <+64>:    je     0x791555 <main.main+85>
+   0x0000000000791542 <+66>:    call   0x4792a0 <runtime.gcWriteBarrier2>
+   0x0000000000791547 <+71>:    mov    QWORD PTR [r11],rax
+   0x000000000079154a <+74>:    mov    rdx,QWORD PTR [rip+0x52c957]        # 0xcbdea8 <main.templates>
+   0x0000000000791551 <+81>:    mov    QWORD PTR [r11+0x8],rdx
+   0x0000000000791555 <+85>:    mov    QWORD PTR [rip+0x52c94c],rax        # 0xcbdea8 <main.templates>
+   0x000000000079155c <+92>:    nop    DWORD PTR [rax+0x0]
+   0x0000000000791560 <+96>:    test   rbx,rbx
+   0x0000000000791563 <+99>:    je     0x791599 <main.main+153>
+   0x0000000000791565 <+101>:   movups XMMWORD PTR [rsp+0x58],xmm15
+   0x000000000079156b <+107>:   je     0x791571 <main.main+113>
+   0x000000000079156d <+109>:   mov    rbx,QWORD PTR [rbx+0x8]
+   0x0000000000791571 <+113>:   mov    QWORD PTR [rsp+0x58],rbx
+   0x0000000000791576 <+118>:   mov    QWORD PTR [rsp+0x60],rcx
+   0x000000000079157b <+123>:   lea    rax,[rip+0x1b7ebd]        # 0x94943f
+   0x0000000000791582 <+130>:   mov    ebx,0x22
+   0x0000000000791587 <+135>:   lea    rcx,[rsp+0x58]
+   0x000000000079158c <+140>:   mov    edi,0x1
+   0x0000000000791591 <+145>:   mov    rsi,rdi
+   0x0000000000791594 <+148>:   call   0x5aea20 <log.Fatalf>
+   0x0000000000791599 <+153>:   mov    rax,QWORD PTR [rip+0x52c908]        # 0xcbdea8 <main.templates>
+   0x00000000007915a0 <+160>:   lea    rbx,[rip+0x1a9582]        # 0x93ab29
+   0x00000000007915a7 <+167>:   mov    ecx,0x9
+   0x00000000007915ac <+172>:   call   0x5a6ee0 <html/template.(*Template).New>
+   0x00000000007915b1 <+177>:   lea    rbx,[rip+0x1c7c2a]        # 0x9591e2
+   0x00000000007915b8 <+184>:   mov    ecx,0xb18
+   0x00000000007915bd <+189>:   nop    DWORD PTR [rax]
+   0x00000000007915c0 <+192>:   call   0x5a68c0 <html/template.(*Template).Parse>
+   0x00000000007915c5 <+197>:   cmp    DWORD PTR [rip+0x54f2d4],0x0        # 0xce08a0 <runtime.writeBarrier>
+   0x00000000007915cc <+204>:   je     0x7915e1 <main.main+225>
+   0x00000000007915ce <+206>:   call   0x4792a0 <runtime.gcWriteBarrier2>
+   0x00000000007915d3 <+211>:   mov    QWORD PTR [r11],rax
+   0x00000000007915d6 <+214>:   mov    rdx,QWORD PTR [rip+0x52c8cb]        # 0xcbdea8 <main.templates>
+   0x00000000007915dd <+221>:   mov    QWORD PTR [r11+0x8],rdx
+   0x00000000007915e1 <+225>:   mov    QWORD PTR [rip+0x52c8c0],rax        # 0xcbdea8 <main.templates>
+   0x00000000007915e8 <+232>:   test   rbx,rbx
+   0x00000000007915eb <+235>:   je     0x791625 <main.main+293>
+   0x00000000007915ed <+237>:   movups XMMWORD PTR [rsp+0x58],xmm15
+   0x00000000007915f3 <+243>:   je     0x7915f9 <main.main+249>
+   0x00000000007915f5 <+245>:   mov    rbx,QWORD PTR [rbx+0x8]
+   0x00000000007915f9 <+249>:   mov    QWORD PTR [rsp+0x58],rbx
+   0x00000000007915fe <+254>:   mov    QWORD PTR [rsp+0x60],rcx
+   0x0000000000791603 <+259>:   lea    rax,[rip+0x1ba49c]        # 0x94baa6
+   0x000000000079160a <+266>:   mov    ebx,0x26
+   0x000000000079160f <+271>:   lea    rcx,[rsp+0x58]
+   0x0000000000791614 <+276>:   mov    edi,0x1
+   0x0000000000791619 <+281>:   mov    rsi,rdi
+   0x000000000079161c <+284>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000791620 <+288>:   call   0x5aea20 <log.Fatalf>
+   0x0000000000791625 <+293>:   lea    rax,[rip+0x1a5474]        # 0x936aa0
+   0x000000000079162c <+300>:   mov    ebx,0x1
+   0x0000000000791631 <+305>:   lea    rcx,[rip+0x1e33f8]        # 0x974a30
+   0x0000000000791638 <+312>:   call   0x7585a0 <net/http.HandleFunc>
+   0x000000000079163d <+317>:   lea    rax,[rip+0x1a69e8]        # 0x93802c
+   0x0000000000791644 <+324>:   mov    ebx,0x6
+   0x0000000000791649 <+329>:   lea    rcx,[rip+0x1e33d0]        # 0x974a20
+   0x0000000000791650 <+336>:   call   0x7585a0 <net/http.HandleFunc>
+   0x0000000000791655 <+341>:   lea    rax,[rip+0x1a798c]        # 0x938fe8
+   0x000000000079165c <+348>:   mov    ebx,0x7
+   0x0000000000791661 <+353>:   lea    rcx,[rip+0x1e33c0]        # 0x974a28
+   0x0000000000791668 <+360>:   call   0x7585a0 <net/http.HandleFunc>
+   0x000000000079166d <+365>:   lea    rax,[rip+0x1a9ee7]        # 0x93b55b
+   0x0000000000791674 <+372>:   mov    ebx,0xa
+   0x0000000000791679 <+377>:   lea    rcx,[rip+0x1e3390]        # 0x974a10
+   0x0000000000791680 <+384>:   call   0x7585a0 <net/http.HandleFunc>
+   0x0000000000791685 <+389>:   movups XMMWORD PTR [rsp+0x48],xmm15
+   0x000000000079168b <+395>:   lea    rax,[rip+0x1a541b]        # 0x936aad
+   0x0000000000791692 <+402>:   mov    ebx,0x2
+   0x0000000000791697 <+407>:   call   0x46b9e0 <runtime.convTstring>
+   0x000000000079169c <+412>:   lea    rdx,[rip+0x1225dd]        # 0x8b3c80
+   0x00000000007916a3 <+419>:   mov    QWORD PTR [rsp+0x48],rdx
+   0x00000000007916a8 <+424>:   mov    QWORD PTR [rsp+0x50],rax
+   0x00000000007916ad <+429>:   mov    rbx,QWORD PTR [rip+0x52c93c]        # 0xcbdff0 <os.Stdout>
+   0x00000000007916b4 <+436>:   lea    rax,[rip+0x252505]        # 0x9e3bc0 <go:itab.*os.File,io.Writer>
+   0x00000000007916bb <+443>:   lea    rcx,[rip+0x1b40c4]        # 0x945786
+   0x00000000007916c2 <+450>:   mov    edi,0x1c
+   0x00000000007916c7 <+455>:   lea    rsi,[rsp+0x48]
+   0x00000000007916cc <+460>:   mov    r8d,0x1
+   0x00000000007916d2 <+466>:   mov    r9,r8
+   0x00000000007916d5 <+469>:   call   0x502260 <fmt.Fprintf>
+   0x00000000007916da <+474>:   xor    eax,eax
+   0x00000000007916dc <+476>:   lea    rbx,[rip+0x24e2a5]        # 0x9df988
+   0x00000000007916e3 <+483>:   mov    ecx,0x1
+   0x00000000007916e8 <+488>:   lea    rdi,[rip+0x1a53be]        # 0x936aad
+   0x00000000007916ef <+495>:   mov    esi,0x2
+   0x00000000007916f4 <+500>:   call   0x457220 <runtime.concatstring2>
+   0x00000000007916f9 <+505>:   mov    QWORD PTR [rsp+0x38],rbx
+   0x00000000007916fe <+510>:   mov    QWORD PTR [rsp+0x40],rax
+   0x0000000000791703 <+515>:   lea    rax,[rip+0x19a936]        # 0x92c040
+   0x000000000079170a <+522>:   call   0x412ba0 <runtime.newobject>
+   0x000000000079170f <+527>:   mov    rdx,QWORD PTR [rsp+0x38]
+   0x0000000000791714 <+532>:   mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000791718 <+536>:   cmp    DWORD PTR [rip+0x54f181],0x0        # 0xce08a0 <runtime.writeBarrier>
+   0x000000000079171f <+543>:   nop
+   0x0000000000791720 <+544>:   jne    0x791729 <main.main+553>
+   0x0000000000791722 <+546>:   mov    rcx,QWORD PTR [rsp+0x40]
+   0x0000000000791727 <+551>:   jmp    0x791736 <main.main+566>
+   0x0000000000791729 <+553>:   call   0x479280 <runtime.gcWriteBarrier1>
+   0x000000000079172e <+558>:   mov    rcx,QWORD PTR [rsp+0x40]
+   0x0000000000791733 <+563>:   mov    QWORD PTR [r11],rcx
+   0x0000000000791736 <+566>:   mov    QWORD PTR [rax],rcx
+   0x0000000000791739 <+569>:   movups XMMWORD PTR [rax+0x10],xmm15
+   0x000000000079173e <+574>:   xchg   ax,ax
+   0x0000000000791740 <+576>:   call   0x759b60 <net/http.(*Server).ListenAndServe>
+   0x0000000000791745 <+581>:   movups XMMWORD PTR [rsp+0x58],xmm15
+   0x000000000079174b <+587>:   test   rax,rax
+   0x000000000079174e <+590>:   je     0x791754 <main.main+596>
+   0x0000000000791750 <+592>:   mov    rax,QWORD PTR [rax+0x8]
+   0x0000000000791754 <+596>:   mov    QWORD PTR [rsp+0x58],rax
+   0x0000000000791759 <+601>:   mov    QWORD PTR [rsp+0x60],rbx
+   0x000000000079175e <+606>:   lea    rax,[rsp+0x58]
+   0x0000000000791763 <+611>:   mov    ebx,0x1
+   0x0000000000791768 <+616>:   mov    rcx,rbx
+   0x000000000079176b <+619>:   call   0x5ae9a0 <log.Fatal>
+   0x0000000000791770 <+624>:   add    rsp,0x68
+   0x0000000000791774 <+628>:   pop    rbp
+   0x0000000000791775 <+629>:   ret
+   0x0000000000791776 <+630>:   call   0x4773a0 <runtime.morestack_noctxt>
+   0x000000000079177b <+635>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000791780 <+640>:   jmp    0x791500 <main.main>
+End of assembler dump.
+
+ WanZKey  ～  ~../Input Injection/Kid 3 󱎫 0s 󱑎 20.30
+ 󰋑  ▶  gdb -nx -batch -ex "file main" -ex "set disassembly-flavor intel" -ex "disassemble 'main.initDB'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Input Injection/Kid 3/main.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.initDB:
+   0x00000000007912a0 <+0>:     lea    r12,[rsp-0x38]
+   0x00000000007912a5 <+5>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x00000000007912a9 <+9>:     jbe    0x791481 <main.initDB+481>
+   0x00000000007912af <+15>:    push   rbp
+   0x00000000007912b0 <+16>:    mov    rbp,rsp
+   0x00000000007912b3 <+19>:    sub    rsp,0xb0
+   0x00000000007912ba <+26>:    lea    rax,[rip+0x1a7d19]        # 0x938fda
+   0x00000000007912c1 <+33>:    mov    ebx,0x7
+   0x00000000007912c6 <+38>:    lea    rcx,[rip+0x1a9853]        # 0x93ab20
+   0x00000000007912cd <+45>:    mov    edi,0x9
+   0x00000000007912d2 <+50>:    call   0x516fe0 <database/sql.Open>
+   0x00000000007912d7 <+55>:    cmp    DWORD PTR [rip+0x54f5c2],0x0        # 0xce08a0 <runtime.writeBarrier>
+   0x00000000007912de <+62>:    xchg   ax,ax
+   0x00000000007912e0 <+64>:    je     0x7912f5 <main.initDB+85>
+   0x00000000007912e2 <+66>:    call   0x4792a0 <runtime.gcWriteBarrier2>
+   0x00000000007912e7 <+71>:    mov    QWORD PTR [r11],rax
+   0x00000000007912ea <+74>:    mov    rdx,QWORD PTR [rip+0x52cbaf]        # 0xcbdea0 <main.db>
+   0x00000000007912f1 <+81>:    mov    QWORD PTR [r11+0x8],rdx
+   0x00000000007912f5 <+85>:    mov    QWORD PTR [rip+0x52cba4],rax        # 0xcbdea0 <main.db>
+   0x00000000007912fc <+92>:    nop    DWORD PTR [rax+0x0]
+   0x0000000000791300 <+96>:    test   rbx,rbx
+   0x0000000000791303 <+99>:    je     0x791339 <main.initDB+153>
+   0x0000000000791305 <+101>:   movups XMMWORD PTR [rsp+0xa0],xmm15
+   0x000000000079130e <+110>:   je     0x791314 <main.initDB+116>
+   0x0000000000791310 <+112>:   mov    rbx,QWORD PTR [rbx+0x8]
+   0x0000000000791314 <+116>:   mov    QWORD PTR [rsp+0xa0],rbx
+   0x000000000079131c <+124>:   mov    QWORD PTR [rsp+0xa8],rcx
+   0x0000000000791324 <+132>:   lea    rax,[rsp+0xa0]
+   0x000000000079132c <+140>:   mov    ebx,0x1
+   0x0000000000791331 <+145>:   mov    rcx,rbx
+   0x0000000000791334 <+148>:   call   0x5ae9a0 <log.Fatal>
+   0x0000000000791339 <+153>:   mov    rax,QWORD PTR [rip+0x52cb60]        # 0xcbdea0 <main.db>
+   0x0000000000791340 <+160>:   lea    rbx,[rip+0x255e29]        # 0x9e7170 <go:itab.context.backgroundCtx,context.Context>
+   0x0000000000791347 <+167>:   lea    rcx,[rip+0x54ee72]        # 0xce01c0 <runtime.zerobase>
+   0x000000000079134e <+174>:   lea    rdi,[rip+0x1c70ed]        # 0x958442
+   0x0000000000791355 <+181>:   mov    esi,0x130
+   0x000000000079135a <+186>:   xor    r8d,r8d
+   0x000000000079135d <+189>:   xor    r9d,r9d
+   0x0000000000791360 <+192>:   mov    r10,r9
+   0x0000000000791363 <+195>:   call   0x51af40 <database/sql.(*DB).ExecContext>
+   0x0000000000791368 <+200>:   test   rcx,rcx
+   0x000000000079136b <+203>:   je     0x791478 <main.initDB+472>
+   0x0000000000791371 <+209>:   mov    QWORD PTR [rsp+0x40],rcx
+   0x0000000000791376 <+214>:   movups XMMWORD PTR [rsp+0x50],xmm15
+   0x000000000079137c <+220>:   movups XMMWORD PTR [rsp+0x60],xmm15
+   0x0000000000791382 <+226>:   je     0x79138a <main.initDB+234>
+   0x0000000000791384 <+228>:   mov    rdx,QWORD PTR [rcx+0x8]
+   0x0000000000791388 <+232>:   jmp    0x79138d <main.initDB+237>
+   0x000000000079138a <+234>:   mov    rdx,rcx
+   0x000000000079138d <+237>:   mov    QWORD PTR [rsp+0x48],rdi
+   0x0000000000791392 <+242>:   mov    QWORD PTR [rsp+0x50],rdx
+   0x0000000000791397 <+247>:   mov    QWORD PTR [rsp+0x58],rdi
+   0x000000000079139c <+252>:   lea    rax,[rip+0x1c709f]        # 0x958442
+   0x00000000007913a3 <+259>:   mov    ebx,0x130
+   0x00000000007913a8 <+264>:   call   0x46b9e0 <runtime.convTstring>
+   0x00000000007913ad <+269>:   lea    rcx,[rip+0x1228cc]        # 0x8b3c80
+   0x00000000007913b4 <+276>:   mov    QWORD PTR [rsp+0x60],rcx
+   0x00000000007913b9 <+281>:   mov    QWORD PTR [rsp+0x68],rax
+   0x00000000007913be <+286>:   movups XMMWORD PTR [rsp+0x70],xmm15
+   0x00000000007913c4 <+292>:   movups XMMWORD PTR [rsp+0x80],xmm15
+   0x00000000007913cd <+301>:   movups XMMWORD PTR [rsp+0x90],xmm15
+   0x00000000007913d6 <+310>:   lea    rcx,[rip+0xc3]        # 0x7914a0 <main.initDB.Printf.func1>
+   0x00000000007913dd <+317>:   mov    QWORD PTR [rsp+0x70],rcx
+   0x00000000007913e2 <+322>:   mov    QWORD PTR [rsp+0x80],0x7
+   0x00000000007913ee <+334>:   lea    rcx,[rip+0x1a7bec]        # 0x938fe1
+   0x00000000007913f5 <+341>:   mov    QWORD PTR [rsp+0x78],rcx
+   0x00000000007913fa <+346>:   mov    QWORD PTR [rsp+0x90],0x2
+   0x0000000000791406 <+358>:   mov    QWORD PTR [rsp+0x98],0x2
+   0x0000000000791412 <+370>:   lea    rcx,[rsp+0x50]
+   0x0000000000791417 <+375>:   mov    QWORD PTR [rsp+0x88],rcx
+   0x000000000079141f <+383>:   mov    rax,QWORD PTR [rip+0x52cae2]        # 0xcbdf08 <log.std>
+   0x0000000000791426 <+390>:   xor    ebx,ebx
+   0x0000000000791428 <+392>:   mov    ecx,0x2
+   0x000000000079142d <+397>:   lea    rdi,[rsp+0x70]
+   0x0000000000791432 <+402>:   call   0x5ad980 <log.(*Logger).output>
+   0x0000000000791437 <+407>:   movups XMMWORD PTR [rsp+0xa0],xmm15
+   0x0000000000791440 <+416>:   mov    rcx,QWORD PTR [rsp+0x40]
+   0x0000000000791445 <+421>:   test   rcx,rcx
+   0x0000000000791448 <+424>:   je     0x79144e <main.initDB+430>
+   0x000000000079144a <+426>:   mov    rcx,QWORD PTR [rcx+0x8]
+   0x000000000079144e <+430>:   mov    QWORD PTR [rsp+0xa0],rcx
+   0x0000000000791456 <+438>:   mov    rdx,QWORD PTR [rsp+0x48]
+   0x000000000079145b <+443>:   mov    QWORD PTR [rsp+0xa8],rdx
+   0x0000000000791463 <+451>:   lea    rax,[rsp+0xa0]
+   0x000000000079146b <+459>:   mov    ebx,0x1
+   0x0000000000791470 <+464>:   mov    rcx,rbx
+   0x0000000000791473 <+467>:   call   0x5ae9a0 <log.Fatal>
+   0x0000000000791478 <+472>:   add    rsp,0xb0
+   0x000000000079147f <+479>:   pop    rbp
+   0x0000000000791480 <+480>:   ret
+   0x0000000000791481 <+481>:   call   0x4773a0 <runtime.morestack_noctxt>
+   0x0000000000791486 <+486>:   jmp    0x7912a0 <main.initDB>
+End of assembler dump.
+
+btw ketika dissambler "main.db" kenapa gabisa?
+ 󰋑  ▶  gdb -nx -batch -ex "file main" -ex "set disassembly-flavor intel" -ex "disassemble 'main.db'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Input Injection/Kid 3/main.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+No function contains specified address.
+
+Informasi test.db:
+ 󰋑  ▶  docker exec kid3-web-1 cat test.db
+,�,\�ablekeyskeysCREATE TABLE keys (id INTEGER NOT NULL PRIMARY KEY, kid TEXT, key TEXT)t�GtableusersusersCREATE TABLE u��+1secretkeyIsHere¶
+
+Jadi gimana bro?
