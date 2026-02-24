@@ -1,0 +1,6 @@
+forge-std/=/home/wanzkey/Global-CTF-Libs/lib/forge-std/src/
+openzeppelin-contracts/=/home/wanzkey/Global-CTF-Libs/lib/openzeppelin-contracts/
+@openzeppelin/contracts/=/home/wanzkey/Global-CTF-Libs/lib/openzeppelin-contracts/contracts/
+erc4626-tests/=/home/wanzkey/Global-CTF-Libs/lib/openzeppelin-contracts/lib/erc4626-tests/
+solady/=/home/wanzkey/Global-CTF-Libs/lib/solady/src/
+lib/solady/src/=/home/wanzkey/Global-CTF-Libs/lib/solady/src/

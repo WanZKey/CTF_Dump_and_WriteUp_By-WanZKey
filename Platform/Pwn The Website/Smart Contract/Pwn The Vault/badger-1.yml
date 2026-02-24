@@ -1,0 +1,16 @@
+services:
+  badger-zap-ctf:
+    image: ghcr.io/hengkerrusia/badger-1:latest
+    container_name: badger-zap-challenge
+    environment:
+      - PWN=${PWN:-testuser}
+      - CHALLENGE_SEED=${CHALLENGE_SEED:-pwnthevault}
+    networks:
+      - ctf-network
+    ports:
+      - "8545:8545"
+    restart: unless-stopped
+
+networks:
+  ctf-network:
+    driver: bridge
