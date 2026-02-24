@@ -1,0 +1,1974 @@
+Berikut selanjutnya katagori Cryptography:
+Flip
+Challenge
+0 Solver
+CryptoMedium
+🪙 25
+🎯
+Mission Objective
+
+Masuk sebagai administrator, admin, system, atau root.
+🐳
+Docker
+flip.yml
+:1337
+
+Start
+PWN=WanZKey docker compose -f flip.yml up -d --build
+
+Stop
+PWN=WanZKey docker compose -f flip.yml stop
+
+Clean
+PWN=WanZKey docker compose -f flip.yml down -v
+
+📦 10.2MB
+💾 32.3MB
+
+Resources
+Copy wget
+flip.yml
+file
+
+
+
+Info attachment:
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.37
+ 󰋑  ▶  PWN=WanZKey docker compose -f flip.yml up -d
+[+] Running 2/2
+ ✔ Network flip_default  Created                                                                                           0.3s
+ ✔ Container flip-web-1  Started                                                                                           3.5s
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 4s 󱑎 09.37
+ 󰋑  ▶  docker exec flip-web-1 ls -la
+total 9804
+drwxr-xr-x 1 root root     4096 Feb  4 02:37 .
+drwxr-xr-x 1 root root     4096 Feb  4 02:37 ..
+-rwxr-xr-x 1 root root 10024076 Jan 26 23:44 app
+drwxr-xr-x 2 root root     4096 Jan 26 23:23 templates
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.37
+ 󰋑  ▶  docker exec flip-web-1 ls -la app
+-rwxr-xr-x 1 root root 10024076 Jan 26 23:44 app
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.37
+ 󰋑  ▶  docker cp flip-web-1:app/app ./app
+Successfully copied 10MB to /home/wanzkey/Pwn The Website/Cryptography/Flip/app
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.38
+ 󰋑  ▶  file app
+app: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=Dh840qk1sjphWCWfdnkX/olSMnYvdTdLajhuY7Akd/K9JmNajVVbZdjYGovnRF/mEurqD0HP_nG1NyfC_7S, with debug_info, not stripped
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.38
+ 󰋑  ▶  checksec --file=app
+[*] '/home/wanzkey/Pwn The Website/Cryptography/Flip/app'
+    Arch:       amd64-64-little
+    RELRO:      No RELRO
+    Stack:      No canary found
+    NX:         NX enabled
+    PIE:        No PIE (0x400000)
+    Stripped:   No
+    Debuginfo:  Yes
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.39
+ 󰋑  ▶  nm app | grep "main"
+0000000000647560 T crypto/x509.domainToReverseLabels
+0000000000647c00 T crypto/x509.matchDomainConstraint
+0000000000845a00 R go:itab.vendor/golang.org/x/net/http/httpproxy.domainMatch,vendor/golang.org/x/net/http/httpproxy.matcher
+0000000000a50e80 D go:main.inittasks
+0000000000718b40 T main.dashboardHandler
+00000000007174c0 T main.decrypt
+0000000000717280 T main.encrypt
+0000000000716ca0 T main.init
+0000000000716ce0 T main.init.0
+0000000000716fc0 T main.init.0.Printf.func1
+0000000000a4afb0 D main..inittask
+0000000000717a20 T main.loginHandler
+0000000000718a40 T main.logoutHandler
+00000000007176a0 T main.main
+00000000007192e0 T main.main.func1
+00000000007179c0 T main.main.Printf.func2
+0000000000717960 T main.main.Printf.func3
+0000000000717020 T main.pad
+0000000000718180 T main.registerHandler
+0000000000a903a0 B main.secretKey
+0000000000a8fba8 B main.templates
+0000000000a7d930 d main..typeAssert.0
+0000000000a7d950 d main..typeAssert.1
+0000000000a7da70 d main..typeAssert.10
+0000000000a7d970 d main..typeAssert.2
+0000000000a7d990 d main..typeAssert.3
+0000000000a7d9b0 d main..typeAssert.4
+0000000000a7d9d0 d main..typeAssert.5
+0000000000a7d9f0 d main..typeAssert.6
+0000000000a7da10 d main..typeAssert.7
+0000000000a7da30 d main..typeAssert.8
+0000000000a7da50 d main..typeAssert.9
+0000000000717140 T main.unpad
+0000000000a8fba0 B main.users
+000000000070f320 T net/http.(*body).bodyRemains
+000000000070f400 T net/http.(*body).bodyRemains.deferwrap1
+00000000006d0740 T net/http.isCookieDomainName
+0000000000704940 T net/http.requestBodyRemains
+00000000006d0680 T net/http.validCookieDomain
+000000000060c720 T net.isDomainName
+000000000043de80 T runtime.main
+0000000000468320 T runtime.main.func1
+000000000043e2a0 T runtime.main.func2
+0000000000a8fd90 B runtime.main_init_done
+00000000008429c8 R runtime.mainPC
+0000000000af13e0 B runtime.mainStarted
+00000000006ca940 T type:.eq.vendor/golang.org/x/net/http/httpproxy.domainMatch
+00000000006cac80 T vendor/golang.org/x/net/http/httpproxy.(*domainMatch).match
+00000000006ca780 T vendor/golang.org/x/net/http/httpproxy.domainMatch.match
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.51
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.init'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.init:
+   0x0000000000716ca0 <+0>:     cmp    rsp,QWORD PTR [r14+0x10]
+   0x0000000000716ca4 <+4>:     jbe    0x716cd4 <main.init+52>
+   0x0000000000716ca6 <+6>:     push   rbp
+   0x0000000000716ca7 <+7>:     mov    rbp,rsp
+   0x0000000000716caa <+10>:    call   0x4126e0 <runtime.makemap_small>
+   0x0000000000716caf <+15>:    cmp    DWORD PTR [rip+0x3dab9a],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000716cb6 <+22>:    je     0x716ccb <main.init+43>
+   0x0000000000716cb8 <+24>:    call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000716cbd <+29>:    mov    QWORD PTR [r11],rax
+   0x0000000000716cc0 <+32>:    mov    rcx,QWORD PTR [rip+0x378ed9]        # 0xa8fba0 <main.users>
+   0x0000000000716cc7 <+39>:    mov    QWORD PTR [r11+0x8],rcx
+   0x0000000000716ccb <+43>:    mov    QWORD PTR [rip+0x378ece],rax        # 0xa8fba0 <main.users>
+   0x0000000000716cd2 <+50>:    pop    rbp
+   0x0000000000716cd3 <+51>:    ret
+   0x0000000000716cd4 <+52>:    call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000716cd9 <+57>:    jmp    0x716ca0 <main.init>
+End of assembler dump.
+
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.53
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.encrypt'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.encrypt:
+   0x0000000000717280 <+0>:     cmp    rsp,QWORD PTR [r14+0x10]
+   0x0000000000717284 <+4>:     jbe    0x717486 <main.encrypt+518>
+   0x000000000071728a <+10>:    push   rbp
+   0x000000000071728b <+11>:    mov    rbp,rsp
+   0x000000000071728e <+14>:    sub    rsp,0x78
+   0x0000000000717292 <+18>:    mov    QWORD PTR [rsp+0x90],rbx
+   0x000000000071729a <+26>:    mov    QWORD PTR [rsp+0x88],rax
+   0x00000000007172a2 <+34>:    mov    rdx,QWORD PTR [rip+0x3790f7]        # 0xa903a0 <main.secretKey>
+   0x00000000007172a9 <+41>:    mov    rsi,QWORD PTR [rip+0x3790f8]        # 0xa903a8 <main.secretKey+8>
+   0x00000000007172b0 <+48>:    mov    rcx,QWORD PTR [rip+0x3790f9]        # 0xa903b0 <main.secretKey+16>
+   0x00000000007172b7 <+55>:    mov    rax,rdx
+   0x00000000007172ba <+58>:    mov    rbx,rsi
+   0x00000000007172bd <+61>:    nop    DWORD PTR [rax]
+   0x00000000007172c0 <+64>:    call   0x4b7860 <crypto/aes.NewCipher>
+   0x00000000007172c5 <+69>:    test   rcx,rcx
+   0x00000000007172c8 <+72>:    jne    0x7173f9 <main.encrypt+377>
+   0x00000000007172ce <+78>:    mov    QWORD PTR [rsp+0x50],rax
+   0x00000000007172d3 <+83>:    mov    QWORD PTR [rsp+0x68],rbx
+   0x00000000007172d8 <+88>:    xor    eax,eax
+   0x00000000007172da <+90>:    mov    rbx,QWORD PTR [rsp+0x88]
+   0x00000000007172e2 <+98>:    mov    rcx,QWORD PTR [rsp+0x90]
+   0x00000000007172ea <+106>:   call   0x4585c0 <runtime.stringtoslicebyte>
+   0x00000000007172ef <+111>:   call   0x717020 <main.pad>
+   0x00000000007172f4 <+116>:   mov    QWORD PTR [rsp+0x38],rbx
+   0x00000000007172f9 <+121>:   mov    QWORD PTR [rsp+0x60],rax
+   0x00000000007172fe <+126>:   mov    QWORD PTR [rsp+0x40],rcx
+   0x0000000000717303 <+131>:   lea    rdx,[rbx+0x10]
+   0x0000000000717307 <+135>:   mov    QWORD PTR [rsp+0x48],rdx
+   0x000000000071730c <+140>:   lea    rax,[rip+0x25b4d]        # 0x73ce60
+   0x0000000000717313 <+147>:   mov    rbx,rdx
+   0x0000000000717316 <+150>:   mov    rcx,rdx
+   0x0000000000717319 <+153>:   call   0x454260 <runtime.makeslice>
+   0x000000000071731e <+158>:   mov    rdx,QWORD PTR [rsp+0x48]
+   0x0000000000717323 <+163>:   cmp    rdx,0x10
+   0x0000000000717327 <+167>:   jb     0x71747a <main.encrypt+506>
+   0x000000000071732d <+173>:   mov    QWORD PTR [rsp+0x70],rax
+   0x0000000000717332 <+178>:   mov    r9,QWORD PTR [rip+0x378d97]        # 0xa900d0 <crypto/rand.Reader>
+   0x0000000000717339 <+185>:   mov    rbx,QWORD PTR [rip+0x378d98]        # 0xa900d8 <crypto/rand.Reader+8>
+   0x0000000000717340 <+192>:   mov    rcx,rax
+   0x0000000000717343 <+195>:   mov    edi,0x10
+   0x0000000000717348 <+200>:   mov    rsi,rdx
+   0x000000000071734b <+203>:   mov    r8,rdi
+   0x000000000071734e <+206>:   mov    rax,r9
+   0x0000000000717351 <+209>:   call   0x47c560 <io.ReadAtLeast>
+   0x0000000000717356 <+214>:   test   rbx,rbx
+   0x0000000000717359 <+217>:   jne    0x7173e9 <main.encrypt+361>
+   0x000000000071735f <+223>:   mov    rax,QWORD PTR [rsp+0x50]
+   0x0000000000717364 <+228>:   mov    rbx,QWORD PTR [rsp+0x68]
+   0x0000000000717369 <+233>:   mov    rcx,QWORD PTR [rsp+0x70]
+   0x000000000071736e <+238>:   mov    edi,0x10
+   0x0000000000717373 <+243>:   mov    rsi,QWORD PTR [rsp+0x48]
+   0x0000000000717378 <+248>:   call   0x4b2d20 <crypto/cipher.NewCBCEncrypter>
+   0x000000000071737d <+253>:   mov    rdx,QWORD PTR [rax+0x20]
+   0x0000000000717381 <+257>:   mov    r8,QWORD PTR [rsp+0x38]
+   0x0000000000717386 <+262>:   mov    rdi,r8
+   0x0000000000717389 <+265>:   neg    r8
+   0x000000000071738c <+268>:   sar    r8,0x3f
+   0x0000000000717390 <+272>:   and    r8d,0x10
+   0x0000000000717394 <+276>:   mov    r9,QWORD PTR [rsp+0x70]
+   0x0000000000717399 <+281>:   add    r8,r9
+   0x000000000071739c <+284>:   mov    rax,rbx
+   0x000000000071739f <+287>:   mov    rbx,r8
+   0x00000000007173a2 <+290>:   mov    rcx,rdi
+   0x00000000007173a5 <+293>:   mov    rsi,QWORD PTR [rsp+0x60]
+   0x00000000007173aa <+298>:   mov    r8,rcx
+   0x00000000007173ad <+301>:   mov    r9,QWORD PTR [rsp+0x40]
+   0x00000000007173b2 <+306>:   call   rdx
+   0x00000000007173b4 <+308>:   mov    rcx,QWORD PTR [rsp+0x48]
+   0x00000000007173b9 <+313>:   mov    rbx,rcx
+   0x00000000007173bc <+316>:   shl    rbx,1
+   0x00000000007173bf <+319>:   mov    QWORD PTR [rsp+0x58],rbx
+   0x00000000007173c4 <+324>:   lea    rax,[rip+0x25a95]        # 0x73ce60
+   0x00000000007173cb <+331>:   mov    rcx,rbx
+   0x00000000007173ce <+334>:   call   0x454260 <runtime.makeslice>
+   0x00000000007173d3 <+339>:   nop
+   0x00000000007173d4 <+340>:   mov    rsi,QWORD PTR [rsp+0x48]
+   0x00000000007173d9 <+345>:   mov    rdx,QWORD PTR [rsp+0x58]
+   0x00000000007173de <+350>:   mov    rcx,QWORD PTR [rsp+0x70]
+   0x00000000007173e3 <+355>:   xor    ebx,ebx
+   0x00000000007173e5 <+357>:   xor    edi,edi
+   0x00000000007173e7 <+359>:   jmp    0x71740f <main.encrypt+399>
+   0x00000000007173e9 <+361>:   xor    eax,eax
+   0x00000000007173eb <+363>:   mov    rdi,rcx
+   0x00000000007173ee <+366>:   mov    rcx,rbx
+   0x00000000007173f1 <+369>:   xor    ebx,ebx
+   0x00000000007173f3 <+371>:   add    rsp,0x78
+   0x00000000007173f7 <+375>:   pop    rbp
+   0x00000000007173f8 <+376>:   ret
+   0x00000000007173f9 <+377>:   xor    eax,eax
+   0x00000000007173fb <+379>:   xor    ebx,ebx
+   0x00000000007173fd <+381>:   add    rsp,0x78
+   0x0000000000717401 <+385>:   pop    rbp
+   0x0000000000717402 <+386>:   ret
+   0x0000000000717403 <+387>:   mov    BYTE PTR [rdi+rax*1+0x1],r9b
+   0x0000000000717408 <+392>:   inc    rbx
+   0x000000000071740b <+395>:   add    rdi,0x2
+   0x000000000071740f <+399>:   cmp    rbx,rsi
+   0x0000000000717412 <+402>:   jge    0x71744d <main.encrypt+461>
+   0x0000000000717414 <+404>:   movzx  r8d,BYTE PTR [rbx+rcx*1]
+   0x0000000000717419 <+409>:   mov    r9d,r8d
+   0x000000000071741c <+412>:   shr    r8b,0x4
+   0x0000000000717420 <+416>:   movzx  r8d,r8b
+   0x0000000000717424 <+420>:   lea    r10,[rip+0x9a8ef]        # 0x7b1d1a
+   0x000000000071742b <+427>:   movzx  r8d,BYTE PTR [r10+r8*1]
+   0x0000000000717430 <+432>:   cmp    rdi,rdx
+   0x0000000000717433 <+435>:   jae    0x71746f <main.encrypt+495>
+   0x0000000000717435 <+437>:   mov    BYTE PTR [rax+rdi*1],r8b
+   0x0000000000717439 <+441>:   lea    r8,[rdi+0x1]
+   0x000000000071743d <+445>:   and    r9d,0xf
+   0x0000000000717441 <+449>:   movzx  r9d,BYTE PTR [r9+r10*1]
+   0x0000000000717446 <+454>:   cmp    rdx,r8
+   0x0000000000717449 <+457>:   ja     0x717403 <main.encrypt+387>
+   0x000000000071744b <+459>:   jmp    0x717464 <main.encrypt+484>
+   0x000000000071744d <+461>:   mov    rbx,rax
+   0x0000000000717450 <+464>:   mov    rcx,rdx
+   0x0000000000717453 <+467>:   xor    eax,eax
+   0x0000000000717455 <+469>:   call   0x458400 <runtime.slicebytetostring>
+   0x000000000071745a <+474>:   xor    ecx,ecx
+   0x000000000071745c <+476>:   xor    edi,edi
+   0x000000000071745e <+478>:   add    rsp,0x78
+   0x0000000000717462 <+482>:   pop    rbp
+   0x0000000000717463 <+483>:   ret
+   0x0000000000717464 <+484>:   mov    rax,r8
+   0x0000000000717467 <+487>:   mov    rcx,rdx
+   0x000000000071746a <+490>:   call   0x4703a0 <runtime.panicIndex>
+   0x000000000071746f <+495>:   mov    rax,rdi
+   0x0000000000717472 <+498>:   mov    rcx,rdx
+   0x0000000000717475 <+501>:   call   0x4703a0 <runtime.panicIndex>
+   0x000000000071747a <+506>:   mov    ecx,0x10
+   0x000000000071747f <+511>:   nop
+   0x0000000000717480 <+512>:   call   0x470420 <runtime.panicSliceAcap>
+   0x0000000000717485 <+517>:   nop
+   0x0000000000717486 <+518>:   mov    QWORD PTR [rsp+0x8],rax
+   0x000000000071748b <+523>:   mov    QWORD PTR [rsp+0x10],rbx
+   0x0000000000717490 <+528>:   call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000717495 <+533>:   mov    rax,QWORD PTR [rsp+0x8]
+   0x000000000071749a <+538>:   mov    rbx,QWORD PTR [rsp+0x10]
+   0x000000000071749f <+543>:   nop
+   0x00000000007174a0 <+544>:   jmp    0x717280 <main.encrypt>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 1s 󱑎 09.53
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.decrypt'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.decrypt:
+   0x00000000007174c0 <+0>:     cmp    rsp,QWORD PTR [r14+0x10]
+   0x00000000007174c4 <+4>:     jbe    0x717666 <main.decrypt+422>
+   0x00000000007174ca <+10>:    push   rbp
+   0x00000000007174cb <+11>:    mov    rbp,rsp
+   0x00000000007174ce <+14>:    sub    rsp,0x68
+   0x00000000007174d2 <+18>:    mov    QWORD PTR [rsp+0x78],rax
+   0x00000000007174d7 <+23>:    nop
+   0x00000000007174d8 <+24>:    mov    rcx,rbx
+   0x00000000007174db <+27>:    mov    rbx,rax
+   0x00000000007174de <+30>:    xor    eax,eax
+   0x00000000007174e0 <+32>:    call   0x4585c0 <runtime.stringtoslicebyte>
+   0x00000000007174e5 <+37>:    mov    QWORD PTR [rsp+0x58],rax
+   0x00000000007174ea <+42>:    mov    QWORD PTR [rsp+0x38],rcx
+   0x00000000007174ef <+47>:    mov    rdi,rax
+   0x00000000007174f2 <+50>:    mov    rsi,rbx
+   0x00000000007174f5 <+53>:    mov    r8,rcx
+   0x00000000007174f8 <+56>:    call   0x528120 <encoding/hex.Decode>
+   0x00000000007174fd <+61>:    mov    rdx,QWORD PTR [rsp+0x38]
+   0x0000000000717502 <+66>:    cmp    rax,rdx
+   0x0000000000717505 <+69>:    ja     0x71765d <main.decrypt+413>
+   0x000000000071750b <+75>:    test   rbx,rbx
+   0x000000000071750e <+78>:    jne    0x71764d <main.decrypt+397>
+   0x0000000000717514 <+84>:    cmp    rax,0x10
+   0x0000000000717518 <+88>:    jl     0x717625 <main.decrypt+357>
+   0x000000000071751e <+94>:    mov    QWORD PTR [rsp+0x40],rax
+   0x0000000000717523 <+99>:    mov    rax,QWORD PTR [rip+0x378e76]        # 0xa903a0 <main.secretKey>
+   0x000000000071752a <+106>:   mov    rbx,QWORD PTR [rip+0x378e77]        # 0xa903a8 <main.secretKey+8>
+   0x0000000000717531 <+113>:   mov    rcx,QWORD PTR [rip+0x378e78]        # 0xa903b0 <main.secretKey+16>
+   0x0000000000717538 <+120>:   call   0x4b7860 <crypto/aes.NewCipher>
+   0x000000000071753d <+125>:   nop    DWORD PTR [rax]
+   0x0000000000717540 <+128>:   test   rcx,rcx
+   0x0000000000717543 <+131>:   jne    0x71761b <main.decrypt+347>
+   0x0000000000717549 <+137>:   mov    rsi,QWORD PTR [rsp+0x38]
+   0x000000000071754e <+142>:   lea    rdx,[rsi-0x10]
+   0x0000000000717552 <+146>:   mov    r8,rdx
+   0x0000000000717555 <+149>:   neg    rdx
+   0x0000000000717558 <+152>:   sar    rdx,0x3f
+   0x000000000071755c <+156>:   and    edx,0x10
+   0x000000000071755f <+159>:   mov    r9,QWORD PTR [rsp+0x40]
+   0x0000000000717564 <+164>:   add    r9,0xfffffffffffffff0
+   0x0000000000717568 <+168>:   mov    rcx,QWORD PTR [rsp+0x58]
+   0x000000000071756d <+173>:   add    rdx,rcx
+   0x0000000000717570 <+176>:   test   r9,0xf
+   0x0000000000717577 <+183>:   jne    0x7175f3 <main.decrypt+307>
+   0x0000000000717579 <+185>:   mov    QWORD PTR [rsp+0x48],r9
+   0x000000000071757e <+190>:   mov    QWORD PTR [rsp+0x50],r8
+   0x0000000000717583 <+195>:   mov    QWORD PTR [rsp+0x60],rdx
+   0x0000000000717588 <+200>:   mov    edi,0x10
+   0x000000000071758d <+205>:   call   0x4b3200 <crypto/cipher.NewCBCDecrypter>
+   0x0000000000717592 <+210>:   mov    rdx,QWORD PTR [rax+0x20]
+   0x0000000000717596 <+214>:   mov    rax,rbx
+   0x0000000000717599 <+217>:   mov    rbx,QWORD PTR [rsp+0x60]
+   0x000000000071759e <+222>:   mov    rcx,QWORD PTR [rsp+0x48]
+   0x00000000007175a3 <+227>:   mov    rdi,QWORD PTR [rsp+0x50]
+   0x00000000007175a8 <+232>:   mov    rsi,rbx
+   0x00000000007175ab <+235>:   mov    r8,rcx
+   0x00000000007175ae <+238>:   mov    r9,rdi
+   0x00000000007175b1 <+241>:   call   rdx
+   0x00000000007175b3 <+243>:   mov    rax,QWORD PTR [rsp+0x60]
+   0x00000000007175b8 <+248>:   mov    rbx,QWORD PTR [rsp+0x48]
+   0x00000000007175bd <+253>:   mov    rcx,QWORD PTR [rsp+0x50]
+   0x00000000007175c2 <+258>:   call   0x717140 <main.unpad>
+   0x00000000007175c7 <+263>:   test   rdi,rdi
+   0x00000000007175ca <+266>:   je     0x7175dc <main.decrypt+284>
+   0x00000000007175cc <+268>:   xor    eax,eax
+   0x00000000007175ce <+270>:   xor    ebx,ebx
+   0x00000000007175d0 <+272>:   mov    rcx,rdi
+   0x00000000007175d3 <+275>:   mov    rdi,rsi
+   0x00000000007175d6 <+278>:   add    rsp,0x68
+   0x00000000007175da <+282>:   pop    rbp
+   0x00000000007175db <+283>:   ret
+   0x00000000007175dc <+284>:   mov    rcx,rbx
+   0x00000000007175df <+287>:   mov    rbx,rax
+   0x00000000007175e2 <+290>:   xor    eax,eax
+   0x00000000007175e4 <+292>:   call   0x458400 <runtime.slicebytetostring>
+   0x00000000007175e9 <+297>:   xor    ecx,ecx
+   0x00000000007175eb <+299>:   xor    edi,edi
+   0x00000000007175ed <+301>:   add    rsp,0x68
+   0x00000000007175f1 <+305>:   pop    rbp
+   0x00000000007175f2 <+306>:   ret
+   0x00000000007175f3 <+307>:   lea    rax,[rip+0xa764f]        # 0x7bec49
+   0x00000000007175fa <+314>:   mov    ebx,0x28
+   0x00000000007175ff <+319>:   xor    ecx,ecx
+   0x0000000000717601 <+321>:   xor    edi,edi
+   0x0000000000717603 <+323>:   mov    rsi,rdi
+   0x0000000000717606 <+326>:   call   0x4f25e0 <fmt.Errorf>
+   0x000000000071760b <+331>:   mov    rcx,rax
+   0x000000000071760e <+334>:   mov    rdi,rbx
+   0x0000000000717611 <+337>:   xor    eax,eax
+   0x0000000000717613 <+339>:   xor    ebx,ebx
+   0x0000000000717615 <+341>:   add    rsp,0x68
+   0x0000000000717619 <+345>:   pop    rbp
+   0x000000000071761a <+346>:   ret
+   0x000000000071761b <+347>:   xor    eax,eax
+   0x000000000071761d <+349>:   xor    ebx,ebx
+   0x000000000071761f <+351>:   add    rsp,0x68
+   0x0000000000717623 <+355>:   pop    rbp
+   0x0000000000717624 <+356>:   ret
+   0x0000000000717625 <+357>:   lea    rax,[rip+0x9cc14]        # 0x7b4240
+   0x000000000071762c <+364>:   mov    ebx,0x14
+   0x0000000000717631 <+369>:   xor    ecx,ecx
+   0x0000000000717633 <+371>:   xor    edi,edi
+   0x0000000000717635 <+373>:   mov    rsi,rdi
+   0x0000000000717638 <+376>:   call   0x4f25e0 <fmt.Errorf>
+   0x000000000071763d <+381>:   mov    rcx,rax
+   0x0000000000717640 <+384>:   mov    rdi,rbx
+   0x0000000000717643 <+387>:   xor    eax,eax
+   0x0000000000717645 <+389>:   xor    ebx,ebx
+   0x0000000000717647 <+391>:   add    rsp,0x68
+   0x000000000071764b <+395>:   pop    rbp
+   0x000000000071764c <+396>:   ret
+   0x000000000071764d <+397>:   xor    eax,eax
+   0x000000000071764f <+399>:   mov    rdi,rcx
+   0x0000000000717652 <+402>:   mov    rcx,rbx
+   0x0000000000717655 <+405>:   xor    ebx,ebx
+   0x0000000000717657 <+407>:   add    rsp,0x68
+   0x000000000071765b <+411>:   pop    rbp
+   0x000000000071765c <+412>:   ret
+   0x000000000071765d <+413>:   mov    rcx,rax
+   0x0000000000717660 <+416>:   call   0x470420 <runtime.panicSliceAcap>
+   0x0000000000717665 <+421>:   nop
+   0x0000000000717666 <+422>:   mov    QWORD PTR [rsp+0x8],rax
+   0x000000000071766b <+427>:   mov    QWORD PTR [rsp+0x10],rbx
+   0x0000000000717670 <+432>:   call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000717675 <+437>:   mov    rax,QWORD PTR [rsp+0x8]
+   0x000000000071767a <+442>:   mov    rbx,QWORD PTR [rsp+0x10]
+   0x000000000071767f <+447>:   nop
+   0x0000000000717680 <+448>:   jmp    0x7174c0 <main.decrypt>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.54
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.main'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.main:
+   0x00000000007176a0 <+0>:     lea    r12,[rsp-0x20]
+   0x00000000007176a5 <+5>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x00000000007176a9 <+9>:     jbe    0x71793b <main.main+667>
+   0x00000000007176af <+15>:    push   rbp
+   0x00000000007176b0 <+16>:    mov    rbp,rsp
+   0x00000000007176b3 <+19>:    sub    rsp,0x98
+   0x00000000007176ba <+26>:    xor    eax,eax
+   0x00000000007176bc <+28>:    lea    rbx,[rip+0x9a667]        # 0x7b1d2a
+   0x00000000007176c3 <+35>:    mov    ecx,0x10
+   0x00000000007176c8 <+40>:    call   0x590ae0 <html/template.parseGlob>
+   0x00000000007176cd <+45>:    cmp    DWORD PTR [rip+0x3da17c],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007176d4 <+52>:    je     0x7176e9 <main.main+73>
+   0x00000000007176d6 <+54>:    call   0x470000 <runtime.gcWriteBarrier2>
+   0x00000000007176db <+59>:    mov    QWORD PTR [r11],rax
+   0x00000000007176de <+62>:    mov    rdx,QWORD PTR [rip+0x3784c3]        # 0xa8fba8 <main.templates>
+   0x00000000007176e5 <+69>:    mov    QWORD PTR [r11+0x8],rdx
+   0x00000000007176e9 <+73>:    mov    QWORD PTR [rip+0x3784b8],rax        # 0xa8fba8 <main.templates>
+   0x00000000007176f0 <+80>:    test   rbx,rbx
+   0x00000000007176f3 <+83>:    je     0x717785 <main.main+229>
+   0x00000000007176f9 <+89>:    movups XMMWORD PTR [rsp+0x48],xmm15
+   0x00000000007176ff <+95>:    nop
+   0x0000000000717700 <+96>:    je     0x717706 <main.main+102>
+   0x0000000000717702 <+98>:    mov    rbx,QWORD PTR [rbx+0x8]
+   0x0000000000717706 <+102>:   mov    QWORD PTR [rsp+0x48],rbx
+   0x000000000071770b <+107>:   mov    QWORD PTR [rsp+0x50],rcx
+   0x0000000000717710 <+112>:   movups XMMWORD PTR [rsp+0x68],xmm15
+   0x0000000000717716 <+118>:   movups XMMWORD PTR [rsp+0x78],xmm15
+   0x000000000071771c <+124>:   movups XMMWORD PTR [rsp+0x88],xmm15
+   0x0000000000717725 <+133>:   lea    rdx,[rip+0x294]        # 0x7179c0 <main.main.Printf.func2>
+   0x000000000071772c <+140>:   mov    QWORD PTR [rsp+0x68],rdx
+   0x0000000000717731 <+145>:   mov    QWORD PTR [rsp+0x78],0x1b
+   0x000000000071773a <+154>:   lea    rdx,[rip+0xa03c1]        # 0x7b7b02
+   0x0000000000717741 <+161>:   mov    QWORD PTR [rsp+0x70],rdx
+   0x0000000000717746 <+166>:   mov    QWORD PTR [rsp+0x88],0x1
+   0x0000000000717752 <+178>:   mov    QWORD PTR [rsp+0x90],0x1
+   0x000000000071775e <+190>:   lea    rdx,[rsp+0x48]
+   0x0000000000717763 <+195>:   mov    QWORD PTR [rsp+0x80],rdx
+   0x000000000071776b <+203>:   mov    rax,QWORD PTR [rip+0x378486]        # 0xa8fbf8 <log.std>
+   0x0000000000717772 <+210>:   xor    ebx,ebx
+   0x0000000000717774 <+212>:   mov    ecx,0x2
+   0x0000000000717779 <+217>:   lea    rdi,[rsp+0x68]
+   0x000000000071777e <+222>:   xchg   ax,ax
+   0x0000000000717780 <+224>:   call   0x597340 <log.(*Logger).output>
+   0x0000000000717785 <+229>:   lea    rax,[rip+0x92d6c]        # 0x7aa4f8
+   0x000000000071778c <+236>:   mov    ebx,0x1
+   0x0000000000717791 <+241>:   lea    rcx,[rip+0xcc168]        # 0x7e3900
+   0x0000000000717798 <+248>:   call   0x706b60 <net/http.HandleFunc>
+   0x000000000071779d <+253>:   lea    rax,[rip+0x94228]        # 0x7ab9cc
+   0x00000000007177a4 <+260>:   mov    ebx,0x6
+   0x00000000007177a9 <+265>:   lea    rcx,[rip+0xcc140]        # 0x7e38f0
+   0x00000000007177b0 <+272>:   call   0x706b60 <net/http.HandleFunc>
+   0x00000000007177b5 <+277>:   lea    rax,[rip+0x95194]        # 0x7ac950
+   0x00000000007177bc <+284>:   mov    ebx,0x7
+   0x00000000007177c1 <+289>:   lea    rcx,[rip+0xcc130]        # 0x7e38f8
+   0x00000000007177c8 <+296>:   call   0x706b60 <net/http.HandleFunc>
+   0x00000000007177cd <+301>:   lea    rax,[rip+0x96c3b]        # 0x7ae40f
+   0x00000000007177d4 <+308>:   mov    ebx,0x9
+   0x00000000007177d9 <+313>:   lea    rcx,[rip+0xcc128]        # 0x7e3908
+   0x00000000007177e0 <+320>:   call   0x706b60 <net/http.HandleFunc>
+   0x00000000007177e5 <+325>:   lea    rax,[rip+0x97616]        # 0x7aee02
+   0x00000000007177ec <+332>:   mov    ebx,0xa
+   0x00000000007177f1 <+337>:   lea    rcx,[rip+0xcc0f0]        # 0x7e38e8
+   0x00000000007177f8 <+344>:   call   0x706b60 <net/http.HandleFunc>
+   0x00000000007177fd <+349>:   movups XMMWORD PTR [rsp+0x38],xmm15
+   0x0000000000717803 <+355>:   lea    rax,[rip+0x92cf9]        # 0x7aa503
+   0x000000000071780a <+362>:   mov    ebx,0x2
+   0x000000000071780f <+367>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000717814 <+372>:   lea    rdx,[rip+0x255c5]        # 0x73cde0
+   0x000000000071781b <+379>:   mov    QWORD PTR [rsp+0x38],rdx
+   0x0000000000717820 <+384>:   mov    QWORD PTR [rsp+0x40],rax
+   0x0000000000717825 <+389>:   movups XMMWORD PTR [rsp+0x68],xmm15
+   0x000000000071782b <+395>:   movups XMMWORD PTR [rsp+0x78],xmm15
+   0x0000000000717831 <+401>:   movups XMMWORD PTR [rsp+0x88],xmm15
+   0x000000000071783a <+410>:   lea    rdx,[rip+0x11f]        # 0x717960 <main.main.Printf.func3>
+   0x0000000000717841 <+417>:   mov    QWORD PTR [rsp+0x68],rdx
+   0x0000000000717846 <+422>:   mov    QWORD PTR [rsp+0x78],0x1d
+   0x000000000071784f <+431>:   lea    rdx,[rip+0xa1590]        # 0x7b8de6
+   0x0000000000717856 <+438>:   mov    QWORD PTR [rsp+0x70],rdx
+   0x000000000071785b <+443>:   mov    QWORD PTR [rsp+0x88],0x1
+   0x0000000000717867 <+455>:   mov    QWORD PTR [rsp+0x90],0x1
+   0x0000000000717873 <+467>:   lea    rdx,[rsp+0x38]
+   0x0000000000717878 <+472>:   mov    QWORD PTR [rsp+0x80],rdx
+   0x0000000000717880 <+480>:   mov    rax,QWORD PTR [rip+0x378371]        # 0xa8fbf8 <log.std>
+   0x0000000000717887 <+487>:   xor    ebx,ebx
+   0x0000000000717889 <+489>:   mov    ecx,0x2
+   0x000000000071788e <+494>:   lea    rdi,[rsp+0x68]
+   0x0000000000717893 <+499>:   call   0x597340 <log.(*Logger).output>
+   0x0000000000717898 <+504>:   xor    eax,eax
+   0x000000000071789a <+506>:   lea    rbx,[rip+0x129527]        # 0x840dc8
+   0x00000000007178a1 <+513>:   mov    ecx,0x1
+   0x00000000007178a6 <+518>:   lea    rdi,[rip+0x92c56]        # 0x7aa503
+   0x00000000007178ad <+525>:   mov    esi,0x2
+   0x00000000007178b2 <+530>:   call   0x458080 <runtime.concatstring2>
+   0x00000000007178b7 <+535>:   mov    QWORD PTR [rsp+0x28],rbx
+   0x00000000007178bc <+540>:   mov    QWORD PTR [rsp+0x30],rax
+   0x00000000007178c1 <+545>:   lea    rax,[rip+0x89138]        # 0x7a0a00
+   0x00000000007178c8 <+552>:   call   0x411c80 <runtime.newobject>
+   0x00000000007178cd <+557>:   mov    rdx,QWORD PTR [rsp+0x28]
+   0x00000000007178d2 <+562>:   mov    QWORD PTR [rax+0x8],rdx
+   0x00000000007178d6 <+566>:   cmp    DWORD PTR [rip+0x3d9f73],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007178dd <+573>:   jne    0x7178e6 <main.main+582>
+   0x00000000007178df <+575>:   mov    rcx,QWORD PTR [rsp+0x30]
+   0x00000000007178e4 <+580>:   jmp    0x7178f3 <main.main+595>
+   0x00000000007178e6 <+582>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x00000000007178eb <+587>:   mov    rcx,QWORD PTR [rsp+0x30]
+   0x00000000007178f0 <+592>:   mov    QWORD PTR [r11],rcx
+   0x00000000007178f3 <+595>:   mov    QWORD PTR [rax],rcx
+   0x00000000007178f6 <+598>:   movups XMMWORD PTR [rax+0x10],xmm15
+   0x00000000007178fb <+603>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000717900 <+608>:   call   0x708220 <net/http.(*Server).ListenAndServe>
+   0x0000000000717905 <+613>:   test   rax,rax
+   0x0000000000717908 <+616>:   je     0x717932 <main.main+658>
+   0x000000000071790a <+618>:   movups XMMWORD PTR [rsp+0x58],xmm15
+   0x0000000000717910 <+624>:   je     0x717916 <main.main+630>
+   0x0000000000717912 <+626>:   mov    rax,QWORD PTR [rax+0x8]
+   0x0000000000717916 <+630>:   mov    QWORD PTR [rsp+0x58],rax
+   0x000000000071791b <+635>:   mov    QWORD PTR [rsp+0x60],rbx
+   0x0000000000717920 <+640>:   lea    rax,[rsp+0x58]
+   0x0000000000717925 <+645>:   mov    ebx,0x1
+   0x000000000071792a <+650>:   mov    rcx,rbx
+   0x000000000071792d <+653>:   call   0x5983c0 <log.Fatal>
+   0x0000000000717932 <+658>:   add    rsp,0x98
+   0x0000000000717939 <+665>:   pop    rbp
+   0x000000000071793a <+666>:   ret
+   0x000000000071793b <+667>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000717940 <+672>:   call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000717945 <+677>:   jmp    0x7176a0 <main.main>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.54
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.unpad'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.unpad:
+   0x0000000000717140 <+0>:     cmp    rsp,QWORD PTR [r14+0x10]
+   0x0000000000717144 <+4>:     jbe    0x71723c <main.unpad+252>
+   0x000000000071714a <+10>:    push   rbp
+   0x000000000071714b <+11>:    mov    rbp,rsp
+   0x000000000071714e <+14>:    sub    rsp,0x28
+   0x0000000000717152 <+18>:    mov    QWORD PTR [rsp+0x38],rax
+   0x0000000000717157 <+23>:    test   rbx,rbx
+   0x000000000071715a <+26>:    je     0x7171a2 <main.unpad+98>
+   0x000000000071715c <+28>:    movzx  r8d,BYTE PTR [rbx+rax*1-0x1]
+   0x0000000000717162 <+34>:    cmp    rbx,r8
+   0x0000000000717165 <+37>:    jl     0x717177 <main.unpad+55>
+   0x0000000000717167 <+39>:    test   r8,r8
+   0x000000000071716a <+42>:    je     0x717177 <main.unpad+55>
+   0x000000000071716c <+44>:    mov    r9,rbx
+   0x000000000071716f <+47>:    sub    r9,r8
+   0x0000000000717172 <+50>:    mov    rdx,r9
+   0x0000000000717175 <+53>:    jmp    0x7171d0 <main.unpad+144>
+   0x0000000000717177 <+55>:    lea    rax,[rip+0x9a368]        # 0x7b14e6
+   0x000000000071717e <+62>:    mov    ebx,0xf
+   0x0000000000717183 <+67>:    xor    ecx,ecx
+   0x0000000000717185 <+69>:    xor    edi,edi
+   0x0000000000717187 <+71>:    mov    rsi,rdi
+   0x000000000071718a <+74>:    call   0x4f25e0 <fmt.Errorf>
+   0x000000000071718f <+79>:    xor    ecx,ecx
+   0x0000000000717191 <+81>:    mov    rdi,rax
+   0x0000000000717194 <+84>:    mov    rsi,rbx
+   0x0000000000717197 <+87>:    xor    eax,eax
+   0x0000000000717199 <+89>:    mov    rbx,rcx
+   0x000000000071719c <+92>:    add    rsp,0x28
+   0x00000000007171a0 <+96>:    pop    rbp
+   0x00000000007171a1 <+97>:    ret
+   0x00000000007171a2 <+98>:    lea    rax,[rip+0x9d083]        # 0x7b422c
+   0x00000000007171a9 <+105>:   mov    ebx,0x14
+   0x00000000007171ae <+110>:   xor    ecx,ecx
+   0x00000000007171b0 <+112>:   xor    edi,edi
+   0x00000000007171b2 <+114>:   mov    rsi,rdi
+   0x00000000007171b5 <+117>:   call   0x4f25e0 <fmt.Errorf>
+   0x00000000007171ba <+122>:   xor    ecx,ecx
+   0x00000000007171bc <+124>:   mov    rdi,rax
+   0x00000000007171bf <+127>:   mov    rsi,rbx
+   0x00000000007171c2 <+130>:   xor    eax,eax
+   0x00000000007171c4 <+132>:   mov    rbx,rcx
+   0x00000000007171c7 <+135>:   add    rsp,0x28
+   0x00000000007171cb <+139>:   pop    rbp
+   0x00000000007171cc <+140>:   ret
+   0x00000000007171cd <+141>:   inc    r9
+   0x00000000007171d0 <+144>:   cmp    rbx,r9
+   0x00000000007171d3 <+147>:   jle    0x717210 <main.unpad+208>
+   0x00000000007171d5 <+149>:   jbe    0x717230 <main.unpad+240>
+   0x00000000007171d7 <+151>:   movzx  r10d,BYTE PTR [rax+r9*1]
+   0x00000000007171dc <+156>:   nop    DWORD PTR [rax+0x0]
+   0x00000000007171e0 <+160>:   cmp    r10b,r8b
+   0x00000000007171e3 <+163>:   je     0x7171cd <main.unpad+141>
+   0x00000000007171e5 <+165>:   lea    rax,[rip+0x9a2fa]        # 0x7b14e6
+   0x00000000007171ec <+172>:   mov    ebx,0xf
+   0x00000000007171f1 <+177>:   xor    ecx,ecx
+   0x00000000007171f3 <+179>:   xor    edi,edi
+   0x00000000007171f5 <+181>:   mov    rsi,rdi
+   0x00000000007171f8 <+184>:   call   0x4f25e0 <fmt.Errorf>
+   0x00000000007171fd <+189>:   xor    ecx,ecx
+   0x00000000007171ff <+191>:   mov    rdi,rax
+   0x0000000000717202 <+194>:   mov    rsi,rbx
+   0x0000000000717205 <+197>:   xor    eax,eax
+   0x0000000000717207 <+199>:   mov    rbx,rcx
+   0x000000000071720a <+202>:   add    rsp,0x28
+   0x000000000071720e <+206>:   pop    rbp
+   0x000000000071720f <+207>:   ret
+   0x0000000000717210 <+208>:   cmp    rcx,rdx
+   0x0000000000717213 <+211>:   jb     0x717222 <main.unpad+226>
+   0x0000000000717215 <+213>:   mov    rbx,rdx
+   0x0000000000717218 <+216>:   xor    edi,edi
+   0x000000000071721a <+218>:   xor    esi,esi
+   0x000000000071721c <+220>:   add    rsp,0x28
+   0x0000000000717220 <+224>:   pop    rbp
+   0x0000000000717221 <+225>:   ret
+   0x0000000000717222 <+226>:   mov    rax,rcx
+   0x0000000000717225 <+229>:   mov    rcx,rdx
+   0x0000000000717228 <+232>:   mov    rdx,rax
+   0x000000000071722b <+235>:   call   0x470420 <runtime.panicSliceAcap>
+   0x0000000000717230 <+240>:   mov    rax,r9
+   0x0000000000717233 <+243>:   mov    rcx,rbx
+   0x0000000000717236 <+246>:   call   0x4703a0 <runtime.panicIndex>
+   0x000000000071723b <+251>:   nop
+   0x000000000071723c <+252>:   mov    QWORD PTR [rsp+0x8],rax
+   0x0000000000717241 <+257>:   mov    QWORD PTR [rsp+0x10],rbx
+   0x0000000000717246 <+262>:   mov    QWORD PTR [rsp+0x18],rcx
+   0x000000000071724b <+267>:   call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000717250 <+272>:   mov    rax,QWORD PTR [rsp+0x8]
+   0x0000000000717255 <+277>:   mov    rbx,QWORD PTR [rsp+0x10]
+   0x000000000071725a <+282>:   mov    rcx,QWORD PTR [rsp+0x18]
+   0x000000000071725f <+287>:   nop
+   0x0000000000717260 <+288>:   jmp    0x717140 <main.unpad>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 1s 󱑎 09.54
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.loginHandler'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.loginHandler:
+   0x0000000000717a20 <+0>:     lea    r12,[rsp-0x120]
+   0x0000000000717a28 <+8>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x0000000000717a2c <+12>:    jbe    0x718151 <main.loginHandler+1841>
+   0x0000000000717a32 <+18>:    push   rbp
+   0x0000000000717a33 <+19>:    mov    rbp,rsp
+   0x0000000000717a36 <+22>:    sub    rsp,0x198
+   0x0000000000717a3d <+29>:    mov    QWORD PTR [rsp+0x1b0],rbx
+   0x0000000000717a45 <+37>:    mov    QWORD PTR [rsp+0x1a8],rax
+   0x0000000000717a4d <+45>:    cmp    QWORD PTR [rcx+0x8],0x3
+   0x0000000000717a52 <+50>:    jne    0x717ae5 <main.loginHandler+197>
+   0x0000000000717a58 <+56>:    mov    rdx,QWORD PTR [rcx]
+   0x0000000000717a5b <+59>:    cmp    WORD PTR [rdx],0x4547
+   0x0000000000717a60 <+64>:    jne    0x717ae5 <main.loginHandler+197>
+   0x0000000000717a66 <+70>:    cmp    BYTE PTR [rdx+0x2],0x54
+   0x0000000000717a6a <+74>:    jne    0x717ae5 <main.loginHandler+197>
+   0x0000000000717a6c <+76>:    call   0x4126e0 <runtime.makemap_small>
+   0x0000000000717a71 <+81>:    mov    QWORD PTR [rsp+0x98],rax
+   0x0000000000717a79 <+89>:    mov    rbx,rax
+   0x0000000000717a7c <+92>:    lea    rcx,[rip+0x93f4f]        # 0x7ab9d2
+   0x0000000000717a83 <+99>:    mov    edi,0x6
+   0x0000000000717a88 <+104>:   lea    rax,[rip+0x3caf1]        # 0x754580
+   0x0000000000717a8f <+111>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000717a94 <+116>:   lea    rcx,[rip+0x25345]        # 0x73cde0
+   0x0000000000717a9b <+123>:   mov    QWORD PTR [rax],rcx
+   0x0000000000717a9e <+126>:   cmp    DWORD PTR [rip+0x3d9dab],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000717aa5 <+133>:   je     0x717ab3 <main.loginHandler+147>
+   0x0000000000717aa7 <+135>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000717aab <+139>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000717ab0 <+144>:   mov    QWORD PTR [r11],rdx
+   0x0000000000717ab3 <+147>:   lea    rdx,[rip+0x12b166]        # 0x842c20
+   0x0000000000717aba <+154>:   mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000717abe <+158>:   mov    rdx,QWORD PTR [rsp+0x1a8]
+   0x0000000000717ac6 <+166>:   test   rdx,rdx
+   0x0000000000717ac9 <+169>:   je     0x7180dd <main.loginHandler+1725>
+   0x0000000000717acf <+175>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000717ad3 <+179>:   mov    r10,QWORD PTR [rip+0x365e56]        # 0xa7d930 <main..typeAssert.0>
+   0x0000000000717ada <+186>:   mov    r11,QWORD PTR [r10]
+   0x0000000000717add <+189>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000717ae0 <+192>:   jmp    0x718118 <main.loginHandler+1784>
+   0x0000000000717ae5 <+197>:   mov    QWORD PTR [rsp+0x1b8],rcx
+   0x0000000000717aed <+205>:   mov    rax,rcx
+   0x0000000000717af0 <+208>:   lea    rbx,[rip+0x95f00]        # 0x7ad9f7
+   0x0000000000717af7 <+215>:   mov    ecx,0x8
+   0x0000000000717afc <+220>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000717b00 <+224>:   call   0x6f7f80 <net/http.(*Request).FormValue>
+   0x0000000000717b05 <+229>:   mov    QWORD PTR [rsp+0x68],rax
+   0x0000000000717b0a <+234>:   mov    QWORD PTR [rsp+0x40],rbx
+   0x0000000000717b0f <+239>:   mov    ecx,0x8
+   0x0000000000717b14 <+244>:   mov    rax,QWORD PTR [rsp+0x1b8]
+   0x0000000000717b1c <+252>:   lea    rbx,[rip+0x95edc]        # 0x7ad9ff
+   0x0000000000717b23 <+259>:   call   0x6f7f80 <net/http.(*Request).FormValue>
+   0x0000000000717b28 <+264>:   mov    QWORD PTR [rsp+0x78],rax
+   0x0000000000717b2d <+269>:   mov    QWORD PTR [rsp+0x50],rbx
+   0x0000000000717b32 <+274>:   movups XMMWORD PTR [rsp+0x148],xmm15
+   0x0000000000717b3b <+283>:   movups XMMWORD PTR [rsp+0x158],xmm15
+   0x0000000000717b44 <+292>:   movups XMMWORD PTR [rsp+0x168],xmm15
+   0x0000000000717b4d <+301>:   movups XMMWORD PTR [rsp+0x178],xmm15
+   0x0000000000717b56 <+310>:   mov    QWORD PTR [rsp+0x150],0xd
+   0x0000000000717b62 <+322>:   lea    rdx,[rip+0x98af1]        # 0x7b065a
+   0x0000000000717b69 <+329>:   mov    QWORD PTR [rsp+0x148],rdx
+   0x0000000000717b71 <+337>:   mov    QWORD PTR [rsp+0x160],0x5
+   0x0000000000717b7d <+349>:   lea    rdx,[rip+0x9337b]        # 0x7aaeff
+   0x0000000000717b84 <+356>:   mov    QWORD PTR [rsp+0x158],rdx
+   0x0000000000717b8c <+364>:   mov    QWORD PTR [rsp+0x170],0x6
+   0x0000000000717b98 <+376>:   lea    rdx,[rip+0x93e39]        # 0x7ab9d8
+   0x0000000000717b9f <+383>:   mov    QWORD PTR [rsp+0x168],rdx
+   0x0000000000717ba7 <+391>:   mov    QWORD PTR [rsp+0x180],0x4
+   0x0000000000717bb3 <+403>:   lea    rdx,[rip+0x92cf4]        # 0x7aa8ae
+   0x0000000000717bba <+410>:   mov    QWORD PTR [rsp+0x178],rdx
+   0x0000000000717bc2 <+418>:   mov    rax,QWORD PTR [rsp+0x68]
+   0x0000000000717bc7 <+423>:   mov    rbx,QWORD PTR [rsp+0x40]
+   0x0000000000717bcc <+428>:   call   0x5069c0 <strings.ToLower>
+   0x0000000000717bd1 <+433>:   mov    QWORD PTR [rsp+0x60],rax
+   0x0000000000717bd6 <+438>:   mov    QWORD PTR [rsp+0x38],rbx
+   0x0000000000717bdb <+443>:   lea    rdx,[rsp+0x148]
+   0x0000000000717be3 <+451>:   xor    ecx,ecx
+   0x0000000000717be5 <+453>:   jmp    0x717bee <main.loginHandler+462>
+   0x0000000000717be7 <+455>:   add    rdx,0x10
+   0x0000000000717beb <+459>:   inc    rcx
+   0x0000000000717bee <+462>:   cmp    rcx,0x4
+   0x0000000000717bf2 <+466>:   jge    0x717d7f <main.loginHandler+863>
+   0x0000000000717bf8 <+472>:   mov    rsi,QWORD PTR [rdx+0x8]
+   0x0000000000717bfc <+476>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000717c00 <+480>:   cmp    rbx,rsi
+   0x0000000000717c03 <+483>:   jne    0x717be7 <main.loginHandler+455>
+   0x0000000000717c05 <+485>:   mov    QWORD PTR [rsp+0x58],rcx
+   0x0000000000717c0a <+490>:   mov    QWORD PTR [rsp+0x90],rdx
+   0x0000000000717c12 <+498>:   mov    QWORD PTR [rsp+0x48],rsi
+   0x0000000000717c17 <+503>:   mov    rsi,QWORD PTR [rdx]
+   0x0000000000717c1a <+506>:   mov    QWORD PTR [rsp+0x70],rsi
+   0x0000000000717c1f <+511>:   mov    rcx,rbx
+   0x0000000000717c22 <+514>:   mov    rbx,rsi
+   0x0000000000717c25 <+517>:   call   0x406960 <runtime.memequal>
+   0x0000000000717c2a <+522>:   test   al,al
+   0x0000000000717c2c <+524>:   jne    0x717c47 <main.loginHandler+551>
+   0x0000000000717c2e <+526>:   mov    rax,QWORD PTR [rsp+0x60]
+   0x0000000000717c33 <+531>:   mov    rcx,QWORD PTR [rsp+0x58]
+   0x0000000000717c38 <+536>:   mov    rdx,QWORD PTR [rsp+0x90]
+   0x0000000000717c40 <+544>:   mov    rbx,QWORD PTR [rsp+0x38]
+   0x0000000000717c45 <+549>:   jmp    0x717be7 <main.loginHandler+455>
+   0x0000000000717c47 <+551>:   call   0x4126e0 <runtime.makemap_small>
+   0x0000000000717c4c <+556>:   mov    QWORD PTR [rsp+0x88],rax
+   0x0000000000717c54 <+564>:   mov    rbx,rax
+   0x0000000000717c57 <+567>:   lea    rcx,[rip+0x93d74]        # 0x7ab9d2
+   0x0000000000717c5e <+574>:   mov    edi,0x6
+   0x0000000000717c63 <+579>:   lea    rax,[rip+0x3c916]        # 0x754580
+   0x0000000000717c6a <+586>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000717c6f <+591>:   lea    rcx,[rip+0x2516a]        # 0x73cde0
+   0x0000000000717c76 <+598>:   mov    QWORD PTR [rax],rcx
+   0x0000000000717c79 <+601>:   cmp    DWORD PTR [rip+0x3d9bd0],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000717c80 <+608>:   je     0x717c8e <main.loginHandler+622>
+   0x0000000000717c82 <+610>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000717c86 <+614>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000717c8b <+619>:   mov    QWORD PTR [r11],rdx
+   0x0000000000717c8e <+622>:   lea    rcx,[rip+0x12af8b]        # 0x842c20
+   0x0000000000717c95 <+629>:   mov    QWORD PTR [rax+0x8],rcx
+   0x0000000000717c99 <+633>:   movups XMMWORD PTR [rsp+0x188],xmm15
+   0x0000000000717ca2 <+642>:   mov    rax,QWORD PTR [rsp+0x70]
+   0x0000000000717ca7 <+647>:   mov    rbx,QWORD PTR [rsp+0x48]
+   0x0000000000717cac <+652>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000717cb1 <+657>:   lea    rcx,[rip+0x25128]        # 0x73cde0
+   0x0000000000717cb8 <+664>:   mov    QWORD PTR [rsp+0x188],rcx
+   0x0000000000717cc0 <+672>:   mov    QWORD PTR [rsp+0x190],rax
+   0x0000000000717cc8 <+680>:   lea    rax,[rip+0xaa6f9]        # 0x7c23c8
+   0x0000000000717ccf <+687>:   mov    ebx,0x30
+   0x0000000000717cd4 <+692>:   mov    edi,0x1
+   0x0000000000717cd9 <+697>:   mov    rsi,rdi
+   0x0000000000717cdc <+700>:   lea    rcx,[rsp+0x188]
+   0x0000000000717ce4 <+708>:   call   0x4f5540 <fmt.Sprintf>
+   0x0000000000717ce9 <+713>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000717cee <+718>:   mov    QWORD PTR [rsp+0x90],rax
+   0x0000000000717cf6 <+726>:   mov    rbx,QWORD PTR [rsp+0x88]
+   0x0000000000717cfe <+734>:   lea    rcx,[rip+0x931ff]        # 0x7aaf04
+   0x0000000000717d05 <+741>:   mov    edi,0x5
+   0x0000000000717d0a <+746>:   lea    rax,[rip+0x3c86f]        # 0x754580
+   0x0000000000717d11 <+753>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000717d16 <+758>:   lea    rcx,[rip+0x250c3]        # 0x73cde0
+   0x0000000000717d1d <+765>:   mov    QWORD PTR [rax],rcx
+   0x0000000000717d20 <+768>:   cmp    DWORD PTR [rip+0x3d9b29],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000717d27 <+775>:   jne    0x717d33 <main.loginHandler+787>
+   0x0000000000717d29 <+777>:   mov    rdx,QWORD PTR [rsp+0x90]
+   0x0000000000717d31 <+785>:   jmp    0x717d4b <main.loginHandler+811>
+   0x0000000000717d33 <+787>:   call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000717d38 <+792>:   mov    rdx,QWORD PTR [rsp+0x90]
+   0x0000000000717d40 <+800>:   mov    QWORD PTR [r11],rdx
+   0x0000000000717d43 <+803>:   mov    r10,QWORD PTR [rax+0x8]
+   0x0000000000717d47 <+807>:   mov    QWORD PTR [r11+0x8],r10
+   0x0000000000717d4b <+811>:   mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000717d4f <+815>:   mov    rdx,QWORD PTR [rsp+0x1a8]
+   0x0000000000717d57 <+823>:   nop    WORD PTR [rax+rax*1+0x0]
+   0x0000000000717d60 <+832>:   test   rdx,rdx
+   0x0000000000717d63 <+835>:   je     0x718069 <main.loginHandler+1609>
+   0x0000000000717d69 <+841>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000717d6d <+845>:   mov    r10,QWORD PTR [rip+0x365bdc]        # 0xa7d950 <main..typeAssert.1>
+   0x0000000000717d74 <+852>:   mov    r11,QWORD PTR [r10]
+   0x0000000000717d77 <+855>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000717d7a <+858>:   jmp    0x7180a4 <main.loginHandler+1668>
+   0x0000000000717d7f <+863>:   mov    rbx,QWORD PTR [rip+0x377e1a]        # 0xa8fba0 <main.users>
+   0x0000000000717d86 <+870>:   lea    rax,[rip+0x3c853]        # 0x7545e0
+   0x0000000000717d8d <+877>:   mov    rcx,QWORD PTR [rsp+0x68]
+   0x0000000000717d92 <+882>:   mov    rdi,QWORD PTR [rsp+0x40]
+   0x0000000000717d97 <+887>:   call   0x416fa0 <runtime.mapaccess2_faststr>
+   0x0000000000717d9c <+892>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000717da0 <+896>:   test   bl,bl
+   0x0000000000717da2 <+898>:   je     0x717dcb <main.loginHandler+939>
+   0x0000000000717da4 <+900>:   mov    rcx,QWORD PTR [rax+0x8]
+   0x0000000000717da8 <+904>:   mov    rdx,QWORD PTR [rsp+0x50]
+   0x0000000000717dad <+909>:   cmp    rdx,rcx
+   0x0000000000717db0 <+912>:   je     0x717db9 <main.loginHandler+921>
+   0x0000000000717db2 <+914>:   mov    eax,0x1
+   0x0000000000717db7 <+919>:   jmp    0x717dd0 <main.loginHandler+944>
+   0x0000000000717db9 <+921>:   mov    rax,QWORD PTR [rax]
+   0x0000000000717dbc <+924>:   mov    rbx,QWORD PTR [rsp+0x78]
+   0x0000000000717dc1 <+929>:   call   0x406960 <runtime.memequal>
+   0x0000000000717dc6 <+934>:   xor    eax,0x1
+   0x0000000000717dc9 <+937>:   jmp    0x717dd0 <main.loginHandler+944>
+   0x0000000000717dcb <+939>:   mov    eax,0x1
+   0x0000000000717dd0 <+944>:   test   al,al
+   0x0000000000717dd2 <+946>:   je     0x717ea5 <main.loginHandler+1157>
+   0x0000000000717dd8 <+952>:   call   0x4126e0 <runtime.makemap_small>
+   0x0000000000717ddd <+957>:   mov    QWORD PTR [rsp+0x80],rax
+   0x0000000000717de5 <+965>:   mov    rbx,rax
+   0x0000000000717de8 <+968>:   lea    rcx,[rip+0x93be3]        # 0x7ab9d2
+   0x0000000000717def <+975>:   mov    edi,0x6
+   0x0000000000717df4 <+980>:   lea    rax,[rip+0x3c785]        # 0x754580
+   0x0000000000717dfb <+987>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000717e00 <+992>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000717e05 <+997>:   lea    rcx,[rip+0x24fd4]        # 0x73cde0
+   0x0000000000717e0c <+1004>:  mov    QWORD PTR [rax],rcx
+   0x0000000000717e0f <+1007>:  cmp    DWORD PTR [rip+0x3d9a3a],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000717e16 <+1014>:  je     0x717e28 <main.loginHandler+1032>
+   0x0000000000717e18 <+1016>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000717e1c <+1020>:  nop    DWORD PTR [rax+0x0]
+   0x0000000000717e20 <+1024>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000717e25 <+1029>:  mov    QWORD PTR [r11],rdx
+   0x0000000000717e28 <+1032>:  lea    rdx,[rip+0x12adf1]        # 0x842c20
+   0x0000000000717e2f <+1039>:  mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000717e33 <+1043>:  lea    rax,[rip+0x3c746]        # 0x754580
+   0x0000000000717e3a <+1050>:  mov    rbx,QWORD PTR [rsp+0x80]
+   0x0000000000717e42 <+1058>:  lea    rcx,[rip+0x930bb]        # 0x7aaf04
+   0x0000000000717e49 <+1065>:  mov    edi,0x5
+   0x0000000000717e4e <+1070>:  call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000717e53 <+1075>:  lea    rdx,[rip+0x24f86]        # 0x73cde0
+   0x0000000000717e5a <+1082>:  mov    QWORD PTR [rax],rdx
+   0x0000000000717e5d <+1085>:  cmp    DWORD PTR [rip+0x3d99ec],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000717e64 <+1092>:  je     0x717e72 <main.loginHandler+1106>
+   0x0000000000717e66 <+1094>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000717e6a <+1098>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000717e6f <+1103>:  mov    QWORD PTR [r11],rdx
+   0x0000000000717e72 <+1106>:  lea    rdx,[rip+0x12adb7]        # 0x842c30
+   0x0000000000717e79 <+1113>:  mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000717e7d <+1117>:  mov    rdx,QWORD PTR [rsp+0x1a8]
+   0x0000000000717e85 <+1125>:  test   rdx,rdx
+   0x0000000000717e88 <+1128>:  je     0x717ff1 <main.loginHandler+1489>
+   0x0000000000717e8e <+1134>:  mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000717e92 <+1138>:  mov    r10,QWORD PTR [rip+0x365ad7]        # 0xa7d970 <main..typeAssert.2>
+   0x0000000000717e99 <+1145>:  mov    r11,QWORD PTR [r10]
+   0x0000000000717e9c <+1148>:  mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000717e9f <+1151>:  nop
+   0x0000000000717ea0 <+1152>:  jmp    0x71802e <main.loginHandler+1550>
+   0x0000000000717ea5 <+1157>:  movups XMMWORD PTR [rsp+0x188],xmm15
+   0x0000000000717eae <+1166>:  mov    rax,QWORD PTR [rsp+0x68]
+   0x0000000000717eb3 <+1171>:  mov    rbx,QWORD PTR [rsp+0x40]
+   0x0000000000717eb8 <+1176>:  call   0x40ef00 <runtime.convTstring>
+   0x0000000000717ebd <+1181>:  lea    rcx,[rip+0x24f1c]        # 0x73cde0
+   0x0000000000717ec4 <+1188>:  mov    QWORD PTR [rsp+0x188],rcx
+   0x0000000000717ecc <+1196>:  mov    QWORD PTR [rsp+0x190],rax
+   0x0000000000717ed4 <+1204>:  lea    rax,[rip+0x977ab]        # 0x7af686
+   0x0000000000717edb <+1211>:  mov    ebx,0xb
+   0x0000000000717ee0 <+1216>:  lea    rcx,[rsp+0x188]
+   0x0000000000717ee8 <+1224>:  mov    edi,0x1
+   0x0000000000717eed <+1229>:  mov    rsi,rdi
+   0x0000000000717ef0 <+1232>:  call   0x4f5540 <fmt.Sprintf>
+   0x0000000000717ef5 <+1237>:  call   0x717280 <main.encrypt>
+   0x0000000000717efa <+1242>:  test   rcx,rcx
+   0x0000000000717efd <+1245>:  je     0x717f2e <main.loginHandler+1294>
+   0x0000000000717eff <+1247>:  mov    rax,QWORD PTR [rsp+0x1a8]
+   0x0000000000717f07 <+1255>:  mov    rbx,QWORD PTR [rsp+0x1b0]
+   0x0000000000717f0f <+1263>:  lea    rcx,[rip+0x9a724]        # 0x7b263a
+   0x0000000000717f16 <+1270>:  mov    edi,0x11
+   0x0000000000717f1b <+1275>:  mov    esi,0x1f4
+   0x0000000000717f20 <+1280>:  call   0x704b00 <net/http.Error>
+   0x0000000000717f25 <+1285>:  add    rsp,0x198
+   0x0000000000717f2c <+1292>:  pop    rbp
+   0x0000000000717f2d <+1293>:  ret
+   0x0000000000717f2e <+1294>:  movups XMMWORD PTR [rsp+0xa0],xmm15
+   0x0000000000717f37 <+1303>:  lea    rdi,[rsp+0xa8]
+   0x0000000000717f3f <+1311>:  lea    rdi,[rdi-0x20]
+   0x0000000000717f43 <+1315>:  mov    QWORD PTR [rsp-0x10],rbp
+   0x0000000000717f48 <+1320>:  lea    rbp,[rsp-0x10]
+   0x0000000000717f4d <+1325>:  call   0x470674 <runtime.duffzero+308>
+   0x0000000000717f52 <+1330>:  mov    rbp,QWORD PTR [rbp+0x0]
+   0x0000000000717f56 <+1334>:  mov    QWORD PTR [rsp+0xa8],0x4
+   0x0000000000717f62 <+1346>:  lea    rdx,[rip+0x92949]        # 0x7aa8b2
+   0x0000000000717f69 <+1353>:  mov    QWORD PTR [rsp+0xa0],rdx
+   0x0000000000717f71 <+1361>:  mov    QWORD PTR [rsp+0xb8],rbx
+   0x0000000000717f79 <+1369>:  mov    QWORD PTR [rsp+0xb0],rax
+   0x0000000000717f81 <+1377>:  mov    QWORD PTR [rsp+0xc8],0x1
+   0x0000000000717f8d <+1389>:  lea    rdx,[rip+0x92564]        # 0x7aa4f8
+   0x0000000000717f94 <+1396>:  mov    QWORD PTR [rsp+0xc0],rdx
+   0x0000000000717f9c <+1404>:  mov    rax,QWORD PTR [rsp+0x1a8]
+   0x0000000000717fa4 <+1412>:  mov    rbx,QWORD PTR [rsp+0x1b0]
+   0x0000000000717fac <+1420>:  lea    rcx,[rsp+0xa0]
+   0x0000000000717fb4 <+1428>:  call   0x6ceac0 <net/http.SetCookie>
+   0x0000000000717fb9 <+1433>:  mov    rax,QWORD PTR [rsp+0x1a8]
+   0x0000000000717fc1 <+1441>:  mov    rbx,QWORD PTR [rsp+0x1b0]
+   0x0000000000717fc9 <+1449>:  mov    rcx,QWORD PTR [rsp+0x1b8]
+   0x0000000000717fd1 <+1457>:  lea    rdi,[rip+0x96e2a]        # 0x7aee02
+   0x0000000000717fd8 <+1464>:  mov    esi,0xa
+   0x0000000000717fdd <+1469>:  mov    r8d,0x12e
+   0x0000000000717fe3 <+1475>:  call   0x704e00 <net/http.Redirect>
+   0x0000000000717fe8 <+1480>:  add    rsp,0x198
+   0x0000000000717fef <+1487>:  pop    rbp
+   0x0000000000717ff0 <+1488>:  ret
+   0x0000000000717ff1 <+1489>:  mov    rax,QWORD PTR [rip+0x377bb0]        # 0xa8fba8 <main.templates>
+   0x0000000000717ff8 <+1496>:  mov    rbx,rdx
+   0x0000000000717ffb <+1499>:  mov    rcx,QWORD PTR [rsp+0x1b0]
+   0x0000000000718003 <+1507>:  lea    rdi,[rip+0x96e02]        # 0x7aee0c
+   0x000000000071800a <+1514>:  mov    esi,0xa
+   0x000000000071800f <+1519>:  lea    r8,[rip+0x3c56a]        # 0x754580
+   0x0000000000718016 <+1526>:  mov    r9,QWORD PTR [rsp+0x80]
+   0x000000000071801e <+1534>:  xchg   ax,ax
+   0x0000000000718020 <+1536>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x0000000000718025 <+1541>:  add    rsp,0x198
+   0x000000000071802c <+1548>:  pop    rbp
+   0x000000000071802d <+1549>:  ret
+   0x000000000071802e <+1550>:  mov    r12,rdx
+   0x0000000000718031 <+1553>:  and    rdx,r11
+   0x0000000000718034 <+1556>:  shl    rdx,0x4
+   0x0000000000718038 <+1560>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x000000000071803d <+1565>:  nop    DWORD PTR [rax]
+   0x0000000000718040 <+1568>:  cmp    r13,rbx
+   0x0000000000718043 <+1571>:  je     0x718062 <main.loginHandler+1602>
+   0x0000000000718045 <+1573>:  lea    rdx,[r12+0x1]
+   0x000000000071804a <+1578>:  test   r13,r13
+   0x000000000071804d <+1581>:  jne    0x71802e <main.loginHandler+1550>
+   0x000000000071804f <+1583>:  lea    rax,[rip+0x36591a]        # 0xa7d970 <main..typeAssert.2>
+   0x0000000000718056 <+1590>:  call   0x40f060 <runtime.typeAssert>
+   0x000000000071805b <+1595>:  mov    rdx,rax
+   0x000000000071805e <+1598>:  xchg   ax,ax
+   0x0000000000718060 <+1600>:  jmp    0x717ff1 <main.loginHandler+1489>
+   0x0000000000718062 <+1602>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x0000000000718067 <+1607>:  jmp    0x717ff1 <main.loginHandler+1489>
+   0x0000000000718069 <+1609>:  mov    rax,QWORD PTR [rip+0x377b38]        # 0xa8fba8 <main.templates>
+   0x0000000000718070 <+1616>:  mov    rbx,rdx
+   0x0000000000718073 <+1619>:  mov    rcx,QWORD PTR [rsp+0x1b0]
+   0x000000000071807b <+1627>:  lea    rdi,[rip+0x96d8a]        # 0x7aee0c
+   0x0000000000718082 <+1634>:  mov    esi,0xa
+   0x0000000000718087 <+1639>:  lea    r8,[rip+0x3c4f2]        # 0x75450000071808e <+1646>:  mov    r9,QWORD PTR [rsp+0x88]
+   0x0000000000718096 <+1654>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x000000000071809b <+1659>:  add    rsp,0x198
+   0x00000000007180a2 <+1666>:  pop    rbp
+   0x00000000007180a3 <+1667>:  ret
+   0x00000000007180a4 <+1668>:  mov    r12,rdx
+   0x00000000007180a7 <+1671>:  and    rdx,r11
+   0x00000000007180aa <+1674>:  shl    rdx,0x4
+   0x00000000007180ae <+1678>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x00000000007180b3 <+1683>:  cmp    r13,rbx
+   0x00000000007180b6 <+1686>:  je     0x7180d6 <main.loginHandler+1718>
+   0x00000000007180b8 <+1688>:  lea    rdx,[r12+0x1]
+   0x00000000007180bd <+1693>:  nop    DWORD PTR [rax]
+   0x00000000007180c0 <+1696>:  test   r13,r13
+   0x00000000007180c3 <+1699>:  jne    0x7180a4 <main.loginHandler+1668>
+   0x00000000007180c5 <+1701>:  lea    rax,[rip+0x365884]        # 0xa7d950 <main..typeAssert.1>
+   0x00000000007180cc <+1708>:  call   0x40f060 <runtime.typeAssert>
+   0x00000000007180d1 <+1713>:  mov    rdx,rax
+   0x00000000007180d4 <+1716>:  jmp    0x718069 <main.loginHandler+1609>
+   0x00000000007180d6 <+1718>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x00000000007180db <+1723>:  jmp    0x718069 <main.loginHandler+1609>
+   0x00000000007180dd <+1725>:  mov    rax,QWORD PTR [rip+0x377ac4]        # 0xa8fba8 <main.templates>
+   0x00000000007180e4 <+1732>:  mov    rbx,rdx
+   0x00000000007180e7 <+1735>:  mov    rcx,QWORD PTR [rsp+0x1b0]
+   0x00000000007180ef <+1743>:  lea    rdi,[rip+0x96d16]        # 0x7aee0c
+   0x00000000007180f6 <+1750>:  mov    esi,0xa
+   0x00000000007180fb <+1755>:  lea    r8,[rip+0x3c47e]        # 0x754580
+   0x0000000000718102 <+1762>:  mov    r9,QWORD PTR [rsp+0x98]
+   0x000000000071810a <+1770>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x000000000071810f <+1775>:  add    rsp,0x198
+   0x0000000000718116 <+1782>:  pop    rbp
+   0x0000000000718117 <+1783>:  ret
+   0x0000000000718118 <+1784>:  mov    r12,rdx
+   0x000000000071811b <+1787>:  and    rdx,r11
+   0x000000000071811e <+1790>:  shl    rdx,0x4
+   0x0000000000718122 <+1794>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x0000000000718127 <+1799>:  cmp    r13,rbx
+   0x000000000071812a <+1802>:  je     0x71814a <main.loginHandler+1834>
+   0x000000000071812c <+1804>:  lea    rdx,[r12+0x1]
+   0x0000000000718131 <+1809>:  test   r13,r13
+   0x0000000000718134 <+1812>:  jne    0x718118 <main.loginHandler+1784>
+   0x0000000000718136 <+1814>:  lea    rax,[rip+0x3657f3]        # 0xa7d930 <main..typeAssert.0>
+   0x000000000071813d <+1821>:  nop    DWORD PTR [rax]
+   0x0000000000718140 <+1824>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000718145 <+1829>:  mov    rdx,rax
+   0x0000000000718148 <+1832>:  jmp    0x7180dd <main.loginHandler+1725>
+   0x000000000071814a <+1834>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071814f <+1839>:  jmp    0x7180dd <main.loginHandler+1725>
+   0x0000000000718151 <+1841>:  mov    QWORD PTR [rsp+0x8],rax
+   0x0000000000718156 <+1846>:  mov    QWORD PTR [rsp+0x10],rbx
+   0x000000000071815b <+1851>:  mov    QWORD PTR [rsp+0x18],rcx
+   0x0000000000718160 <+1856>:  call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000718165 <+1861>:  mov    rax,QWORD PTR [rsp+0x8]
+   0x000000000071816a <+1866>:  mov    rbx,QWORD PTR [rsp+0x10]
+   0x000000000071816f <+1871>:  mov    rcx,QWORD PTR [rsp+0x18]
+   0x0000000000718174 <+1876>:  jmp    0x717a20 <main.loginHandler>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 0s 󱑎 09.54
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.registerHandler'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.registerHandler:
+   0x0000000000718180 <+0>:     lea    r12,[rsp-0x88]
+   0x0000000000718188 <+8>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x000000000071818c <+12>:    jbe    0x718a09 <main.registerHandler+2185>
+   0x0000000000718192 <+18>:    push   rbp
+   0x0000000000718193 <+19>:    mov  0000000000718196 <+22>:    sub    rsp,0x100
+   0x000000000071819d <+29>:    mov    QWORD PTR [rsp+0x118],rbx
+   0x00000000007181a5 <+37>:    mov    QWORD PTR [rsp+0x110],rax
+   0x00000000007181ad <+45>:    cmp    QWORD PTR [rcx+0x8],0x3
+   0x00000000007181b2 <+50>:    jne    0x718245 <main.registerHandler+197>
+   0x00000000007181b8 <+56>:    mov    rdx,QWORD PTR [rcx]
+   0x00000000007181bb <+59>:    cmp    WORD PTR [rdx],0x4547
+   0x00000000007181c0 <+64>:    jne    0x718245 <main.registerHandler+197>
+   0x00000000007181c6 <+70>:    cmp    BYTE PTR [rdx+0x2],0x54
+   0x00000000007181ca <+74>:    jne    0x718245 <main.registerHandler+197>
+   0x00000000007181cc <+76>:    call   0x4126e0 <runtime.makemap_small>
+   0x00000000007181d1 <+81>:    mov    QWORD PTR [rsp+0xa8],rax
+   0x00000000007181d9 <+89>:    mov    rbx,rax
+   0x00000000007181dc <+92>:    lea    rcx,[rip+0x937ef]        # 0x7ab9d2
+   0x00000000007181e3 <+99>:    mov    edi,0x6
+   0x00000000007181e8 <+104>:   lea    rax,[rip+0x3c391]        # 0x754580
+   0x00000000007181ef <+111>:   call   0x417380 <runtime.mapassign_faststr>
+   0x00000000007181f4 <+116>:   lea    rcx,[rip+0x24be5]        # 0x73cde0
+   0x00000000007181fb <+123>:   mov    QWORD PTR [rax],rcx
+   0x00000000007181fe <+126>:   cmp    DWORD PTR [rip+0x3d964b],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718205 <+133>:   je     0x718213 <main.registerHandler+147>
+   0x0000000000718207 <+135>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x000000000071820b <+139>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000718210 <+144>:   mov    QWORD PTR [r11],rdx
+   0x0000000000718213 <+147>:   lea    rdx,[rip+0x12aa26]        # 0x842c40
+   0x000000000071821a <+154>:   mov    QWORD PTR [rax+0x8],rdx
+   0x000000000071821e <+158>:   mov    rdx,QWORD PTR [rsp+0x110]
+   0x0000000000718226 <+166>:   test   rdx,rdx
+   0x0000000000718229 <+169>:   je     0x718991 <main.registerHandler+2065>
+   0x000000000071822f <+175>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000718233 <+179>:   mov    r10,QWORD PTR [rip+0x365756]        # 0xa7d990 <main..typeAssert.3>
+   0x000000000071823a <+186>:   mov    r11,QWORD PTR [r10]
+   0x000000000071823d <+189>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000718240 <+192>:   jmp    0x7189ce <main.registerHandler+2126>
+   0x0000000000718245 <+197>:   mov    QWORD PTR [rsp+0x120],rcx
+   0x000000000071824d <+205>:   mov    rax,rcx
+   0x0000000000718250 <+208>:   lea    rbx,[rip+0x957a0]        # 0x7ad9f7
+   0x0000000000718257 <+215>:   mov    ecx,0x8
+   0x000000000071825c <+220>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000718260 <+224>:   call   0x6f7f80 <net/http.(*Request).FormValue>
+   0x0000000000718265 <+229>:   mov    QWORD PTR [rsp+0x40],rbx
+   0x000000000071826a <+234>:   mov    QWORD PTR [rsp+0x68],rax
+   0x000000000071826f <+239>:   mov    ecx,0x8
+   0x0000000000718274 <+244>:   mov    rax,QWORD PTR [rsp+0x120]
+   0x000000000071827c <+252>:   lea    rbx,[rip+0x9577c]        # 0x7ad9ff
+   0x0000000000718283 <+259>:   call   0x6f7f80 <net/http.(*Request).FormValue>
+   0x0000000000718288 <+264>:   mov    rdi,QWORD PTR [rsp+0x40]
+   0x000000000071828d <+269>:   test   rdi,rdi
+   0x0000000000718290 <+272>:   je     0x71829b <main.registerHandler+283>
+   0x0000000000718292 <+274>:   test   rbx,rbx
+   0x0000000000718295 <+277>:   jne    0x718365 <main.registerHandler+485>
+   0x000000000071829b <+283>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x00000000007182a0 <+288>:   call   0x4126e0 <runtime.makemap_small>
+   0x00000000007182a5 <+293>:   mov    QWORD PTR [rsp+0xa0],rax
+   0x00000000007182ad <+301>:   mov    rbx,rax
+   0x00000000007182b0 <+304>:   lea    rcx,[rip+0x9371b]        # 0x7ab9d2
+   0x00000000007182b7 <+311>:   mov    edi,0x6
+   0x00000000007182bc <+316>:   lea    rax,[rip+0x3c2bd]        # 0x754580
+   0x00000000007182c3 <+323>:   call   0x417380 <runtime.mapassign_faststr>
+   0x00000000007182c8 <+328>:   lea    rcx,[rip+0x24b11]        # 0x73cde0
+   0x00000000007182cf <+335>:   mov    QWORD PTR [rax],rcx
+   0x00000000007182d2 <+338>:   cmp    DWORD PTR [rip+0x3d9577],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007182d9 <+345>:   je     0x7182e8 <main.registerHandler+360>
+   0x00000000007182db <+347>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x00000000007182df <+351>:   nop
+   0x00000000007182e0 <+352>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x00000000007182e5 <+357>:   mov    QWORD PTR [r11],rdx
+   0x00000000007182e8 <+360>:   lea    rdx,[rip+0x12a951]        # 0x842c40
+   0x00000000007182ef <+367>:   mov    QWORD PTR [rax+0x8],rdx
+   0x00000000007182f3 <+371>:   lea    rax,[rip+0x3c286]        # 0x754580
+   0x00000000007182fa <+378>:   mov    rbx,QWORD PTR [rsp+0xa0]
+   0x0000000000718302 <+386>:   lea    rcx,[rip+0x92bfb]        # 0x7aaf04
+   0x0000000000718309 <+393>:   mov    edi,0x5
+   0x000000000071830e <+398>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718313 <+403>:   lea    rdx,[rip+0x24ac6]        # 0x73cde0
+   0x000000000071831a <+410>:   mov    QWORD PTR [rax],rdx
+   0x000000000071831d <+413>:   cmp    DWORD PTR [rip+0x3d952c],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718324 <+420>:   je     0x718332 <main.registerHandler+434>
+   0x0000000000718326 <+422>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x000000000071832a <+426>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x000000000071832f <+431>:   mov    QWORD PTR [r11],rdx
+   0x0000000000718332 <+434>:   lea    rdx,[rip+0x12a917]        # 0x842c50
+   0x0000000000718339 <+441>:   mov    QWORD PTR [rax+0x8],rdx
+   0x000000000071833d <+445>:   mov    rdx,QWORD PTR [rsp+0x110]
+   0x0000000000718345 <+453>:   test   rdx,rdx
+   0x0000000000718348 <+456>:   je     0x71891d <main.registerHandler+1949>
+   0x000000000071834e <+462>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000718352 <+466>:   mov    r10,QWORD PTR [rip+0x365657]        # 0xa7d9b0 <main..typeAssert.4>
+   0x0000000000718359 <+473>:   mov    r11,QWORD PTR [r10]
+   0x000000000071835c <+476>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x000000000071835f <+479>:   nop
+   0x0000000000718360 <+480>:   jmp    0x718958 <main.registerHandler+2008>
+   0x0000000000718365 <+485>:   mov    QWORD PTR [rsp+0x50],rbx
+   0x000000000071836a <+490>:   mov    QWORD PTR [rsp+0x78],rax
+   0x000000000071836f <+495>:   mov    rbx,QWORD PTR [rip+0x37782a]        # 0xa8fba0 <main.users>
+   0x0000000000718376 <+502>:   lea    rax,[rip+0x3c263]        # 0x7545e0
+   0x000000000071837d <+509>:   mov    rcx,QWORD PTR [rsp+0x68]
+   0x0000000000718382 <+514>:   call   0x416fa0 <runtime.mapaccess2_faststr>
+   0x0000000000718387 <+519>:   test   bl,bl
+   0x0000000000718389 <+521>:   je     0x71845f <main.registerHandler+735>
+   0x000000000071838f <+527>:   call   0x4126e0 <runtime.makemap_small>
+   0x0000000000718394 <+532>:   mov    QWORD PTR [rsp+0x98],rax
+   0x000000000071839c <+540>:   mov    rbx,rax
+   0x000000000071839f <+543>:   lea    rcx,[rip+0x9362c]        # 0x7ab9d2
+   0x00000000007183a6 <+550>:   mov    edi,0x6
+   0x00000000007183ab <+555>:   lea    rax,[rip+0x3c1ce]        # 0x754580
+   0x00000000007183b2 <+562>:   call   0x417380 <runtime.mapassign_faststr>
+   0x00000000007183b7 <+567>:   lea    rcx,[rip+0x24a22]        # 0x73cde0
+   0x00000000007183be <+574>:   mov    QWORD PTR [rax],rcx
+   0x00000000007183c1 <+577>:   cmp    DWORD PTR [rip+0x3d9488],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007183c8 <+584>:   je     0x7183d6 <main.registerHandler+598>
+   0x00000000007183ca <+586>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x00000000007183ce <+590>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x00000000007183d3 <+595>:   mov    QWORD PTR [r11],rdx
+   0x00000000007183d6 <+598>:   lea    rdx,[rip+0x12a863]        # 0x842c40
+   0x00000000007183dd <+605>:   mov    QWORD PTR [rax+0x8],rdx
+   0x00000000007183e1 <+609>:   lea    rax,[rip+0x3c198]        # 0x754580
+   0x00000000007183e8 <+616>:   mov    rbx,QWORD PTR [rsp+0x98]
+   0x00000000007183f0 <+624>:   lea    rcx,[rip+0x92b0d]        # 0x7aaf04
+   0x00000000007183f7 <+631>:   mov    edi,0x5
+   0x00000000007183fc <+636>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000718400 <+640>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718405 645>:   lea    rdx,[rip+0x249d4]        # 0x73cde0
+   0x000000000071840c <+652>:   mov    QWORD PTR [rax],rdx
+   0x000000000071840f <+655>:   cmp    DWORD PTR [rip+0x3d943a],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718416 <+662>:   je     0x718428 <main.registerHandler+680>
+   0x0000000000718418 <+664>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x000000000071841c <+668>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000718420 <+672>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000718425 <+677>:   mov    QWORD PTR [r11],rdx
+   0x0000000000718428 <+680>:   lea    rdx,[rip+0x12a831]        # 0x842c60
+   0x000000000071842f <+687>:   mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000718433 <+691>:   mov    rdx,QWORD PTR [rsp+0x110]
+   0x000000000071843b <+699>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000718440 <+704>:   test   rdx,rdx
+   0x0000000000718443 <+707>:   je     0x7188a9 <main.registerHandler+1833>
+   0x0000000000718449 <+713>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x000000000071844d <+717>:   mov    r10,QWORD PTR [rip+0x36557c]        # 0xa7d9d0 <main..typeAssert.5>
+   0x0000000000718454 <+724>:   mov    r11,QWORD PTR [r10]
+   0x0000000000718457 <+727>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x000000000071845a <+730>:   jmp    0x7188e4 <main.registerHandler+1892>
+   0x000000000071845f <+735>:   movups XMMWORD PTR [rsp+0xb0],xmm15
+   0x0000000000718468 <+744>:   movups XMMWORD PTR [rsp+0xc0],xmm15
+   0x0000000000718471 <+753>:   movups XMMWORD PTR [rsp+0xd0],xmm15
+   0x000000000071847a <+762>:   movups XMMWORD PTR [rsp+0xe0],xmm15
+   0x0000000000718483 <+771>:   mov    QWORD PTR [rsp+0xb8],0xd
+   0x000000000071848f <+783>:   lea    rcx,[rip+0x981c4]        # 0x7b065a
+   0x0000000000718496 <+790>:   mov    QWORD PTR [rsp+0xb0],rcx
+   0x000000000071849e <+798>:   mov    QWORD PTR [rsp+0xc8],0x5
+   0x00000000007184aa <+810>:   lea    rcx,[rip+0x92a4e]        # 0x7aaeff
+   0x00000000007184b1 <+817>:   mov    QWORD PTR [rsp+0xc0],rcx
+   0x00000000007184b9 <+825>:   mov    QWORD PTR [rsp+0xd8],0x6
+   0x00000000007184c5 <+837>:   lea    rcx,[rip+0x9350c]        # 0x7ab9d8
+   0x00000000007184cc <+844>:   mov    QWORD PTR [rsp+0xd0],rcx
+   0x00000000007184d4 <+852>:   mov    QWORD PTR [rsp+0xe8],0x4
+   0x00000000007184e0 <+864>:   lea    rcx,[rip+0x923c7]        # 0x7aa8ae
+   0x00000000007184e7 <+871>:   mov    QWORD PTR [rsp+0xe0],rcx
+   0x00000000007184ef <+879>:   mov    rax,QWORD PTR [rsp+0x68]
+   0x00000000007184f4 <+884>:   mov    rbx,QWORD PTR [rsp+0x40]
+   0x00000000007184f9 <+889>:   call   0x5069c0 <strings.ToLower>
+   0x00000000007184fe <+894>:   mov    QWORD PTR [rsp+0x60],rax
+   0x0000000000718503 <+899>:   mov    QWORD PTR [rsp+0x38],rbx
+   0x0000000000718508 <+904>:   lea  ]
+   0x0000000000718510 <+912>:   xor    edx,edx
+   0x0000000000718512 <+914>:   jmp    0x718520 <main.registerHandler+928>
+   0x0000000000718514 <+916>:   add    rcx,0x10
+   0x0000000000718518 <+920>:   inc    rdx
+   0x000000000071851b <+923>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000718520 <+928>:   cmp    rdx,0x4
+   0x0000000000718524 <+932>:   jge    0x7186b2 <main.registerHandler+1330>
+   0x000000000071852a <+938>:   mov    rsi,QWORD PTR [rcx+0x8]
+   0x000000000071852e <+942>:   cmp    rbx,rsi
+   0x0000000000718531 <+945>:   jne    0x718514 <main.registerHandler+916>
+   0x0000000000718533 <+947>:   mov    QWORD PTR [rsp+0x48],rsi
+   0x0000000000718538 <+952>:   mov    QWORD PTR [rsp+0x58],rdx
+   0x000000000071853d <+957>:   mov    QWORD PTR [rsp+0x90],rcx
+   0x0000000000718545 <+965>:   mov    rdx,QWORD PTR [rcx]
+   0x0000000000718548 <+968>:   mov    QWORD PTR [rsp+0x70],rdx
+   0x000000000071854d <+973>:   mov    rsi,rbx
+   0x0000000000718550 <+976>:   mov    rbx,rdx
+   0x0000000000718553 <+979>:   mov    rcx,rsi
+   0x0000000000718556 <+982>:   call   0x406960 <runtime.memequal>
+   0x000000000071855b <+987>:   test   al,al
+   0x000000000071855d <+989>:   jne    0x718578 <main.registerHandler+1016>
+   0x000000000071855f <+991>:   mov    rax,QWORD PTR [rsp+0x60]
+   0x0000000000718564 <+996>:   mov    rcx,QWORD PTR [rsp+0x90]
+   0x000000000071856c <+1004>:  mov    rdx,QWORD PTR [rsp+0x58]
+   0x0000000000718571 <+1009>:  mov    rbx,QWORD PTR [rsp+0x38]
+   0x0000000000718576 <+1014>:  jmp    0x718514 <main.registerHandler+916>
+   0x0000000000718578 <+1016>:  call   0x4126e0 <runtime.makemap_small>
+   0x000000000071857d <+1021>:  mov    QWORD PTR [rsp+0x88],rax
+   0x0000000000718585 <+1029>:  mov    rbx,rax
+   0x0000000000718588 <+1032>:  lea    rcx,[rip+0x93443]        # 0x7ab9d2
+   0x000000000071858f <+1039>:  mov    edi,0x6
+   0x0000000000718594 <+1044>:  lea    rax,[rip+0x3bfe5]        # 0x754580
+   0x000000000071859b <+1051>:  nop    DWORD PTR [rax+rax*1+0x0]
+   0x00000000007185a0 <+1056>:  call   0x417380 <runtime.mapassign_faststr>
+   0x00000000007185a5 <+1061>:  lea    rcx,[rip+0x24834]        # 0x73cde0
+   0x00000000007185ac <+1068>:  mov    QWORD PTR [rax],rcx
+   0x00000000007185af <+1071>:  cmp    DWORD PTR [rip+0x3d929a],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007185b6 <+1078>:  je     0x7185c8 <main.registerHandler+1096>
+   0x00000000007185b8 <+1080>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x00000000007185bc <+1084>:  nop    DWORD PTR [rax+0x0]
+   0x00000000007185c0 <+1088>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x00000000007185c5 <+1093>:  mov    QWORD PTR [r11],rdx
+   0x00000000007185c8 <+1096>:  lea    rcx,[rip+0x12a671]        # 0x842c40
+   0x00000000007185cf <+1103>:  mov    QWOrax+0x8],rcx
+   0x00000000007185d3 <+1107>:  movups XMMWORD PTR [rsp+0xf0],xmm15
+   0x00000000007185dc <+1116>:  mov    rax,QWORD PTR [rsp+0x70]
+   0x00000000007185e1 <+1121>:  mov    rbx,QWORD PTR [rsp+0x48]
+   0x00000000007185e6 <+1126>:  call   0x40ef00 <runtime.convTstring>
+   0x00000000007185eb <+1131>:  lea    rcx,[rip+0x247ee]        # 0x73cde0
+   0x00000000007185f2 <+1138>:  mov    QWORD PTR [rsp+0xf0],rcx
+   0x00000000007185fa <+1146>:  mov    QWORD PTR [rsp+0xf8],rax
+   0x0000000000718602 <+1154>:  lea    rax,[rip+0x9c4cf]        # 0x7b4ad8
+   0x0000000000718609 <+1161>:  mov    ebx,0x15
+   0x000000000071860e <+1166>:  mov    edi,0x1
+   0x0000000000718613 <+1171>:  mov    rsi,rdi
+   0x0000000000718616 <+1174>:  lea    rcx,[rsp+0xf0]
+   0x000000000071861e <+1182>:  xchg   ax,ax
+   0x0000000000718620 <+1184>:  call   0x4f5540 <fmt.Sprintf>
+   0x0000000000718625 <+1189>:  call   0x40ef00 <runtime.convTstring>
+   0x000000000071862a <+1194>:  mov    QWORD PTR [rsp+0x90],rax
+   0x0000000000718632 <+1202>:  mov    rbx,QWORD PTR [rsp+0x88]
+   0x000000000071863a <+1210>:  lea    rcx,[rip+0x928c3]        # 0x7aaf04
+   0x0000000000718641 <+1217>:  mov    edi,0x5
+   0x0000000000718646 <+1222>:  lea    rax,[rip+0x3bf33]        # 0x754580
+   0x000000000071864d <+1229>:  call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718652 <+1234>:  lea    rcx,[rip+0x24787]        # 0x73cde0
+   0x0000000000718659 <+1241>:  mov    QWORD PTR [rax],rcx
+   0x000000000071865c <+1244>:  cmp    DWORD PTR [rip+0x3d91ed],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718663 <+1251>:  jne    0x71866f <main.registerHandler+1263>
+   0x0000000000718665 <+1253>:  mov    rdx,QWORD PTR [rsp+0x90]
+   0x000000000071866d <+1261>:  jmp    0x718687 <main.registerHandler+1287>
+   0x000000000071866f <+1263>:  call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000718674 <+1268>:  mov    rdx,QWORD PTR [rsp+0x90]
+   0x000000000071867c <+1276>:  mov    QWORD PTR [r11],rdx
+   0x000000000071867f <+1279>:  mov    r10,QWORD PTR [rax+0x8]
+   0x0000000000718683 <+1283>:  mov    QWORD PTR [r11+0x8],r10
+   0x0000000000718687 <+1287>:  mov    QWORD PTR [rax+0x8],rdx
+   0x000000000071868b <+1291>:  mov    rdx,QWORD PTR [rsp+0x110]
+   0x0000000000718693 <+1299>:  test   rdx,rdx
+   0x0000000000718696 <+1302>:  je     0x718831 <main.registerHandler+1713>
+   0x000000000071869c <+1308>:  mov    rbx,QWORD PTR [rdx+0x8]
+   0x00000000007186a0 <+1312>:  mov    r10,QWORD PTR [rip+0x365349]        # 0xa7d9f0 <main..typeAssert.6>
+   0x00000000007186a7 <+1319>:  mov    r11,QWORD PTR [r10]
+   0x00000000007186aa <+1322>:  mov    edx,DWORD PTR [rdx+0x10]
+   0x00000000007186ad <+1325>:  jmp    0x71886e <main.registerHandler+1774>
+   0x00000000007186b2 <+1330>:  mov    rbx,QWORD PTR [rip+0x37        # 0xa8fba0 <main.users>
+   0x00000000007186b9 <+1337>:  lea    rax,[rip+0x3bf20]        # 0x7545e0
+   0x00000000007186c0 <+1344>:  mov    rcx,QWORD PTR [rsp+0x68]
+   0x00000000007186c5 <+1349>:  mov    rdi,QWORD PTR [rsp+0x40]
+   0x00000000007186ca <+1354>:  call   0x417380 <runtime.mapassign_faststr>
+   0x00000000007186cf <+1359>:  mov    rdx,QWORD PTR [rsp+0x50]
+   0x00000000007186d4 <+1364>:  mov    QWORD PTR [rax+0x8],rdx
+   0x00000000007186d8 <+1368>:  cmp    DWORD PTR [rip+0x3d9171],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007186df <+1375>:  nop
+   0x00000000007186e0 <+1376>:  jne    0x7186e9 <main.registerHandler+1385>
+   0x00000000007186e2 <+1378>:  mov    rcx,QWORD PTR [rsp+0x78]
+   0x00000000007186e7 <+1383>:  jmp    0x7186fd <main.registerHandler+1405>
+   0x00000000007186e9 <+1385>:  call   0x470000 <runtime.gcWriteBarrier2>
+   0x00000000007186ee <+1390>:  mov    rcx,QWORD PTR [rsp+0x78]
+   0x00000000007186f3 <+1395>:  mov    QWORD PTR [r11],rcx
+   0x00000000007186f6 <+1398>:  mov    rdx,QWORD PTR [rax]
+   0x00000000007186f9 <+1401>:  mov    QWORD PTR [r11+0x8],rdx
+   0x00000000007186fd <+1405>:  mov    QWORD PTR [rax],rcx
+   0x0000000000718700 <+1408>:  call   0x4126e0 <runtime.makemap_small>
+   0x0000000000718705 <+1413>:  mov    QWORD PTR [rsp+0x80],rax
+   0x000000000071870d <+1421>:  mov    rbx,rax
+   0x0000000000718710 <+1424>:  lea    rcx,[rip+0x932bb]        # 0x7ab9d2
+   0x0000000000718717 <+1431>:  mov    edi,0x6
+   0x000000000071871c <+1436>:  lea    rax,[rip+0x3be5d]        # 0x754580
+   0x0000000000718723 <+1443>:  call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718728 <+1448>:  lea    rcx,[rip+0x246b1]        # 0x73cde0
+   0x000000000071872f <+1455>:  mov    QWORD PTR [rax],rcx
+   0x0000000000718732 <+1458>:  cmp    DWORD PTR [rip+0x3d9117],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718739 <+1465>:  je     0x718748 <main.registerHandler+1480>
+   0x000000000071873b <+1467>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x000000000071873f <+1471>:  nop
+   0x0000000000718740 <+1472>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000718745 <+1477>:  mov    QWORD PTR [r11],rdx
+   0x0000000000718748 <+1480>:  lea    rdx,[rip+0x12a4d1]        # 0x842c20
+   0x000000000071874f <+1487>:  mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000718753 <+1491>:  lea    rax,[rip+0x3be26]        # 0x754580
+   0x000000000071875a <+1498>:  mov    rbx,QWORD PTR [rsp+0x80]
+   0x0000000000718762 <+1506>:  lea    rcx,[rip+0x941ee]        # 0x7ac957
+   0x0000000000718769 <+1513>:  mov    edi,0x7
+   0x000000000071876e <+1518>:  call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718773 <+1523>:  lea    rdx,[rip+0x24666]        # 0x73cde0
+   0x000000000071877a <+1530>:  mov    QWORD PTR [rax],rdx
+   0x000000000071877d <+1533>:  cmp    DWORD PTR [rip+0x3d90cc],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718784 <+1540>:  je     0x718792 <main.registerHandler+1554>
+   0x0000000000718786 <+1542>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x000000000071878a <+1546>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x000000000071878f <+1551>:  mov    QWORD PTR [r11],rdx
+   0x0000000000718792 <+1554>:  lea    rdx,[rip+0x12a4d7]        # 0x842c70
+   0x0000000000718799 <+1561>:  mov    QWORD PTR [rax+0x8],rdx
+   0x000000000071879d <+1565>:  mov    rdx,QWORD PTR [rsp+0x110]
+   0x00000000007187a5 <+1573>:  test   rdx,rdx
+   0x00000000007187a8 <+1576>:  je     0x7187bd <main.registerHandler+1597>
+   0x00000000007187aa <+1578>:  mov    rbx,QWORD PTR [rdx+0x8]
+   0x00000000007187ae <+1582>:  mov    r10,QWORD PTR [rip+0x36525b]        # 0xa7da10 <main..typeAssert.7>
+   0x00000000007187b5 <+1589>:  mov    r11,QWORD PTR [r10]
+   0x00000000007187b8 <+1592>:  mov    edx,DWORD PTR [rdx+0x10]
+   0x00000000007187bb <+1595>:  jmp    0x7187f8 <main.registerHandler+1656>
+   0x00000000007187bd <+1597>:  mov    rax,QWORD PTR [rip+0x3773e4]        # 0xa8fba8 <main.templates>
+   0x00000000007187c4 <+1604>:  mov    rbx,rdx
+   0x00000000007187c7 <+1607>:  mov    rcx,QWORD PTR [rsp+0x118]
+   0x00000000007187cf <+1615>:  lea    rdi,[rip+0x96636]        # 0x7aee0c
+   0x00000000007187d6 <+1622>:  mov    esi,0xa
+   0x00000000007187db <+1627>:  lea    r8,[rip+0x3bd9e]        # 0x754580
+   0x00000000007187e2 <+1634>:  mov    r9,QWORD PTR [rsp+0x80]
+   0x00000000007187ea <+1642>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x00000000007187ef <+1647>:  add    rsp,0x100
+   0x00000000007187f6 <+1654>:  pop    rbp
+   0x00000000007187f7 <+1655>:  ret
+   0x00000000007187f8 <+1656>:  mov    r12,rdx
+   0x00000000007187fb <+1659>:  a11
+   0x00000000007187fe <+1662>:  shl    rdx,0x4
+   0x0000000000718802 <+1666>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x0000000000718807 <+1671>:  cmp    r13,rbx
+   0x000000000071880a <+1674>:  je     0x71882a <main.registerHandler+1706>
+   0x000000000071880c <+1676>:  lea    rdx,[r12+0x1]
+   0x0000000000718811 <+1681>:  test   r13,r13
+   0x0000000000718814 <+1684>:  jne    0x7187f8 <main.registerHandler+1656>
+   0x0000000000718816 <+1686>:  lea    rax,[rip+0x3651f3]        # 0xa7da10 <main..typeAssert.7>
+   0x000000000071881d <+1693>:  nop    DWORD PTR [rax]
+   0x0000000000718820 <+1696>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000718825 <+1701>:  mov    rdx,rax
+   0x0000000000718828 <+1704>:  jmp    0x7187bd <main.registerHandler+1597>
+   0x000000000071882a <+1706>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071882f <+1711>:  jmp    0x7187bd <main.registerHandler+1597>
+   0x0000000000718831 <+1713>:  mov    rax,QWORD PTR [rip+0x377370]        # 0xa8fba8 <main.templates>
+   0x0000000000718838 <+1720>:  mov    rbx,rdx
+   0x000000000071883b <+1723>:  mov    rcx,QWORD PTR [rsp+0x118]
+   0x0000000000718843 <+1731>:  lea    rdi,[rip+0x965c2]        # 0x7aee0c
+   0x000000000071884a <+1738>:  mov    esi,0xa
+   0x000000000071884f <+1743>:  lea    r8,[rip+0x3bd2a]        # 0x754580
+   0x0000000000718856 <+1750>:  mov    r9,QWORD PTR [rsp+0x88]
+   0x00000058>:  xchg   ax,ax
+   0x0000000000718860 <+1760>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x0000000000718865 <+1765>:  add    rsp,0x100
+   0x000000000071886c <+1772>:  pop    rbp
+   0x000000000071886d <+1773>:  ret
+   0x000000000071886e <+1774>:  mov    r12,rdx
+   0x0000000000718871 <+1777>:  and    rdx,r11
+   0x0000000000718874 <+1780>:  shl    rdx,0x4
+   0x0000000000718878 <+1784>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x000000000071887 nop    DWORD PTR [rax]
+   0x0000000000718880 <+1792>:  cmp    r13,rbx
+   0x0000000000718883 <+1795>:  je     0x7188a2 <main.registerHandler+1826>
+   0x0000000000718885 <+1797>:  lea    rdx,[r12+0x1]
+   0x000000000071888a <+1802>:  test   r13,r13
+   0x000000000071888d <+1805>:  jne    0x71886e <main.registerHandler+1774>
+   0x000000000071888f <+1807>:  lea    rax,[rip+0x36515a]        # 0xa7d9f0 <main..typeAssert.6>
+   0x0000000000718896 <+1814>:  call   0x40f060 <runtime.typeAssert>
+   0x000000000071889b <+1819>:  mov    rdx,rax
+   0x000000000071889e <+1822>:  xchg   ax,ax
+   0x00000000007188a0 <+1824>:  jmp    0x718831 <main.registerHandler+1713>
+   0x00000000007188a2 <+1826>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x00000000007188a7 <+1831>:  jmp    0x718831 <main.registerHandler+1713>
+   0x00000000007188a9 <+1833>:  mov    rax,QWORD PTR [rip+0x3772f8]        # 0xa8fba8 <main.templates>
+   0x00000000007188b0 <+1840>:  mov    rbx,rdx
+   0x00000000007188b3 <+1843>:  mov    rcx,QWORD PTR [rsp+0x118]
+   0x00000000007188bb <+1851>:  lea    rdi,[rip+0x9654a]        # 0x7aee0c
+   0x00000000007188c2 <+1858>:  mov    esi,0xa
+   0x00000000007188c7 <+1863>:  lea    r8,[rip+0x3bcb2]        # 0x754580
+   0x00000000007188ce <+1870>:  mov    r9,QWORD PTR [rsp+0x98]
+   0x00000000007188d6 <+1878>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x00000000007188db <+1883>:  add    rsp,0x100
+   0x00000000007188e2 <+1890>:  pop    rbp
+   0x00000000007188e3 <+1891>:  ret
+   0x00000000007188e4 <+1892>:  mov    r12,rdx
+   0x00000000007188e7 <+1895>:  and    rdx,r11
+   0x00000000007188ea <+1898>:  shl    rdx,0x4
+   0x00000000007188ee <+1902>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x00000000007188f3 <+1907>:  cmp    r13,rbx
+   0x00000000007188f6 <+1910>:  je     0x718916 <main.registerHandler+1942>
+   0x00000000007188f8 <+1912>:  lea    rdx,[r12+0x1]
+   0x00000000007188fd <+1917>:  nop    DWORD PTR [rax]
+   0x0000000000718900 <+1920>:  test   r13,r13
+   0x0000000000718903 <+1923>:  jne    0x7188e4 <main.registerHandler+1892>
+   0x0000000000718905 <+1925>:  lea    rax,[rip+0x3650c4]        # 0xa7d9d0 <main..typeAssert.5>
+   0x000000000071890c <+1932>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000718911 <+1937>:  mov    rdx,rax
+   0x0000000000718914 <+1940>:  jmp    0x7188a9 <main.registerHandler+1833>
+   0x0000000000718916 <+1942>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071891b <+1947>:  jmp    0x7188a9 <main.registerHandler+1833>
+   0x000000000071891d <+1949>:  mov    rax,QWORD PTR [rip+0x377284]        # 0xa8fba8 <main.templates>
+   0x0000000000718924 <+1956>:  mov    rbx,rdx
+   0x0000000000718927 <+1959>:  mov    rcx,QWORD PTR [rsp+0x118]
+   0x000000000071892f <+1967>:  lea    rdi,[rip+0x964d6]        # 0x7aee0c
+   0x00718936 <+1974>:  mov    esi,0xa
+   0x000000000071893b <+1979>:  lea    r8,[rip+0x3bc3e]        # 0x754580
+   0x0000000000718942 <+1986>:  mov    r9,QWORD PTR [rsp+0xa0]
+   0x000000000071894a <+1994>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x000000000071894f <+1999>:  add    rsp,0x100
+   0x0000000000718956 <+2006>:  pop    rbp
+   0x0000000000718957 <+2007>:  ret
+   0x0000000000718958 <+2008>:  mov    r12,rdx
+   0x000000000071895b <+2011>:  and    rdx,r11
+   0x000000000071895e <+2014>:  shl    rdx,0x4
+   0x0000000000718962 <+2018>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x0000000000718967 <+2023>:  cmp    r13,rbx
+   0x000000000071896a <+2026>:  je     0x71898a <main.registerHandler+2058>
+   0x000000000071896c <+2028>:  lea    rdx,[r12+0x1]
+   0x0000000000718971 <+2033>:  test   r13,r13
+   0x0000000000718974 <+2036>:  jne    0x718958 <main.registerHandler+2008>
+   0x0000000000718976 <+2038>:  lea    rax,[rip+0x365033]        # 0xa7d9b0 <main..typeAssert.4>
+   0x000000000071897d <+2045>:  nop    DWORD PTR [rax]
+   0x0000000000718980 <+2048>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000718985 <+2053>:  mov    rdx,rax
+   0x0000000000718988 <+2056>:  jmp    0x71891d <main.registerHandler+1949>
+   0x000000000071898a <+2058>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071898f <+2063>:  jmp    0x71891d <main.registerHandler+1949>
+   0x0000000000718991 <+2065>:  mov    rax,QWORD PTR [rip+0x377210]        # 0xa8fba8 <main.templates>
+   0x0000000000718998 <+2072>:  mov    rbx,rdx
+   0x000000000071899b <+2075>:  mov    rcx,QWORD PTR [rsp+0x118]
+   0x00000000007189a3 <+2083>:  lea    rdi,[rip+0x96462]        # 0x7aee0c
+   0x00000000007189aa <+2090>:  mov    esi,0xa
+   0x00000000007189af <+2095>:  lea    r8,[rip+0x3bbca]        # 0x754580
+   0x00000000007189b6 <+2102>:  mov    r9,QWORD PTR [rsp+0xa8]
+   0x00000000007189be <+2110>:  xchg   ax,ax
+   0x00000000007189c0 <+2112>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x00000000007189c5 <+2117>:  add    rsp,0x100
+   0x00000000007189cc <+2124>:  pop    rbp
+   0x00000000007189cd <+2125>:  ret
+   0x00000000007189ce <+2126>:  mov    r12,rdx
+   0x00000000007189d1 <+2129>:  and    rdx,r11
+   0x00000000007189d4 <+2132>:  shl    rdx,0x4
+   0x00000000007189d8 <+2136>:  mov    r13,QWORD PTR [r1]
+   0x00000000007189dd <+2141>:  nop    DWORD PTR [rax]
+   0x00000000007189e0 <+2144>:  cmp    r13,rbx
+   0x00000000007189e3 <+2147>:  je     0x718a02 <main.registerHandler+2178>
+   0x00000000007189e5 <+2149>:  lea    rdx,[r12+0x1]
+   0x00000000007189ea <+2154>:  test   r13,r13
+   0x00000000007189ed <+2157>:  jne    0x7189ce <main.registerHandler+2126>
+   0x00000000007189ef <+2159>:  lea    rax,[rip+0x364f9a]        # 0xa7d990 <main..typeAssert.3>
+   0x00000000007189f6 <+2166>:  call   0x40f060 <runtime.typeAssert>
+   0x00000000007189fb <+2171>:  mov    rdx,rax
+   0x00000000007189fe <+2174>:  xchg   ax,ax
+   0x0000000000718a00 <+2176>:  jmp    0x718991 <main.registerHandler+2065>
+   0x0000000000718a02 <+2178>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x0000000000718a07 <+2183>:  jmp    0x718991 <main.registerHandler+2065>
+   0x0000000000718a09 <+2185>:  mov    QWORD PTR [rsp+0x8],rax
+   0x0000000000718a0e <+2190>:  mov    PTR [rsp+0x10],rbx
+   0x0000000000718a13 <+2195>:  mov    QWORD PTR [rsp+0x18],rcx
+   0x0000000000718a18 <+2200>:  call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000718a1d <+2205>:  mov    rax,QWORD PTR [rsp+0x8]
+   0x0000000000718a22 <+2210>:  mov    rbx,QWORD PTR [rsp+0x10]
+   0x0000000000718a27 <+2215>:  mov    rcx,QWORD PTR [rsp+0x18]
+   0x0000000000718a2c <+2220>:  jmp    0x718180 <main.registerHandler>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 1s 󱑎 09.55
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.logoutHandler'"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.logoutHandler:
+   0x0000000000718a40 <+0>:     lea    r12,[rsp-0x60]
+   0x0000000000718a45 <+5>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x0000000000718a49 <+9>:     jbe    0x718b0e <main.logoutHandler+206>
+   0x0000000000718a4f <+15>:    push   rbp
+   0x0000000000718a50 <+16>:    mov    rbp,rsp
+   0x0000000000718a53 <+19>:    sub    rsp,0xd8
+   0x0000000000718a5a <+26>:    mov    QWORD PTR [rsp+0xf8],rcx
+   0x0000000000718a62 <+34>:    mov    QWORD PTR [rsp+0xe8],rax
+   0x0000000000718a6a <+42>:    mov    QWORD PTR [rsp+0xf0],rbx
+   0x0000000000718a72 <+50>:    movups XMMWORD PTR [rsp+0x30],xmm15
+   0x0000000000718a78 <+56>:    lea    rdi,[rsp+0x38]
+   0x0000000000718a7d <+61>:    lea    rdi,[rdi-0x20]
+   0x0000000000718a81 <+65>:    mov    QWORD PTR [rsp-0x10],rbp
+   0x0000000000718a86 <+70>:    lea    rbp,[rsp-0x10]
+   0x0000000000718a8b <+75>:    call   0x470674 <runtime.duffzero+308>
+   0x0000000000718a90 <+80>:    mov    rbp,QWORD PTR [rbp+0x0]
+   0x0000000000718a94 <+84>:    mov    QWORD PTR [rsp+0x38],0x4
+   0x0000000000718a9d <+93>:    lea    rdx,[rip+0x91e0e]        # 0x7aa8b2
+   0x0000000000718aa4 <+100>:   mov    QWORD PTR [rsp+0x30],rdx
+   0x0000000000718aa9 <+105>:   mov    QWORD PTR [rsp+0x58],0x1
+   0x0000000000718ab2 <+114>:   lea    rdx,[rip+0x91a3f]        # 0x7aa4f8
+   0x0000000000718ab9 <+121>:   mov    QWORD PTR [rsp+0x50],rdx
+   0x0000000000718abe <+126>:   mov    QWORD PTR [rsp+0x98],0xffffffffffffffff
+   0x000000000071lea    rcx,[rsp+0x30]
+   0x0000000000718acf <+143>:   call   0x6ceac0 <net/http.SetCookie>
+   0x0000000000718ad4 <+148>:   mov    rax,QWORD PTR [rsp+0xe8]
+   0x0000000000718adc <+156>:   mov    rbx,QWORD PTR [rsp+0xf0]
+   0x0000000000718ae4 <+164>:   mov    rcx,QWORD PTR [rsp+0xf8]
+   0x0000000000718aec <+172>:   lea    rdi,[rip+0x92ed9]        # 0x7ab9cc
+   0x0000000000718af3 <+179>:   mov    esi,0x6
+   0x0000000000718af8 <+184>:   mov    r8d,0x12e
+   0x0000000000718afe <+190>:   xchg   ax,ax
+   0x0000000000718b00 <+192>:   call   0x704e00 <net/http.Redirect>
+   0x0000000000718b05 <+197>:   add    rsp,0xd8
+   0x0000000000718b0c <+204>:   pop    rbp
+   0x0000000000718b0d <+205>:   ret
+   0x0000000000718b0e <+206>:   mov    QWORD PTR [rsp+0x8],rax
+   0x0000000000718b13 <+211>:   mov    QWORD PTR [rsp+0x10],rbx
+   0x0000000000718b18 <+216>:   mov    QWORD PTR [rsp+0x18],rcx
+   0x0000000000718b1d <+221>:   nop    DWORD PTR [rax]
+   0x0000000000718b20 <+224>:   call   0x46e280 <runtime.morestack_noctxt>
+   0x0000000000718b25 <+229>:   mov    rax,QWORD PTR [rsp+0x8]
+   0x0000000000718b2a <+234>:   mov    rbx,QWORD PTR [rsp+0x10]
+   0x0000000000718b2f <+239>:   mov    rcx,QWORD PTR [rsp+0x18]
+   0x0000000000718b34 <+244>:   jmp    0x718a40 <main.logoutHandler>
+End of assembler dump.
+
+ WanZKey  ～  ~../Cryptography/Flip 󱎫 1s 󱑎 09.55
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "set disassembly-flavor intel" -ex "disassemble 'main.dashboardHandler'
+"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/Flip/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+Dump of assembler code for function main.dashboardHandler:
+   0x0000000000718b40 <+0>:     lea    r12,[rsp-0x40]
+   0x0000000000718b45 <+5>:     cmp    r12,QWORD PTR [r14+0x10]
+   0x0000000000718b49 <+9>:     jbe    0x71929f <main.dashboardHandler+1887>
+   0x0000000000718b4f <+15>:    push   rbp
+   0x0000000000718b50 <+16>:    mov    rbp,rsp
+   0x0000000000718b53 <+19>:    sub    rsp,0xb8
+   0x0000000000718b5a <+26>:    mov    QWORD PTR [rsp+0xd8],rcx
+   0x0000000000718b62 <+34>:    mov    QWORD PTR [rsp+0xd0],rbx
+   0x0000000000718b6a <+42>:    mov    QWORD PTR [rsp+0xc8],rax
+   0x0000000000718b72 <+50>:    mov    rdx,QWORDPTR [rcx+0x38]
+   0x0000000000718b76 <+54>:    mov    rax,rdx
+   0x0000000000718b79 <+57>:    lea    rbx,[rip+0x91d32]        # 0x7aa8b2
+   0x0000000000718b80 <+64>:    mov    ecx,0x4
+   0x0000000000718b85 <+69>:    call   0x6d0120 <net/http.readCookies>
+   0x0000000000718b8a <+74>:    test   rbx,rbx
+   0x0000000000718b8d <+77>:    je     0x718b97 <main.dashboardHandler+87>
+   0x0000000000718b8f <+79>:    mov    rdx,QWORD PTR [rax]
+   0x0000000000718b92 <+82>:    xor    r9d,r9d
+   0x0000000000718b95 <+85>:    jmp    0x718ba0 <main.dashboardHandler+96>
+   0x0000000000718b97 <+87>:    mov    r9,QWORD PTR [rip+0x363c12]        # 0xa7c7b0 <net/http.ErrNoCookie>
+   0x0000000000718b9e <+94>:    xor    edx,edx
+   0x0000000000718ba0 <+96>:    test   r9,r9
+   0x0000000000718ba3 <+99>:    jne    0x7190fc <main.dashboardHandler+1468>
+   0x0000000000718ba9 <+105>:   mov    rax,QWORD PTR [rdx+0x10]
+   0x0000000000718bad <+109>:   mov    rbx,QWORD PTR [rdx+0x18]
+   0x0000000000718bb1 <+113>:   call   0x7174c0 <main.decrypt>
+   0x0000000000718bb6 <+118>:   test   rcx,rcx
+   0x0000000000718bb9 <+121>:   jne    0x718fbf <main.dashboardHandler+1151>
+   0x0000000000718bbf <+127>:   mov    QWORD PTR [rsp+0x58],rbx
+   0x0000000000718bc4 <+132>:   mov    QWORD PTR [rsp+0x78],rax
+   0x0000000000718bc9 <+137>:   cmp    rbx,0x9
+   0x0000000000718bcd <+141>:   jge    0x718bd3 <mainler+147>
+   0x0000000000718bcf <+143>:   xor    ecx,ecx
+   0x0000000000718bd1 <+145>:   jmp    0x718bf1 <main.dashboardHandler+177>
+   0x0000000000718bd3 <+147>:   lea    rbx,[rip+0x9583e]        # 0x7ae418
+   0x0000000000718bda <+154>:   mov    ecx,0x9
+   0x0000000000718bdf <+159>:   nop
+   0x0000000000718be0 <+160>:   call   0x406960 <runtime.memequal>
+   0x0000000000718be5 <+165>:   mov    rbx,QWORD PTR [rsp+0x58]
+   0x0000000000718bea <+170>:   mov    eceax
+   0x0000000000718bec <+172>:   mov    rax,QWORD PTR [rsp+0x78]
+   0x0000000000718bf1 <+177>:   test   cl,cl
+   0x0000000000718bf3 <+179>:   je     0x718e85 <main.dashboardHandler+837>
+   0x0000000000718bf9 <+185>:   cmp    rbx,0x9
+   0x0000000000718bfd <+189>:   jge    0x718c03 <main.dashboardHandler+195>
+   0x0000000000718bff <+191>:   xor    ecx,ecx
+   0x0000000000718c01 <+193>:   jmp    0x718c20 <main.dashboardHandler+224>
+   0x0000000000718c03 <+195>:   lea    rbx,[rip+0x9580e]        # 0x7ae418
+   0x0000000000718c0a <+202>:   mov    ecx,0x9
+   0x0000000000718c0f <+207>:   call   0x406960 <runtime.memequal>
+   0x0000000000718c14 <+212>:   mov    rbx,QWORD PTR [rsp+0x58]
+   0x0000000000718c19 <+217>:   mov    ecx,eax
+   0x0000000000718c1b <+219>:   mov    rax,QWORD PTR [rsp+0x78]
+   0x0000000000718c20 <+224>:   test   cl,cl
+   0x0000000000718c22 <+226>:   je     0x718c42 <main.dashboardHandler+258>
+   0000000718c24 <+228>:   cmp    rbx,0x9
+   0x0000000000718c28 <+232>:   jb     0x719291 <main.dashboardHandler+1873>
+   0x0000000000718c2e <+238>:   add    rbx,0xfffffffffffffff7
+   0x0000000000718c32 <+242>:   mov    rcx,rbx
+   0x0000000000718c35 <+245>:   neg    rcx
+   0x0000000000718c38 <+248>:   sar    rcx,0x3f
+   0x0000000000718c3c <+252>:   and    ecx,0x9
+   0x0000000000718c3f <+255>:   add    rax,rcx
+   0x0000000000718c42 <+258>:   mov    QWORD PTR [rsp+0x40],rbx
+   0x0000000000718c47 <+263>:   mov    QWORD PTR [rsp+0x60],rax
+   0x0000000000718c4c <+268>:   cmp    rbx,0xd
+   0x0000000000718c50 <+272>:   jne    0x718c74 <main.dashboardHandler+308>
+   0x0000000000718c52 <+274>:   movabs rcx,0x7473696e696d6461
+   0x0000000000718c5c <+284>:   nop    DWORD PTR [rax+0x0]
+   0x0000000000718c60 <+288>:   cmp    QWORD PTR [rax],rcx
+   0x0000000000718c63 <+291>:   jne    0x718c74 <main.dashboardHandler+308>
+   0x0000000000718c65 <+293>:   cmp    DWORD PTR [rax+0x8],0x6f746172
+   0x0000000000718c6c <+300>:   jne    0x718c74 <main.dashboardHandler+308>
+   0x0000000000718c6e <+302>:   cmp    BYTE PTR [rax+0xc],0x72
+   0x0000000000718c72 <+306>:   je     0x718cae <main.dashboardHandler+366>
+   0x0000000000718c74 <+308>:   cmp    rbx,0x5
+   0x0000000000718c78 <+312>:   jne    0x718c88 <main.dashboardHandler+328>
+   0x0000000000718c7a <+314>:   cmp    DWORD PTR [rax],0  0x0000000000718c80 <+320>:   jne    0x718c88 <main.dashboardHandler+328>
+   0x0000000000718c82 <+322>:   cmp    BYTE PTR [rax+0x4],0x6e
+   0x0000000000718c86 <+326>:   je     0x718cae <main.dashboardHandler+366>
+   0x0000000000718c88 <+328>:   cmp    rbx,0x6
+   0x0000000000718c8c <+332>:   jne    0x718ca0 <main.dashboardHandler+352>
+   0x0000000000718c8e <+334>:   cmp    DWORD PTR [rax],0x74737973
+   0x0000000000718c94 <+340>:   jne    0x718ca0 <main.dashboardHand  0x0000000000718c96 <+342>:   cmp    WORD PTR [rax+0x4],0x6d65
+   0x0000000000718c9c <+348>:   je     0x718cae <main.dashboardHandler+366>
+   0x0000000000718c9e <+350>:   xchg   ax,ax
+   0x0000000000718ca0 <+352>:   cmp    rbx,0x4
+   0x0000000000718ca4 <+356>:   jne    0x718ceb <main.dashboardHandler+427>
+   0x0000000000718ca6 <+358>:   cmp    DWORD PTR [rax],0x746f6f72
+   0x0000000000718cac <+364>:   jne    0x718ce3 <main.dashboardHandler+419>
+   0x0000000000718  lea    rax,[rip+0x91c01]        # 0x7aa8b6
+   0x0000000000718cb5 <+373>:   mov    ebx,0x4
+   0x0000000000718cba <+378>:   call   0x4e9440 <os.Getenv>
+   0x0000000000718cbf <+383>:   test   rbx,rbx
+   0x0000000000718cc2 <+386>:   mov    ecx,0x13
+   0x0000000000718cc7 <+391>:   cmove  rbx,rcx
+   0x0000000000718ccb <+395>:   lea    rcx,[rip+0x9aae3]        # 0x7b37b5
+   0x0000000000718cd2 <+402>:   cmove  rax,rcx
+   0x0000000000718cd6 <+406>:   mov      0x0000000000718cdb <+411>:   mov    rdx,rbx
+   0x0000000000718cde <+414>:   mov    rsi,rax
+   0x0000000000718ce1 <+417>:   jmp    0x718cf1 <main.dashboardHandler+433>
+   0x0000000000718ce3 <+419>:   xor    ecx,ecx
+   0x0000000000718ce5 <+421>:   xor    edx,edx
+   0x0000000000718ce7 <+423>:   xor    esi,esi
+   0x0000000000718ce9 <+425>:   jmp    0x718cf1 <main.dashboardHandler+433>
+   0x0000000000718ceb <+427>:   xor    ecx,ecx
+   0x0000000000718ced <+429>:   xor    edx,edx
+   0x0000000000718cef <+431>:   xor    esi,esi
+   0x0000000000718cf1 <+433>:   mov    BYTE PTR [rsp+0x3f],cl
+   0x0000000000718cf5 <+437>:   mov    QWORD PTR [rsp+0x48],rdx
+   0x0000000000718cfa <+442>:   mov    QWORD PTR [rsp+0x68],rsi
+   0x0000000000718cff <+447>:   nop
+   0x0000000000718d00 <+448>:   call   0x4126e0 <runtime.makemap_small>
+   0x0000000000718d05 <+453>:   mov    QWORD PTR [rsp+0x80],rax
+   0x0000000000718d0d <+461>:   mov    rbx,QWORD PTR [rsp+0x40]
+   0x0000000000718d12 <+466>:   mov    rax,QWORD PTR [rsp+0x60]
+   0x0000000000718d17 <+471>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000718d1c <+476>:   mov    QWORD PTR [rsp+0xa0],rax
+   0x0000000000718d24 <+484>:   mov    rbx,QWORD PTR [rsp+0x80]
+   0x0000000000718d2c <+492>:   lea    rcx,[rip+0x94cdc]        # 0x7ada0f
+   0x0000000000718d33 <+499>:   mov    edi,0x8
+   0x0000000000718d38 <+504>:   lea  �rax,[rip+0x3b841]        # 0x754580
+   0x0000000000718d3f <+511>:   nop
+   0x0000000000718d40 <+512>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718d45 <+517>:   lea    rcx,[rip+0x24094]        # 0x73cde0
+   0x0000000000718d4c <+524>:   mov    QWORD PTR [rax],rcx
+   0x0000000000718d4f <+527>:   movzx  edx,BYTE PTR [rsp+0x3f]
+   0x0000000000718d54 <+532>:   movzx  edx,dl
+   0x0000000000718d57 <+535>:   lea    rbx,[rip+0x3421c2]        # 0xa5af20 <runtime.staticuint64s>
+   0x0000000000718d5e <+542>:   lea    rdx,[rbx+rdx*8]
+   0x0000000000718d62 <+546>:   mov    QWORD PTR [rsp+0x98],rdx
+   0x0000000000718d6a <+554>:   cmp    DWORD PTR [rip+0x3d8adf],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718d71 <+561>:   jne    0x718d80 <main.dashboardHandler+576>
+   0x0000000000718d73 <+563>:   mov    rsi,QWORD PTR [rsp+0xa0]
+   0x0000000000718d7b <+571>:   jmp    0x718d98 <main.dasr+600>
+   0x0000000000718d7d <+573>:   nop    DWORD PTR [rax]
+   0x0000000000718d80 <+576>:   call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000718d85 <+581>:   mov    rsi,QWORD PTR [rsp+0xa0]
+   0x0000000000718d8d <+589>:   mov    QWORD PTR [r11],rsi
+   0x0000000000718d90 <+592>:   mov    r8,QWORD PTR [rax+0x8]
+   0x0000000000718d94 <+596>:   mov    QWORD PTR [r11+0x8],r8
+   0x0000000000718d98 <+600>:   mov    QWORD PTR [rax+0x8],rsi
+   0x0000000000718d9c a    rax,[rip+0x3b7dd]        # 0x754580
+   0x0000000000718da3 <+611>:   mov    rbx,QWORD PTR [rsp+0x80]
+   0x0000000000718dab <+619>:   lea    rcx,[rip+0x93bac]        # 0x7ac95e
+   0x0000000000718db2 <+626>:   mov    edi,0x7
+   0x0000000000718db7 <+631>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718dbc <+636>:   lea    rdx,[rip+0x2441d]        # 0x73d1e0
+   0x0000000000718dc3 <+643>:   mov    QWORD PTR [rax],rdx
+   0x0000000000718dc6 <+646>:   cmp    DWORD PTR [rip+0x3d8a83],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718dcd <+653>:   je     0x718ddb <main.dashboardHandler+667>
+   0x0000000000718dcf <+655>:   mov    rcx,QWORD PTR [rax+0x8]
+   0x0000000000718dd3 <+659>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000718dd8 <+664>:   mov    QWORD PTR [r11],rcx
+   0x0000000000718ddb <+667>:   mov    rcx,QWORD PTR [rsp+0x98]
+   0x0000000000718de3 <+675>:   movTR [rax+0x8],rcx
+   0x0000000000718de7 <+679>:   mov    rax,QWORD PTR [rsp+0x68]
+   0x0000000000718dec <+684>:   mov    rbx,QWORD PTR [rsp+0x48]
+   0x0000000000718df1 <+689>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000718df6 <+694>:   mov    QWORD PTR [rsp+0xa0],rax
+   0x0000000000718dfe <+702>:   mov    rbx,QWORD PTR [rsp+0x80]
+   0x0000000000718e06 <+710>:   lea    rcx,[rip+0x91aad]        # 0x7aa8ba
+   0x0000000000718e0d <+717>:   mov    edi,0x4
+�718e12 <+722>:   lea    rax,[rip+0x3b767]        # 0x754580
+   0x0000000000718e19 <+729>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718e1e <+734>:   lea    rcx,[rip+0x23fbb]        # 0x73cde0
+   0x0000000000718e25 <+741>:   mov    QWORD PTR [rax],rcx
+   0x0000000000718e28 <+744>:   cmp    DWORD PTR [rip+0x3d8a21],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718e2f <+751>:   jne    0x718e40 <main.dashboardHandler+768>
+   0x0000000000718e31 <+753>:   mov    rdx,QWORD PTR [rsp+0xa0]
+   0x0000000000718e39 <+761>:   jmp    0x718e58 <main.dashboardHandler+792>
+   0x0000000000718e3b <+763>:   nop    DWORD PTR [rax+rax*1+0x0]
+   0x0000000000718e40 <+768>:   call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000718e45 <+773>:   mov    rdx,QWORD PTR [rsp+0xa0]
+   0x0000000000718e4d <+781>:   mov    QWORD PTR [r11],rdx
+   0x0000000000718e50 <+784>:   mov    r10,QWORD PTR [rax+0x8]
+   0x000000000788>:   mov    QWORD PTR [r11+0x8],r10
+   0x0000000000718e58 <+792>:   mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000718e5c <+796>:   mov    rdx,QWORD PTR [rsp+0xc8]
+   0x0000000000718e64 <+804>:   test   rdx,rdx
+   0x0000000000718e67 <+807>:   je     0x71921d <main.dashboardHandler+1757>
+   0x0000000000718e6d <+813>:   mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000718e71 <+817>:   mov    r10,QWORD PTR [rip+0x364bf8]        # 0xa7da70 <main..typeAssert.10>
+   078 <+824>:   mov    r11,QWORD PTR [r10]
+   0x0000000000718e7b <+827>:   mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000718e7e <+830>:   xchg   ax,ax
+   0x0000000000718e80 <+832>:   jmp    0x719258 <main.dashboardHandler+1816>
+   0x0000000000718e85 <+837>:   call   0x4126e0 <runtime.makemap_small>
+   0x0000000000718e8a <+842>:   mov    QWORD PTR [rsp+0x90],rax
+   0x0000000000718e92 <+850>:   mov    rbx,rax
+   0x0000000000718e95 <+853>:   lea    rcx,[rip+0x92b36]        # 0x7ab9d2
+   0x0000000000718e9c <+860>:   mov    edi,0x6
+   0x0000000000718ea1 <+865>:   lea    rax,[rip+0x3b6d8]        # 0x754580
+   0x0000000000718ea8 <+872>:   call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718ead <+877>:   lea    rcx,[rip+0x23f2c]        # 0x73cde0
+   0x0000000000718eb4 <+884>:   mov    QWORD PTR [rax],rcx
+   0x0000000000718eb7 <+887>:   cmp    DWORD PTR [rip+0x3d8992],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718ebe <+894>:   xchg   ax,ax
+   0x0000000000718ec0 <+896>:   je     0x718ece <main.dashboardHandler+910>
+   0x0000000000718ec2 <+898>:   mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000718ec6 <+902>:   call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000718ecb <+907>:   mov    QWORD PTR [r11],rdx
+   0x0000000000718ece <+910>:   lea    rcx,[rip+0x129d4b]        # 0x842c20
+   0x0000000000718ed5 <+917>:   mov    QWORD PTR [rax+0x8],0000718ed9 <+921>:   movups XMMWORD PTR [rsp+0xa8],xmm15
+   0x0000000000718ee2 <+930>:   mov    rax,QWORD PTR [rsp+0x78]
+   0x0000000000718ee7 <+935>:   mov    rbx,QWORD PTR [rsp+0x58]
+   0x0000000000718eec <+940>:   call   0x40ef00 <runtime.convTstring>
+   0x0000000000718ef1 <+945>:   lea    rcx,[rip+0x23ee8]        # 0x73cde0
+   0x0000000000718ef8 <+952>:   mov    QWORD PTR [rsp+0xa8],rcx
+   0x0000000000718f00 <+960>:   mov    QWORD PTR [rsp+0xb0],rax
+   0x00000<+968>:   lea    rax,[rip+0x9e351]        # 0x7b7260
+   0x0000000000718f0f <+975>:   mov    ebx,0x1a
+   0x0000000000718f14 <+980>:   mov    edi,0x1
+   0x0000000000718f19 <+985>:   mov    rsi,rdi
+   0x0000000000718f1c <+988>:   lea    rcx,[rsp+0xa8]
+   0x0000000000718f24 <+996>:   call   0x4f5540 <fmt.Sprintf>
+   0x0000000000718f29 <+1001>:  call   0x40ef00 <runtime.convTstring>
+   0x0000000000718f2e <+1006>:  mov    QWORD PTR [rsp+0xa0],rax
+   0x00000000007136 <+1014>:  mov    rbx,QWORD PTR [rsp+0x90]
+   0x0000000000718f3e <+1022>:  lea    rcx,[rip+0x91fbf]        # 0x7aaf04
+   0x0000000000718f45 <+1029>:  mov    edi,0x5
+   0x0000000000718f4a <+1034>:  lea    rax,[rip+0x3b62f]        # 0x754580
+   0x0000000000718f51 <+1041>:  call   0x417380 <runtime.mapassign_faststr>
+   0x0000000000718f56 <+1046>:  lea    rcx,[rip+0x23e83]        # 0x73cde0
+   0x0000000000718f5d <+1053>:  mov    QWORD PTR [rax],rcx
+   0x00000000>:  cmp    DWORD PTR [rip+0x3d88e9],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000718f67 <+1063>:  jne    0x718f73 <main.dashboardHandler+1075>
+   0x0000000000718f69 <+1065>:  mov    rdx,QWORD PTR [rsp+0xa0]
+   0x0000000000718f71 <+1073>:  jmp    0x718f8b <main.dashboardHandler+1099>
+   0x0000000000718f73 <+1075>:  call   0x470000 <runtime.gcWriteBarrier2>
+   0x0000000000718f78 <+1080>:  mov    rdx,QWORD PTR [rsp+0xa0]
+   0x0000000000718f80 <+1088>:  mov   D PTR [r11],rdx
+   0x0000000000718f83 <+1091>:  mov    r10,QWORD PTR [rax+0x8]
+   0x0000000000718f87 <+1095>:  mov    QWORD PTR [r11+0x8],r10
+   0x0000000000718f8b <+1099>:  mov    QWORD PTR [rax+0x8],rdx
+   0x0000000000718f8f <+1103>:  mov    rdx,QWORD PTR [rsp+0xc8]
+   0x0000000000718f97 <+1111>:  nop    WORD PTR [rax+rax*1+0x0]
+   0x0000000000718fa0 <+1120>:  test   rdx,rdx
+   0x0000000000718fa3 <+1123>:  je     0x7191a9 <main.dashboardHandler+1641>
+   0x0000000000718fa9 <+1129>:  mov    rbx,QWORD PTR [rdx+0x8]
+   0x0000000000718fad <+1133>:  mov    r10,QWORD PTR [rip+0x364a9c]        # 0xa7da50 <main..typeAssert.9>
+   0x0000000000718fb4 <+1140>:  mov    r11,QWORD PTR [r10]
+   0x0000000000718fb7 <+1143>:  mov    edx,DWORD PTR [rdx+0x10]
+   0x0000000000718fba <+1146>:  jmp    0x7191e4 <main.dashboardHandler+1700>
+   0x0000000000718fbf <+1151>:  mov    QWORD PTR [rsp+0x70],rdi
+   0x0000000000718fc4 <+1156>:  mov    QWORD PTR [rsp+0x50],rcx
+   0x0000000000718fc9 <+1161>:  call   0x4126e0 <runtime.makemap_small>
+   0x0000000000718fce <+1166>:  mov    QWORD PTR [rsp+0x88],rax
+   0x0000000000718fd6 <+1174>:  mov    rbx,rax
+   0x0000000000718fd9 <+1177>:  lea    rcx,[rip+0x929f2]        # 0x7ab9d2
+   0x0000000000718fe0 <+1184>:  mov    edi,0x6
+   0x0000000000718fe5 <+1189>:  lea    rax,[rip+0x3b594]        # 0x754580
+   0x0000000000718fec <+1196>:  call   0x417380 <runtime.mapar>
+   0x0000000000718ff1 <+1201>:  lea    rcx,[rip+0x23de8]        # 0x73cde0
+   0x0000000000718ff8 <+1208>:  mov    QWORD PTR [rax],rcx
+   0x0000000000718ffb <+1211>:  cmp    DWORD PTR [rip+0x3d884e],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x0000000000719002 <+1218>:  jne    0x71900e <main.dashboardHandler+1230>
+   0x0000000000719004 <+1220>:  mov    rdx,QWORD PTR [rsp+0x50]
+   0x0000000000719009 <+1225>:  test   rdx,rdx
+   0x000000000071900c <+1228>:  jmp 2 <main.dashboardHandler+1250>
+   0x000000000071900e <+1230>:  mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000719012 <+1234>:  call   0x46ffe0 <runtime.gcWriteBarrier1>
+   0x0000000000719017 <+1239>:  mov    QWORD PTR [r11],rdx
+   0x000000000071901a <+1242>:  mov    rdx,QWORD PTR [rsp+0x50]
+   0x000000000071901f <+1247>:  test   rdx,rdx
+   0x0000000000719022 <+1250>:  lea    r8,[rip+0x129bf7]        # 0x842c20
+   0x0000000000719029 <+1257>:  mov    QWORD PTR [rax+0x8],r000000000071902d <+1261>:  movups XMMWORD PTR [rsp+0xa8],xmm15
+   0x0000000000719036 <+1270>:  je     0x71903c <main.dashboardHandler+1276>
+   0x0000000000719038 <+1272>:  mov    rdx,QWORD PTR [rdx+0x8]
+   0x000000000071903c <+1276>:  mov    QWORD PTR [rsp+0xa8],rdx
+   0x0000000000719044 <+1284>:  mov    rdx,QWORD PTR [rsp+0x70]
+   0x0000000000719049 <+1289>:  mov    QWORD PTR [rsp+0xb0],rdx
+   0x0000000000719051 <+1297>:  lea    rax,[rip+0x995f3]        # 0x7b264b
+   0x0000000000719058 <+1304>:  mov    ebx,0x11
+   0x000000000071905d <+1309>:  lea    rcx,[rsp+0xa8]
+   0x0000000000719065 <+1317>:  mov    edi,0x1
+   0x000000000071906a <+1322>:  mov    rsi,rdi
+   0x000000000071906d <+1325>:  call   0x4f5540 <fmt.Sprintf>
+   0x0000000000719072 <+1330>:  call   0x40ef00 <runtime.convTstring>
+   0x0000000000719077 <+1335>:  mov    QWORD PTR [rsp+0xa0],rax
+   0x000000000071907f <+1343>:  mov    rbx,QWORD PTR [rsp+0x88]
+   0x0000000000719087 <+1351>:  lea    rcx,[rip+0x91e76]        # 0x7aaf04
+   0x000000000071908e <+1358>:  mov    edi,0x5
+   0x0000000000719093 <+1363>:  lea    rax,[rip+0x3b4e6]        # 0x754580
+   0x000000000071909a <+1370>:  call   0x417380 <runtime.mapassign_faststr>
+   0x000000000071909f <+1375>:  lea    rdx,[rip+0x23d3a]        # 0x73cde0
+   0x00000000007190a6 <+1382>:  mov    QWORD PTR [rax],rdx
+   0x00000000007190a9 <+1385>:  cmp    DWORD PTR [rip+0x3d87a0],0x0        # 0xaf1850 <runtime.writeBarrier>
+   0x00000000007190b0 <+1392>:  jne    0x7190c0 <main.dashboardHandler+1408>
+   0x00000000007190b2 <+1394>:  mov    rdx,QWORD PTR [rsp+0xa0]
+   0x00000000007190ba <+1402>:  jmp    0x7190d8 <main.dashboardHandler+1432>
+   0x00000000007190bc <+1404>:  nop    DWORD PTR [rax+0x0]
+   0x00000000007190c0 <+1408>:  call   0x470000 <runtime.gcWriteBarrier2>
+   0x00000000007190c5 <+1413>:  mov    rdx,QWORD PTR [rsp+0xa0]
+   0x0000007190cd <+1421>:  mov    QWORD PTR [r11],rdx
+   0x00000000007190d0 <+1424>:  mov    r10,QWORD PTR [rax+0x8]
+   0x00000000007190d4 <+1428>:  mov    QWORD PTR [r11+0x8],r10
+   0x00000000007190d8 <+1432>:  mov    QWORD PTR [rax+0x8],rdx
+   0x00000000007190dc <+1436>:  mov    rdx,QWORD PTR [rsp+0xc8]
+   0x00000000007190e4 <+1444>:  test   rdx,rdx
+   0x00000000007190e7 <+1447>:  je     0x719134 <main.dashboardHandler+1524>
+   0x00000000007190e9 <+1449>:  mov    rbx,QWORD PTR [rdx+0x8]
+   0x00000000007190ed <+1453>:  mov    r10,QWORD PTR [rip+0x36493c]        # 0xa7da30 <main..typeAssert.8>
+   0x00000000007190f4 <+1460>:  mov    r11,QWORD PTR [r10]
+   0x00000000007190f7 <+1463>:  mov    edx,DWORD PTR [rdx+0x10]
+   0x00000000007190fa <+1466>:  jmp    0x71916f <main.dashboardHandler+1583>
+   0x00000000007190fc <+1468>:  mov    rax,QWORD PTR [rsp+0xc8]
+   0x0000000000719104 <+1476>:  mov    rbx,QWORD PTR [rsp+0xd0]
+   0x000000000071910c484>:  mov    rcx,QWORD PTR [rsp+0xd8]
+   0x0000000000719114 <+1492>:  lea    rdi,[rip+0x928b1]        # 0x7ab9cc
+   0x000000000071911b <+1499>:  mov    esi,0x6
+   0x0000000000719120 <+1504>:  mov    r8d,0x12e
+   0x0000000000719126 <+1510>:  call   0x704e00 <net/http.Redirect>
+   0x000000000071912b <+1515>:  add    rsp,0xb8
+   0x0000000000719132 <+1522>:  pop    rbp
+   0x0000000000719133 <+1523>:  ret
+   0x0000000000719134 <+1524>:  mov    rax,QWORD PTR [rip+0x37# 0xa8fba8 <main.templates>
+   0x000000000071913b <+1531>:  mov    rbx,rdx
+   0x000000000071913e <+1534>:  mov    rcx,QWORD PTR [rsp+0xd0]
+   0x0000000000719146 <+1542>:  lea    rdi,[rip+0x95cbf]        # 0x7aee0c
+   0x000000000071914d <+1549>:  mov    esi,0xa
+   0x0000000000719152 <+1554>:  lea    r8,[rip+0x3b427]        # 0x754580
+   0x0000000000719159 <+1561>:  mov    r9,QWORD PTR [rsp+0x88]
+   0x0000000000719161 <+1569>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x0000000000719166 <+1574>:  add    rsp,0xb8
+   0x000000000071916d <+1581>:  pop    rbp
+   0x000000000071916e <+1582>:  ret
+   0x000000000071916f <+1583>:  mov    r12,rdx
+   0x0000000000719172 <+1586>:  and    rdx,r11
+   0x0000000000719175 <+1589>:  shl    rdx,0x4
+   0x0000000000719179 <+1593>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x000000000071917e <+1598>:  xchg   ax,ax
+   0x0000000000719180 <+1600>:  cmp    r13,rbx
+   0x0000000000719183 <+1603>:  je     0x7191a2 <main.dashboardHandler+1634>
+   0x0000000000719185 <+1605>:  lea    rdx,[r12+0x1]
+   0x000000000071918a <+1610>:  test   r13,r13
+   0x000000000071918d <+1613>:  jne    0x71916f <main.dashboardHandler+1583>
+   0x000000000071918f <+1615>:  lea    rax,[rip+0x36489a]        # 0xa7da30 <main..typeAssert.8>
+   0x0000000000719196 <+1622>:  call   0x40f060 <runtime.typeAssert>
+   0x000000000071919b <+1627>:  mov    rdx,rax
+   0x000000000<+1630>:  xchg   ax,ax
+   0x00000000007191a0 <+1632>:  jmp    0x719134 <main.dashboardHandler+1524>
+   0x00000000007191a2 <+1634>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x00000000007191a7 <+1639>:  jmp    0x719134 <main.dashboardHandler+1524>
+   0x00000000007191a9 <+1641>:  mov    rax,QWORD PTR [rip+0x3769f8]        # 0xa8fba8 <main.templates>
+   0x00000000007191b0 <+1648>:  mov    rbx,rdx
+   0x00000000007191b3 <+1651>:  mov    rcx,QWORD PTR [rsp+0xd0]
+   0x00000000007191bb <+1659>:  lea    rdi,[rip+0x95c4a]        # 0x7aee0c
+   0x00000000007191c2 <+1666>:  mov    esi,0xa
+   0x00000000007191c7 <+1671>:  lea    r8,[rip+0x3b3b2]        # 0x754580
+   0x00000000007191ce <+1678>:  mov    r9,QWORD PTR [rsp+0x90]
+   0x00000000007191d6 <+1686>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x00000000007191db <+1691>:  add    rsp,0xb8
+   0x00000000007191e2 <+1698>:  pop    rbp
+   0x00000000007191e3 <+1699>:  ret
+   0x00000000007191e4 <+1700>:  mov    r12,rdx
+   0x00000000007191e7 <+1703>:  and    rdx,r11
+   0x00000000007191ea <+1706>:  shl    rdx,0x4
+   0x00000000007191ee <+1710>:  mov    r13,QWORD PTR [r10+rdx*1+0x8]
+   0x00000000007191f3 <+1715>:  cmp    r13,rbx
+   0x00000000007191f6 <+1718>:  je     0x719216 <main.dashboardHandler+1750>
+   0x00000000007191f8 <+1720>:  lea    rdx,[r12+0x1]
+   0x00000000007191fd <+1725>:  nop    DWORD PTR [rax]
+   0x00000000008>:  test   r13,r13
+   0x0000000000719203 <+1731>:  jne    0x7191e4 <main.dashboardHandler+1700>
+   0x0000000000719205 <+1733>:  lea    rax,[rip+0x364844]        # 0xa7da50 <main..typeAssert.9>
+   0x000000000071920c <+1740>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000719211 <+1745>:  mov    rdx,rax
+   0x0000000000719214 <+1748>:  jmp    0x7191a9 <main.dashboardHandler+1641>
+   0x0000000000719216 <+1750>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071921b <+1755>:  jmp    0x7191a9 <main.dashboardHandler+1641>
+   0x000000000071921d <+1757>:  mov    rax,QWORD PTR [rip+0x376984]        # 0xa8fba8 <main.templates>
+   0x0000000000719224 <+1764>:  mov    rbx,rdx
+   0x0000000000719227 <+1767>:  mov    rcx,QWORD PTR [rsp+0xd0]
+   0x000000000071922f <+1775>:  lea    rdi,[rip+0x97b40]        # 0x7b0d76
+   0x0000000000719236 <+1782>:  mov    esi,0xe
+   0x000000000071923b <+1787>:  lea    r8,[rip+0x3b33e]        # 0x754580
+   0x0000000000719242 <+1794>:  mov    r9,QWORD PTR [rsp+0x80]
+   0x000000000071924a <+1802>:  call   0x58f9e0 <html/template.(*Template).ExecuteTemplate>
+   0x000000000071924f <+1807>:  add    rsp,0xb8
+   0x0000000000719256 <+1814>:  pop    rbp
+   0x0000000000719257 <+1815>:  ret
+   0x0000000000719258 <+1816>:  mov    r12,rdx
+   0x000000000071925b <+1819>:  and    rdx,r11
+   0x000000000071925e <+1822>:  shl    rdx,0x4
+   0x0000000000719262 <+1826>:�3,QWORD PTR [r10+rdx*1+0x8]
+   0x0000000000719267 <+1831>:  cmp    r13,rbx
+   0x000000000071926a <+1834>:  je     0x71928a <main.dashboardHandler+1866>
+   0x000000000071926c <+1836>:  lea    rdx,[r12+0x1]
+   0x0000000000719271 <+1841>:  test   r13,r13
+   0x0000000000719274 <+1844>:  jne    0x719258 <main.dashboardHandler+1816>
+   0x0000000000719276 <+1846>:  lea    rax,[rip+0x3647f3]        # 0xa7da70 <main..typeAssert.10>
+   0x000000000071927d <+1853>:  nop    DWORD PTR [rax]
+   0x0000000000719280 <+1856>:  call   0x40f060 <runtime.typeAssert>
+   0x0000000000719285 <+1861>:  mov    rdx,rax
+   0x0000000000719288 <+1864>:  jmp    0x71921d <main.dashboardHandler+1757>
+   0x000000000071928a <+1866>:  mov    rdx,QWORD PTR [r10+rdx*1+0x10]
+   0x000000000071928f <+1871>:  jmp    0x71921d <main.dashboardHandler+1757>
+   0x0000000000719291 <+1873>:  mov    eax,0x9
+   0x0000000000719296 <+1878>:  mov    rcx,rbx
+   0x0000000000719299 <+1881>:  call   0x470460 <runtime.panicSliceB>
+   0x000000000071929e <+1886>:  nop
+   0x000000000071929f <+1887>:  mov    QWORD PTR [rsp+0x8],rax
+   0x00000000007192a4 <+1892>:  mov    QWORD PTR [rsp+0x10],rbx
+   0x00000000007192a9 <+1897>:  mov    QWORD PTR [rsp+0x18],rcx
+   0x00000000007192ae <+1902>:  call   0x46e280 <runtime.morestack_noctxt>
+   0x00000000007192b3 <+1907>:  mov    rax,QWORD PTR [rsp+0x8]
+   0x00000000007192b8 <+1912>:  mov    rbx,QWORD PTR +0x10]
+   0x00000000007192bd <+1917>:  mov    rcx,QWORD PTR [rsp+0x18]
+   0x00000000007192c2 <+1922>:  jmp    0x718b40 <main.dashboardHandler>
+End of assembler dump.

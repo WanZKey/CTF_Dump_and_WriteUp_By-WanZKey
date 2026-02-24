@@ -1,0 +1,19 @@
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "x/s 0x7b1d1f"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/MAC/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+0x7b1d1f:       "administrator_%x0123456789abcdefexpected integerexpected newline"
+
+ WanZKey  ～  ~../Cryptography/MAC 󱎫 0s 󱑎 19.08
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "x/s 0x7b37b5"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/MAC/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+0x7b37b5:       "lue.Floatbad unicode format Bad hex digit in %qno such template %qapplication/ld+jsonclient disconnectedhttp: Server closedINITIAL_WINDOW_SIZEINADEQUATE_SECURITYframe_data_stream_0 (%d bytes omitted)c"...
+
+ WanZKey  ～  ~../Cryptography/MAC 󱎫 0s 󱑎 19.10
+ 󰋑  ▶  gdb -nx -batch -ex "file app" -ex "x/s 0x7b14db"
+warning: Missing auto-load script at offset 0 in section .debug_gdb_scripts
+of file /home/wanzkey/Pwn The Website/Cryptography/MAC/app.
+Use `info auto-load python-scripts [REGEXP]' to list them.
+0x7b14db:       "FLAG{TEST_FLAG}jstmpllitinterpcontenteditablehtml/template: HalfClosedLocalapplication/pdfapplication/oggfont/collectionapplication/zipnegative updateaccept-encodingaccept-languagex-forwarded-fortrail"..
