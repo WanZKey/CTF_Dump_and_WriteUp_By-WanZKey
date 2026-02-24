@@ -1,0 +1,7 @@
+AWS IMDS Dump
+
+{"Code": "Success", "LastUpdated": "2023-01-01T00:00:00Z", "Type": "AWS-HMAC", "AccessKeyId":
+"ASIAIOSFODNN7EXAMPLE", "SecretAccessKey": "pwn{faab6617c02056744255ebdd406b8eac}", "Token": "token",
+"Expiration": "2026-01-01T00:00:00Z"}
+
+
