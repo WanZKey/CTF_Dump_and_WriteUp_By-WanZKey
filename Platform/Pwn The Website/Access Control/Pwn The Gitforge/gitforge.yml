@@ -1,0 +1,30 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/gitforge:latest
+    container_name: gitforge-lab
+    ports:
+      - "1337:80"
+    environment:
+      - PWN=${PWN:-testuser}
+      - SECRET_KEY=${SECRET_KEY:-gitforge-secret-key-2024}
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+    depends_on:
+      - mailhog
+    restart: unless-stopped
+    networks:
+      - gitforge-net
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: gitforge-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    restart: unless-stopped
+    networks:
+      - gitforge-net
+
+networks:
+  gitforge-net:
+    driver: bridge
