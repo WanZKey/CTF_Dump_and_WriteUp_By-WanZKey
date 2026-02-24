@@ -1,0 +1,7 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/dasbod:latest
+    ports:
+      - "1337:3000"
+    environment:
+      - PWN=${PWN:-testuser}
