@@ -1,0 +1,5 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/activation]
+└─$ ./activator.exe RANI 0905E413DDF6D48B
+Activator v1.0
+Activation OK. Here is your secret:
+FGTE{L!c3n$3_4cTiv@t10n_7xY9_b2Q8R5s}
