@@ -1,0 +1,45 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/question 1]
+└─$ python3 solver.py 1759076920
+[*] Menghasilkan jawaban untuk Seed: 1759076920
+---------------------------------------
+Q1: 55 * 48 = 2640
+Q2: 56 + 23 = 79
+Q3: 39 + 3 = 42
+Q4: 40 + 6 = 46
+Q5: 58 * 6 = 348
+Q6: 10 - 10 = 0
+Q7: 56 * 29 = 1624
+Q8: 68 * 7 = 476
+Q9: 58 % 33 = 25
+Q10: 40 + 33 = 73
+---------------------------------------
+✅ Semua jawaban berhasil dibuat. Masukkan angka-angka di atas ke program.
+
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/question 1]
+└─$ ./quiz_1
+Quiz Verification
+Answer all questions correctly to see the flag.
+Welcome to quiz verification. You will be asked 10 questions.
+(Seed: 1759076920)
+Q1: 55 * 48 = ?
+2640
+Q2: 56 + 23 = ?
+79
+Q3: 39 + 3 = ?
+42
+Q4: 40 + 6 = ?
+46
+Q5: 58 * 6 = ?
+348
+Q6: 10 - 10 = ?
+0
+Q7: 56 * 29 = ?
+1624
+Q8: 68 * 7 = ?
+476
+Q9: 58 % 33 = ?
+25
+Q10: 40 + 33 = ?
+73
+Good. Here's the flag: FGTE{Quiz_Mathster}

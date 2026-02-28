@@ -1,0 +1,16 @@
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/Leaky Login]
+└─$ strings -n 5 leaky_login | grep -E '"username"|"password"|"flag"'
+{"user":"admin","pass":"letmein123","flag":"FGTE{REVERSE_LOGIN_LEAK}"}
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/Leaky Login]
+└─$ grep -R FGTE
+grep: leaky_login: binary file matches
+flag.txt:FGTE{REVERSE_LOGIN_LEAK}
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Reverse/Leaky Login]
+└─$ ./leaky_login
+Login
+Username: admin
+Password: letmein123
+Welcome admin!
+Flag: FGTE{REVERSE_LOGIN_LEAK}
