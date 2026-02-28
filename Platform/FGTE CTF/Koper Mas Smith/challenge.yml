@@ -1,0 +1,14 @@
+name: "Koper Mas Smith"
+author: "WanZKey"
+category: Crypto
+description:
+  Mas Smith Kehilangan Kopernya ketika berada di bendara,
+  Yuk bantu Mas Smith cari Kopernya!
+
+type: "StaticAttachment"
+value: 500
+
+flags: 
+  - "FGTE{Copper_Smith!}"
+
+provide: "./dist"

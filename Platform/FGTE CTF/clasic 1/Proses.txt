@@ -1,0 +1,27 @@
+Oke—aku sudah lakukan mapping **70 → 0**, **71 → 1** dan **mengabaikan 72 & 73**. Hasilnya:
+
+* Jumlah token input: **353**
+* Jumlah angka yang dimapping (70 atau 71): **232**
+* Panjang string biner: **232 bit**
+
+**Binary (full)**
+`010001100100011101010100010001010111101101000011011011110110001...0100100101011111011000100011000101110011010000010101111101111101`
+(daftar lengkap binary ditampilkan di output eksekusi Python — aku bisa paste seluruhnya kalau mau)
+
+**Hasil grouping 8-bit → ASCII (semua full bytes):**
+`FGTE{Cob41n L4g1_p4stI_b1sA_}`
+
+**Hex dari byte-byte tersebut:**
+`464754457b436f6234316e204c3467315f70347374495f623173415f7d`
+
+Jadi kemungkinan flag / pesan yang didapat adalah:
+
+> **FGTE{Cob41n L4g1_p4stI_b1sA_}**
+
+Mau aku:
+
+1. konversi leet-speak itu jadi teks biasa (mis. `Cob41n` → `Cobain`, `L4g1` → `Lagi`, dst),
+2. atau tampilkan seluruh string biner lengkap (232 bit) di chat,
+3. atau simpan hasil ke file dan berikan link download?
+
+Pilih salah satu atau bilang kalau sudah cukup.

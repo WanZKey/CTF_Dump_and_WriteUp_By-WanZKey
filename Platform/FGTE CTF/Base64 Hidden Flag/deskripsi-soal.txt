@@ -1,0 +1,20 @@
+Base64 Hidden Flag
+06 Apr 2025
+
+Easy
+Base64 Hidden Flag
+Peserta diberikan string yang tampaknya tidak memiliki makna langsung.
+Namun, string tersebut sebenarnya merupakan representasi dalam format Base64 yang tersembunyi di dalamnya sebuah flag.
+Flag tersebut mengikuti format standar: CWA{FLAG}.
+
+Tugas Anda adalah mendecode string Base64 yang diberikan untuk menemukan flag yang tersembunyi di dalamnya.
+
+Q1dBe0ZpcnN0X1RpbWVfRmxhZ19XaXRoX0Jhc2U2NH0K
+💡 Hint
+Cobalah decode Base64 ini, flag-nya ada di sana dalam format CWA{...}
+
+
+
+#crypto
+
+Download File

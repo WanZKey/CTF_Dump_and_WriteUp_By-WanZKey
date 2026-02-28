@@ -1,0 +1,22 @@
+Caesar's Secret
+08 Apr 2025
+
+Easy
+Seorang mata-mata zaman Romawi kuno meninggalkan pesan terenkripsi. Pesan ini sepertinya menggunakan metode kriptografi klasik. Tapi... ada yang aneh dengan panjang kata-katanya.
+
+Bisakah kamu membongkar rahasia Caesar ini dan mendapatkan flag-nya?
+
+Kv uqog ogcp kp rjkejv vjg ugetgv!
+
+Format flag: CWA{...}
+
+Jika flag mengandung spasi, ubah setiap spasi menjadi underscore (_).
+
+💡 Hint
+Ingat bahwa alfabet bisa digeser ke kanan atau kiri
+
+
+
+#crypto
+
+Download File

@@ -1,0 +1,11 @@
+# ROT 8000
+Source: https://gchq.github.io/CyberChef/#recipe=ROT8000()&oenc=65001
+
+
+Hasil: 籆穔艻衉穔繒襟腕衉荁癟繓籎襟蝅穐癃聈荁ᕽ
+
+# Base 65536
+Source: https://www.better-converter.com/Encoders-Decoders/Base65536-Decode
+
+
+Hasil: FGTE{MISTERI_TULISAN_ASING_TERPECAHKAN}

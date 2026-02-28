@@ -1,0 +1,2 @@
+1. From Base62
+2. From base58

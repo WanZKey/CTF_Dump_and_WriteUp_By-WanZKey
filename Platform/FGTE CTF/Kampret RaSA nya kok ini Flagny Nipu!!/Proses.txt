@@ -1,0 +1,10 @@
+
+# Step By Step Decode
+1. From Base 58
+2. Decode Vigenere, Key = FGTE
+3. XOR, Key= FGTE
+4. ROT13
+
+Source: https://gchq.github.io/CyberChef/#recipe=From_Base58('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',true)Vigen%C3%A8re_Decode('FGTE')XOR(%7B'option':'Hex','string':'FGTE'%7D,'Standard',false)ROT13(true,true,false,13)&input=OXV1QVRaNFY3V3V6SGQ2VE12MXhOWFp5b2J6VXZQcU5CdjNNcTc0RUFyV3h6Y0VyV2dYcWs3d3J4c3dNUDRWbzY0UVQ1U2pnMVFLelpkTldKSFRkdGJ0NjYyQW1NajhKaHFTMzQzdWQ&oenc=65001
+
+#Flag: FGTE{SECRET_e17_n9876543210987654321_p314159_q271828^&*_LDR:Radio_Track_♥}

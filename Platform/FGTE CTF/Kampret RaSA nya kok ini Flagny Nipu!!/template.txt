@@ -1,0 +1,47 @@
+Bantu saya mengerjakan CTF Cryptography ini:
+
+Kampret RaSA nya kok ini Flagny Nipu?!!
+
+Challenge1 solve
+
+> Author: Mr.Gl1tchNu11 sebelum masuk RSA data itu "dikemas ulang" lewat beberapa lapis ada operasi bitwise berulang, sebuah transformasi polialfabetik yang memakai token pendek sebagai bahan ulang, lalu pengemasan akhir ke alfabet enkoding yang agak tak biasa (mirip Base58). . Perhatikan pola berulang saat kamu ubah representasi; dari situ pintu kecilnya biasanya terbuka. Ingat Token Itu Flag FORMAT
+
+CryptoHard
+
+🪙 750
+
+Author: Mr.Gl1tchNu11
+
+sebelum masuk RSA data itu "dikemas ulang" lewat beberapa lapis ada operasi bitwise berulang, sebuah transformasi polialfabetik yang memakai token pendek sebagai bahan ulang, lalu pengemasan akhir ke alfabet enkoding yang agak tak biasa (mirip Base58). . Perhatikan pola berulang saat kamu ubah representasi; dari situ pintu kecilnya biasanya terbuka. Ingat Token Itu Flag FORMAT
+
+📂 Files
+
+copy wget|challenge.jsonencrypt.py
+
+💡 Hint
+
+Hint for: Kampret RaSA nya kok ini Flagny Nipu?!!
+CipXviOrg58
+
+Aku telah membuat script decrypt, dan ini outputnya:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/Kampret RaSA nya kok ini Flagny Nipu?!!]
+└─$ python3 decrypt.py
+FGTE{WVpNWHtLTDRfWTRkM18wa19LMzRlP19hM2EzfQ}9uuATZ4V7WuzHd6TMv1xNXZyobzUvPqNBv3Mq74EArWxzcErWgXqk7wrxswMP4Vo64QT5Sjg1QKzZdNWJHTdtbt662AmMj8JhqS343ud
+
+Jika berdasarkan Deskripsi soal script decrypt aku ini telah benar!. dan juga aku udh confirm ke probsetnya bener juga!. sesuai deskripsi soal kita sekarang hanya perlu diluarbungkus format flagnya yaitu: "9uuATZ4V7WuzHd6TMv1xNXZyobzUvPqNBv3Mq74EArWxzcErWgXqk7wrxswMP4Vo64QT5Sjg1QKzZdNWJHTdtbt662AmMj8JhqS343ud".
+
+Terus aku menanyakan kembali kepada Probset mengenai Hintnya:
+Terus ini Penjelasan hintnya:
+
+Hint: CipXviOrg58
+1. Dibaca lewat belakang
+2. 58 = Base58
+3. viOrg = Vigeren
+4. XviOrg = Xor
+5. Cip = Cipher
+
+Berdasarkan hint ini coba kamu analisa lagi!. karena kita sekarang hanya fokus pada ini untuk mendecryptnya: "9uuATZ4V7WuzHd6TMv1xNXZyobzUvPqNBv3Mq74EArWxzcErWgXqk7wrxswMP4Vo64QT5Sjg1QKzZdNWJHTdtbt662AmMj8JhqS343ud".
+
+Buatlah script otomatis dari python untuk mendecrypt output yang kita fokus tersebut!.
+
+

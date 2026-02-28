@@ -1,0 +1,12 @@
+ase Maze
+Challenge
+6 solve
+> Author: aria Masuk ke labirin basis — satu persatu lapisan harus dilewati. Hati-hati: urutan penting. Flag berada setelah lapisan terakhir. ``` 6p$Dh<,g>us<T69>9Y\r0[0lmTK_W%O^3$[u35.0[3^]'vuG0/H8bV.Ah)TiU2wi0Piasg*=3rO>o8?C62vB>N-?yiR(T=9$EzQs=13*?M<-*<dG6+]n\$584aHq&qgg3^S0L_,'n;SO@Iwm26EnzF,XxMOwp=w}7V^d:S,J4^SMke95?}t?d!]lgqdYSRLr0OGma8\z?E;MS2AH;FS(I[-=#h^gB;wjEW&^y$X!3nO0<.#16s1{EP,YxEHw'<Gd6l\}WlZ@({>y=20i6-sdk*XvW%Ff@BJ>D4/SsS4On3Vu=JrT>2jUwXcvy^KY=!>c7ph|a+-<bSUU=d9*?@FG#l.@J\l:l93PE^t|v?^e(a@G%RU&5(;e0^-,g}X;V/l[4d;#wx6HVXO=ntoq7P05:2Z@g@Hr'][(6r\jW],'?GUZVqRL3^]2O@V94!Jz<-m+3^Q{>X(3n9<>'Tr5<sQvwx3Ix/Oxo7P!8ZQo#}YKDPiNT-J#4HJ ```
+Crypto
+Easy
+🪙 250
+Author: aria
+
+Masuk ke labirin basis — satu persatu lapisan harus dilewati. Hati-hati: urutan penting. Flag berada setelah lapisan terakhir.
+
+6p$Dh<,g>us<T69>9Y\r0[0lmTK_W%O^3$[u35.0[3^]'vuG0/H8bV.Ah)TiU2wi0Piasg*=3rO>o8?C62vB>N-?yiR(T=9$EzQs=13*?M<-*<dG6+]n\$584aHq&qgg3^S0L_,'n;SO@Iwm26EnzF,XxMOwp=w}7V^d:S,J4^SMke95?}t?d!]lgqdYSRLr0OGma8\z?E;MS2AH;FS(I[-=#h^gB;wjEW&^y$X!3nO0<.#16s1{EP,YxEHw'<Gd6l\}WlZ@({>y=20i6-sdk*XvW%Ff@BJ>D4/SsS4On3Vu=JrT>2jUwXcvy^KY=!>c7ph|a+-<bSUU=d9*?@FG#l.@J\l:l93PE^t|v?^e(a@G%RU&5(;e0^-,g}X;V/l[4d;#wx6HVXO=ntoq7P05:2Z@g@Hr'][(6r\jW],'?GUZVqRL3^]2O@V94!Jz<-m+3^Q{>X(3n9<>'Tr5<sQvwx3Ix/Oxo7P!8ZQo#}YKDPiNT-J#4HJ

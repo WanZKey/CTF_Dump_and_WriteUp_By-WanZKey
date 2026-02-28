@@ -1,0 +1,1 @@
+FGTE{Base_32_Base45_Base58_Base62_Base64_Base85_Base92}

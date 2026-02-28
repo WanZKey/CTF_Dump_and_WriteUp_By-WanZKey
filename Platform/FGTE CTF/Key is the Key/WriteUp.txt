@@ -1,0 +1,66 @@
+Mantap, selamat ya! 🎉 Sekarang kita bikin writeup-nya, lengkap dengan penjelasan dan script.
+
+---
+
+## 📝 Writeup — "Key is the Key" (COMPFEST CTF 2025)
+
+### 🔍 Deskripsi Soal:
+
+Kita diberikan sebuah file bernama `Key is the Key.txt` yang telah dienkripsi menggunakan algoritma XOR klasik. Key yang digunakan adalah sebuah "kata yang diulang-ulang", dan kita diberi hint:
+
+> kayaknya katanya dia suka banget sama kata "crypto" 🤔
+
+### 🧠 Analisis:
+
+XOR cipher adalah teknik enkripsi klasik di mana setiap byte dari plaintext di-*XOR* dengan key. Jika key lebih pendek dari plaintext, biasanya key akan diulang.
+
+Karena key-nya adalah `"crypto"` dan digunakan berulang-ulang, maka dekripsi bisa dilakukan dengan:
+
+```
+decrypted[i] = ciphertext[i] XOR key[i % len(key)]
+```
+
+### 📜 Solusi:
+
+Kita membuat skrip Python sederhana untuk:
+
+1. Membaca isi file terenkripsi
+2. Mengulang key `"crypto"` agar sepanjang isi file
+3. Melakukan XOR antara isi file dan key
+4. Menampilkan hasilnya dalam bentuk teks
+
+#### 🔓 `solver.py`:
+```python
+def xor_with_key(data: bytes, key: bytes) -> bytes:
+    key_repeated = (key * (len(data) // len(key) + 1))[:len(data)]
+    return bytes([b ^ k for b, k in zip(data, key_repeated)])
+
+# Nama file dan key
+filename = "Key is the Key.txt"
+key = b"crypto"
+
+# Baca isi file
+with open(filename, "rb") as f:
+    content = f.read()
+
+# XOR
+decrypted = xor_with_key(content, key)
+
+# Tampilkan hasil
+try:
+    print("Hasil XOR (teks):")
+    print(decrypted.decode())  # coba decode sebagai teks
+except UnicodeDecodeError:
+    print("Hasil XOR (hex):")
+    print(decrypted.hex())
+```
+
+### 🏁 Flag:
+
+```
+CWA{x0r_with_key_crypto}
+```
+
+---
+
+Kalau mau, saya bisa bantu bikin versi markdown juga buat di upload ke repo atau platform writeup. Mau?

@@ -1,0 +1,16 @@
+Key is the Key
+08 Apr 2025
+
+Medium
+Aku mengenkripsi sebuah pesan dengan algoritma XOR klasik, tapi kali ini aku menggunakan key yang lebih panjang: sebuah kata yang diulang-ulang.
+
+Aku lupa key-nya, tapi kayaknya katanya dia suka banget sama kata "crypto" 🤔
+
+💡 Hint
+XOR pakai key
+
+
+
+#crypto
+
+Download File

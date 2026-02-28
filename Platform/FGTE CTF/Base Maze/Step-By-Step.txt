@@ -1,0 +1,7 @@
+1. Base 92 Decode
+2. ASCII85 / Base85 Decode
+3. Base64 Decode
+4. Base62 Decode
+5. Base58 Decode
+6. Base45 Decode
+7. Base32 Decode
