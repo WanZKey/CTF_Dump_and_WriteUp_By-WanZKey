@@ -1,0 +1,6 @@
+
+
+2. 
+籏籐籝籎粄类籮籹籵籪籬籮籨籭籪籼籱籨籭籸籽籨籼籹籪籬籮籨米籪籹籪籷籮籼粆
+
+#Flag: FGTE{replace_dash_dot_space_japanes}

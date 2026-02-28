@@ -1,0 +1,12 @@
+Reflected Bits
+Challenge
+10 solve
+> Author: aria Sebuah pesan misterius tersimpan dalam sebuah berkas aneh. Data di dalamnya tidak langsung terbaca, karena telah melalui beberapa tahap transformasi digital sebelum akhirnya disamarkan. Tugasmu adalah menemukan cara untuk mengurai kembali lapisan-lapisan tersebut hingga pesan asli muncul. ``` =EDMxETMxEDMgATMxEDMwEDMgEDMxATMwEDMgATMxADMwEDMgETMxETMwEDMgEDMwETMwEDMgATMwATMwEDMgEDMwADMwEDMgATMxEDMwEDMgEDMwEDMwEDMgATMwADMwEDMgETMxETMwEDMgADMxADMwEDMgATMxEDMwEDMgEDMwADMwEDMgETMxETMwEDMgEDMxADMwEDMgETMwATMwEDMgATMwATMwEDMgADMwATMxADMgEDMxEDMwEDMgETMwETMxEDMgEDMxADMwEDMgADMxATMwEDMgETMxADMwEDMgATMxADMwEDM ```
+Crypto
+Easy
+🪙 100
+Author: aria
+
+Sebuah pesan misterius tersimpan dalam sebuah berkas aneh. Data di dalamnya tidak langsung terbaca, karena telah melalui beberapa tahap transformasi digital sebelum akhirnya disamarkan. Tugasmu adalah menemukan cara untuk mengurai kembali lapisan-lapisan tersebut hingga pesan asli muncul.
+
+=EDMxETMxEDMgATMxEDMwEDMgEDMxATMwEDMgATMxADMwEDMgETMxETMwEDMgEDMwETMwEDMgATMwATMwEDMgEDMwADMwEDMgATMxEDMwEDMgEDMwEDMwEDMgATMwADMwEDMgETMxETMwEDMgADMxADMwEDMgATMxEDMwEDMgEDMwADMwEDMgETMxETMwEDMgEDMxADMwEDMgETMwATMwEDMgATMwATMwEDMgADMwATMxADMgEDMxEDMwEDMgETMwETMxEDMgEDMxADMwEDMgADMxATMwEDMgETMxADMwEDMgATMxADMwEDM

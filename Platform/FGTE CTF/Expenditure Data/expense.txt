@@ -1,0 +1,19 @@
+Expenses
+Software Licenses,$389.31
+Office Supplies,$15.26
+Heating,$2.51
+Meals,$1.45
+Maintenance,$8.35
+Advertising,$8846.38
+Entertainment,$3.13
+Loan Interest,$89.53
+Snacks,$1304.47
+Gas,$98.76
+Motor Vehicle,$453.06
+Transportation,$4703.47
+Internet,$6.42
+Mortgage Interest,$9048.17
+Phone,$35.00
+Bank Fees,$23.79
+Property Tax,$201.13
+Cooling,$1

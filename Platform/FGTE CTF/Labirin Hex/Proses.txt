@@ -1,0 +1,80 @@
+# Cari Ciphertext XOR
+# 6x Decode:
+Hasil Decode:
+ÞÞ
+buntuÞÞ
+buntuÞÞ
+buntuÞÞ
+junkÞÞ
+trashdecode this for get flag / key: 6a 75 6e 6bdecode this for get flag / key: 74 72 61 73 68Pintu_Keluar Bukan disini kembali ke titik awal jika tidak ingin membuang buang waktu :v
+
+61 32 56 73 64 57 46 79 58 32 52 68 63 6d 6c 66 62 47 46 69 61 58 4a 70 62 67 3d 3d 20 61 64 61 6c 61 68 20 6b 75 6e 63 69 20 75 6e 74 75 6b 20 6b 65 6c 75 61 72 20 64 61 72 69 20 6c 61 62 69 72 69 6e 20 69 6e 69decode this for get flag / key: 6a 75 6e 6bdecode this for get flag / key: 74 72 61 73 68decode this for get flag / key: 62 75 6e 74 75decode this for get flag / key: 62 75 6e 74 75decode this for get flag / key: 6a 75 6e 6bdecode this for get flag / key: 74 72 61 73 68ÞÞ
+buntuÞÞ
+junkÞÞ
+trashÞÞ
+buntudecode this for get flag / key: 6a 75 6e 6bdecode this for get flag / key: 74 72 61 73 68junkthree more
+
+74 77 6f 20 6d 6f 72 65 0a 0a 36 66 20 36 65 20 36 35 20 32 30 20 36 64 20 36 66 20 37 32 20 36 35 20 30 61 20 30 61 20 33 34 20 33 34 20 32 30 20 33 34 20 33 35 20 32 30 20 33 34 20 33 33 20 32 30 20 33 34 20 36 36 20 32 30 20 33 35 20 33 39DECOYdecode this for get flag / key: 67 61 72 62 61 67 65flag ada disini...
+
+64 65 63 6f 64 65 20 74 68 69 73 20 66 6f 72 20 67 65 74 20 66 6c 61 67 20 2f 20 6b 65 79 3a 20 37 34 20 37 32 20 36 31 20 37 33 20 36 38_SLAVRjPAF\[B_IXZEZGADfDV@IiUATR\KS_UV@SXR^oLVVIAYN^LFPRhWAGZWB^GIXE^DAE;ÞÞ
+buntuÞÞ
+buntuÞÞ
+junkÞÞ
+trashÞÞ
+buntu
+
+
+
+
+
+Cipher Text:
+_SLAVRjPAF\[B_IXZEZGADfDV@IiUATR\KS_UV@SXR^oLVVIAYN^LFPRhWAGZWB^GIXE^DAE;
+
+
+
+
+# Cari Key buat kunci XOR 
+# 7x Decode:
+
+ÞÞ
+junkÞÞ
+trash
+
+
+º
+
+
+Ú
+
+
+a2VsdWFyX2RhcmlfbGFiaXJpbg== adalah kunci untuk keluar dari labirin iniÞÞ
+junkÞÞ
+trashÞÞ
+buntuÞÞ
+buntuÞÞ
+junkÞÞ
+trash
+ÞÞ
+junkÞÞ
+trashîtwo more
+
+6f 6e 65 20 6d 6f 72 65 0a 0a 34 34 20 34 35 20 34 33 20 34 66 20 35 39ÞÞÞ
+garbage
+­
+
+decode this for get flag / key: 74 72 61 73 68
+¯­ý
+
+
+Ú
+
+
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/Labirin Hex]
+└─$ echo "a2VsdWFyX2RhcmlfbGFiaXJpbg==" | base64 -d
+keluar_dari_labirin
+
+Key XOR: keluar_dari_labirin
+
+
+#
