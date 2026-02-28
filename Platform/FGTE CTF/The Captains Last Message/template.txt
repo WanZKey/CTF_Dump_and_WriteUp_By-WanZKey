@@ -1,0 +1,81 @@
+Bantu saya mengerjakan CTF Cryptography ini:
+
+The Captain’s Last Message
+Challenge
+0 solves
+> Author: aria Perang Dunia II, 1943. Sebuah **transmisi radio** ditangkap oleh unit intelijen Sekutu di Laut Utara. . Pesan ini diyakini berasal dari kapal selam U-Boat 245, salah satu kapal komunikasi yang terkenal menggunakan konfigurasi Enigma yang dimodifikasi. . Dalam log buku kapal ditemukan catatan berikut: > “Kapal berlayar pada hari ke-7 dari operasi ketiga belas. Rotor utama selalu berputar dalam urutan yang biasa digunakan oleh kru ke-5. . Kapten menulis di dinding ruang kendali: ‘Alpha meets Victor at dawn.’ Operator komunikasi dikenal sangat menyukai simetri.” Beberapa lembar log tambahan ditemukan di ruang radio. Di bagian atas halaman tertulis: ```bash “CQ DE QST” ``` Di sisi dinding ruang komunikasi ada tulisan samar: ```bash AVBS CGDL FUHZ INKM OWRX ```
+Crypto
+Medium
+🪙 500
+Author: aria
+
+Perang Dunia II, 1943.
+Sebuah transmisi radio ditangkap oleh unit intelijen Sekutu di Laut Utara.
+.
+Pesan ini diyakini berasal dari kapal selam U-Boat 245, salah satu kapal komunikasi yang terkenal menggunakan konfigurasi Enigma yang dimodifikasi.
+.
+Dalam log buku kapal ditemukan catatan berikut:
+
+“Kapal berlayar pada hari ke-7 dari operasi ketiga belas.
+Rotor utama selalu berputar dalam urutan yang biasa digunakan oleh kru ke-5.
+.
+Kapten menulis di dinding ruang kendali: ‘Alpha meets Victor at dawn.’
+Operator komunikasi dikenal sangat menyukai simetri.”
+
+Beberapa lembar log tambahan ditemukan di ruang radio.
+Di bagian atas halaman tertulis:
+
+“CQ DE QST”
+Di sisi dinding ruang komunikasi ada tulisan samar:
+
+AVBS CGDL FUHZ INKM OWRX
+📂 Files
+
+copy wget
+|
+radio_silence_1943.wav
+
+Berikut informasi file yang diberikan:
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/The Captains Last Message]
+└─$ file radio_silence_1943.wav
+radio_silence_1943.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 8 bit, mono 11050 Hz
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/The Captains Last Message]
+└─$ exiftool radio_silence_1943.wav
+ExifTool Version Number         : 13.25
+File Name                       : radio_silence_1943.wav
+Directory                       : .
+File Size                       : 3.0 MB
+File Modification Date/Time     : 2025:10:16 11:10:59+07:00
+File Access Date/Time           : 2025:10:16 11:11:02+07:00
+File Inode Change Date/Time     : 2025:10:16 11:10:59+07:00
+File Permissions                : -rw-r--r--
+File Type                       : WAV
+File Type Extension             : wav
+MIME Type                       : audio/x-wav
+Encoding                        : Microsoft PCM
+Num Channels                    : 1
+Sample Rate                     : 11050
+Avg Bytes Per Sec               : 11050
+Bits Per Sample                 : 8
+Duration                        : 0:04:32
+
+
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/The Captains Last Message]
+└─$ binwalk radio_silence_1943.wav
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             RIFF audio data (WAV), PCM, 1 channels, 11050 sample rate
+
+┌──(wanz)─(wanzkey㉿Hengker-Bwang)-[~/ARIAF-CTF-2025/Crypto/The Captains Last Message] 
+└─$ stegseek radio_silence_1943.wav
+StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
+
+[i] Progress: 99.75% (133.1 MB)
+[!] error: Could not find a valid passphrase.
+
+karena ini kode morse saya coba menggunakan tools decoder audio morse online dari situs ini: https://morsecode.world/international/decoder/audio-decoder-adaptive.html
+
+berikut hasilnya:
+X U M E B U G V S G H C O G V J A N U M O G Q M M W E S M P Q D I U W E L I X D K E Y N T Q U N P A N J I D H B M Y L O Q I N L R Y F J V D S E N A I Y T G R Q S R S O L V O C X K R R A I P U K G J R Z E T D J Q Z V S C S S N F T C K J B N M B D J U O O L H P R Z M W Y G N

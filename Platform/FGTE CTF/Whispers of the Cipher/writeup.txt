@@ -1,0 +1,13 @@
+
+Whispers of the Cipher - Writeup
+
+1. Buka file mysterious.wav dan cek metadata menggunakan exiftool atau strings.
+   Ditemukan informasi: key = "solitude", mode1 = Vigenere, mode2 = XOR.
+
+2. Buka cipher.txt, ubah hex menjadi bytes.
+
+3. Terapkan XOR menggunakan key SHA1("solitude") secara berulang.
+
+4. Hasil XOR masih terenkripsi, decrypt lagi menggunakan Vigenère Cipher dengan key "solitude".
+
+5. Plaintext muncul: FGTE{TW0_L4Y3R_3NCRYPT10N_UNL0CK3D}.

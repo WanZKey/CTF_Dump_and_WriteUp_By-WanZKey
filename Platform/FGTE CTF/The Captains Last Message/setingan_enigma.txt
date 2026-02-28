@@ -1,0 +1,21 @@
+Model		: Enigma M3
+Reflektor	: UKW B
+
+Rotor		: 2 4 5 atau II IV V
+Rotor 1		: 2 atau II
+Rotor 2		: 4 atau IV
+Rotor 3		: 5 atau V
+
+Position	: QST
+Position 1	: 17/Q
+Position 2	: 19/S
+Position 3	: 20/T
+
+Ring		: GCK
+Ring 1		: 7/G
+Ring 2		: 3/C
+Ring 3		: 11/K
+
+Plugboard	: AV BS CG DL FU HZ IN KM OW RX
+
+

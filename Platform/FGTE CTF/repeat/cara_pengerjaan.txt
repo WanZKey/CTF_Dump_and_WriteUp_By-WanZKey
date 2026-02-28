@@ -1,0 +1,5 @@
+1. ROT 13
+2. Decode From base64
+   (A-Za-z0-9+/=)
+3. Decode From ROT13 base64 
+   (N-ZA-Mn-za-m0-9+/=)
