@@ -1,0 +1,15 @@
+ 󰋑  ▶  docker exec keisengankecil-victim-1 sh -c 'cat /proc/1/environ | tr "\0" "\n"'
+CHROME_PATH=/usr/lib/chromium/
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+HOSTNAME=accd719e27d5
+PWN=WanZKey
+APP_URL=http://web:80
+VICTIM_USERNAME=admin
+SHLVL=1
+HOME=/home/chrome
+PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+VISIT_INTERVAL_SECONDS=15
+PWD=/app
+CHROME_BIN=/usr/bin/chromium-browser
+CHROMIUM_FLAGS=--disable-software-rasterizer --disable-dev-shm-usage

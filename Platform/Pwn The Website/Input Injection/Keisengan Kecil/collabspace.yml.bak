@@ -1,0 +1,18 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/collabspace-web:latest
+    ports:
+      - "1337:80"
+    environment:
+      - PWN=${PWN:-player}
+      - BASE_URL=http://localhost:1337
+
+  victim:
+    image: ghcr.io/hengkerrusia/collabspace-victim:latest
+    environment:
+      - APP_URL=http://web:80
+      - VICTIM_USERNAME=admin
+      - VISIT_INTERVAL_SECONDS=15
+    depends_on:
+      - web
+
