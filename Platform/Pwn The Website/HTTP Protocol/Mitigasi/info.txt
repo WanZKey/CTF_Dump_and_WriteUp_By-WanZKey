@@ -1,0 +1,29 @@
+ WanZKey  ～  ~../HTTP Protocol/Mitigasi 󱎫 2s 󱑎 12.01
+ 󰋑  ▶  curl -v --http2-prior-knowledge http://localhost:1337/api/internal/status
+* Host localhost:1337 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:1337...
+* Established connection to localhost (::1 port 1337) from ::1 port 45032
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for http://localhost:1337/api/internal/status
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: http]
+* [HTTP/2] [1] [:authority: localhost:1337]
+* [HTTP/2] [1] [:path: /api/internal/status]
+* [HTTP/2] [1] [user-agent: curl/8.18.0]
+* [HTTP/2] [1] [accept: */*]
+> GET /api/internal/status HTTP/2
+> Host: localhost:1337
+> User-Agent: curl/8.18.0
+> Accept: */*
+>
+* Request completely sent off
+< HTTP/2 200
+< content-type: application/json
+< content-length: 63
+< date: Sun, 01 Mar 2026 05:01:22 GMT
+<
+{"status":"ok","flag":"pwn{363baf23640d28e6208c29a5d90151c6}
+* Connection #0 to host localhost:1337 left intact
+"}¶       
