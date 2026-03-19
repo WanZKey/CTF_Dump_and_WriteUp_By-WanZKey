@@ -1,0 +1,2 @@
+VuwCTF{eastern_sea_route}
+flag{test_local}
