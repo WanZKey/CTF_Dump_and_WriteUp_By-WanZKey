@@ -1,0 +1,1 @@
+layer_1.zip/flag.txt:$zip2$*0*3*0*67ab775243e3e4ec97d8395ddc22d19c*e42e*4a*1ba2ca6d3fe4448e16aa128249be4eb155ea6bfaabeb216f852528c88808cdf80c9fe5b90123bffb3983798b59ea80058c0c6ff848453c1c2ca3f1db0e072bf52f260105be0cf6aeed4d*9ca7d74dd6e38e4fd853*$/zip2$:flag.txt:layer_1.zip:layer_1.zip

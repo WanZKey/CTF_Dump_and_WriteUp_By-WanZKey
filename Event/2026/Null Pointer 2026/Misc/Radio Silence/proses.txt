@@ -1,0 +1,8 @@
+ WanZKey  ～  ~../Misc/Radio Silence 󱎫 0s 󱑎 22.43
+ 󰋑  ▶  sstv -d transmission.wav -o result.png
+[sstv] Searching for calibration header... Found!
+[sstv] Detected SSTV mode Robot 36
+[sstv] Decoding image...   [######################################################################################]  99%
+[sstv] Reached end of audio whilst decoding.
+[sstv] Drawing image data...
+[sstv] ...Done!
