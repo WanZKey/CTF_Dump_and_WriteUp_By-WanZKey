@@ -1,0 +1,1 @@
+VuwCTF{base64_is_encoding_not_encryption}

@@ -1,0 +1,18 @@
+ 󰋑  ▶  ./solver.py
+[*] Terhubung ke server. Mengeksekusi Padding Oracle Attack...
+[*] Jumlah blok yang akan diproses: 3
+
+[*] Memproses Blok 1...
+[+] Byte 0 (Known) : V -> Isi Blok: VuwCTF{padding_s
+[*] Hasil Blok 1 : bytearray(b'VuwCTF{padding_s')
+
+[*] Memproses Blok 2...
+[+] Byte 0 Cracked : i -> Isi Blok: idechannel_attac
+[*] Hasil Blok 2 : bytearray(b'idechannel_attac')
+
+[*] Memproses Blok 3...
+[+] Byte 6 Cracked : \x0e -> Isi Blok: \x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0[+] Byte 5 Cracked : \x0e -> Isi Blok: \x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0[+] Byte 4 Cracked : \x0e -> Isi Blok: \x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0[+] Byte 3 Cracked : \x0e -> Isi Blok: \x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0[+] Byte 2 Cracked : \x0e -> Isi Blok: \x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0[+] Byte 1 Cracked : } -> Isi Blok: }\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\[+] Byte 0 Cracked : k -> Isi Blok: k}\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e
+[*] Hasil Blok 3 : bytearray(b'k}\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e\x0e')
+
+[*] CRACKED! Flag sepenuhnya ditemukan.
+[*] Flag Final : VuwCTF{padding_sidechannel_attack}
