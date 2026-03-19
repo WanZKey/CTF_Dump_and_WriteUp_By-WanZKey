@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+# Array ciphertext 29 byte hasil rekonstruksi dari variabel v5 dan v6
+ciphertext = [
+    0xD5, 0x84, 0xD7, 0xC0, 0xA5, 0xE6, 0xF8, 0x9F,
+    0xCF, 0xED, 0xAE, 0xD3, 0xFA, 0x9C, 0xC2, 0xEC,
+    0x9D, 0xC9, 0xE0, 0xAE, 0xC6, 0xF6, 0x9F, 0xC3,
+    0xF7, 0x98, 0xCF, 0xED, 0x8C
+]
+
+# Kunci XOR 3 byte hasil rekonstruksi variabel v3 dan v4
+key = [0x83, 0xF1, 0xA0]
+
+flag = ""
+
+# Lakukan dekripsi XOR (panjang ciphertext adalah 29)
+for i in range(len(ciphertext)):
+    # i % 3 digunakan karena panjang kunci hanya 3 byte dan diulang terus
+    flag += chr(ciphertext[i] ^ key[i % 3])
+
+print(f"Decrypted Flag: {flag}")

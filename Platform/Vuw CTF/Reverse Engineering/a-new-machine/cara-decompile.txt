@@ -1,0 +1,69 @@
+Ya, butuh Python 3.14. Ini step-nya:
+
+## Option 1 — pyenv (Recommended, tanpa Docker)
+
+```bash
+# 1. Install pyenv kalau belum ada
+curl https://pyenv.run | bash
+
+# 2. Tambah ke ~/.bashrc atau ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# 3. Install Python 3.14
+pyenv install 3.14.0
+
+# 4. Set local version di folder chall
+cd ~/path/to/a-new-machine
+pyenv local 3.14.0
+
+# 5. Verify
+python3 --version  # harus 3.14.x
+
+# 6. Jalankan disassembler
+python3 decompile_pyc.py chall.pyc
+```
+
+---
+
+## Option 2 — Docker (kalau udah kelar pull)
+
+```bash
+docker run --rm -v $(pwd):/work python:3.14-rc \
+  python3 /work/decompile_pyc.py /work/chall.pyc
+```
+
+---
+
+## Setelah Python 3.14 ready, jalankan ini langsung:
+
+```bash
+python3 -c "
+import dis, marshal, struct
+
+data = open('chall.pyc','rb').read()
+print('flags:', struct.unpack('<I', data[4:8])[0])
+
+# hash-based pyc = 16 byte header
+code = marshal.loads(data[16:])
+
+def walk(obj, d=0):
+    p = '  '*d
+    if hasattr(obj,'co_consts'):
+        print(f'{p}[{obj.co_name}]')
+        print(f'{p}  consts  : {[c for c in obj.co_consts if not hasattr(c,\"co_consts\")]}')
+        print(f'{p}  names   : {list(obj.co_names)}')
+        print(f'{p}  varnames: {list(obj.co_varnames)}')
+        print(f'{p}  --- dis ---')
+        dis.dis(obj)
+        for c in obj.co_consts:
+            if hasattr(c,'co_consts'):
+                walk(c, d+1)
+
+walk(code)
+" 2>&1 | tee disasm_output.txt
+```
+
+Output disassembly-nya share ke sini, nanti kita reconstruct source code-nya dan solve flag-nya.
