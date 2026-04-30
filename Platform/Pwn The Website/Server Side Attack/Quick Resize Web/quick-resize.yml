@@ -1,0 +1,9 @@
+services:
+  web:
+    image: ghcr.io/hengkerrusia/quick-resize-web:latest
+    ports:
+      - "1337:80"
+      - "2222:2222"
+    environment:
+      - PWN=${PWN:-testuser}
+    restart: unless-stopped
