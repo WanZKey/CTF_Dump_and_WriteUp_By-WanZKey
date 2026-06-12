@@ -1,0 +1,129 @@
+# Recon Protocol
+ WanZKey  ～  ~../Forensic/Pinging 󱎫 0s 󱑎 18.03
+ 󰋑  ▶  tshark -r snippet.pcap -q -z io,phs
+
+===================================================================
+Protocol Hierarchy Statistics
+Filter:
+
+frame                                    frames:102 bytes:4386
+  eth                                    frames:102 bytes:4386
+    ip                                   frames:102 bytes:4386
+      icmp                               frames:102 bytes:4386
+===================================================================
+
+# Ekstrak Data ICMP
+ WanZKey  ～  ~../Forensic/Pinging 󱎫 0s 󱑎 18.06
+ 󰋑  ▶  tshark -r snippet.pcap -Y "icmp" -T fields -e data
+65
+63
+68
+6f
+20
+22
+54
+45
+74
+54
+65
+32
+4a
+68
+59
+6e
+6c
+66
+53
+55
+4e
+4e
+55
+46
+39
+69
+64
+58
+52
+66
+62
+6d
+39
+30
+58
+32
+56
+34
+5a
+6d
+6c
+73
+58
+32
+31
+76
+63
+6d
+56
+73
+61
+57
+74
+6c
+58
+33
+52
+79
+59
+57
+35
+7a
+5a
+6d
+56
+79
+58
+32
+5a
+73
+4e
+47
+63
+2f
+50
+33
+30
+3d
+22
+20
+7c
+20
+62
+61
+73
+65
+36
+34
+20
+2d
+64
+20
+3e
+20
+66
+6c
+61
+67
+2e
+74
+78
+74
+
+# Ekstrak data ICMP & Decode
+ WanZKey  ～  ~../Forensic/Pinging 󱎫 0s 󱑎 18.06
+ 󰋑  ▶  tshark -r snippet.pcap -Y "icmp" -T fields -e data | tr -d '\n' | xxd -r -p
+echo "TEtTe2JhYnlfSUNNUF9idXRfbm90X2V4ZmlsX21vcmVsaWtlX3RyYW5zZmVyX2ZsNGc/P30=" | base64 -d > flag.txt
+
+# Baca Flag
+ WanZKey  ～  ~../Forensic/Pinging 󱎫 0s 󱑎 18.06
+ 󰋑  ▶  cat flag.txt
+LKS{baby_ICMP_but_not_exfil_morelike_transfer_fl4g??}
